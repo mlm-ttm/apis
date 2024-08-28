@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package mlmbox.client.google_authenticator;
+
+import "google/protobuf/empty.proto";
+import "mlmbox/types/google_authenticator.proto";
+
+service GoogleAuthenticator {
+  rpc Info (google.protobuf.Empty) returns (mlmbox.types.GoogleAuthenticator) {} // view 2FA
+  rpc Generate (google.protobuf.Empty) returns (mlmbox.types.GoogleAuthenticator.SecretCode) {} // generate 2FA
+  rpc Activate (mlmbox.types.GoogleAuthenticator.VerifiedCode.Request) returns (mlmbox.types.GoogleAuthenticator.VerifiedCode.Response) {} // activate 2FA
+  rpc Deactivate (mlmbox.types.GoogleAuthenticator.VerifiedCode.Request) returns (mlmbox.types.GoogleAuthenticator.VerifiedCode.Response) {} // deactivate 2FA
+}

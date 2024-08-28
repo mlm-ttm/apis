@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package mlmbox.types;
+import "mlmbox/types/status.proto";
+
+message GoogleAuthenticator {
+  message Status {
+    mlmbox.types.Status.GoogleAuthenticator status = 1;
+  }
+  message SecretCode {
+    string secret_code = 1;
+  }
+  message VerifiedCode {
+    message Request {
+      string verified_code = 1;
+    }
+    message Response {
+      mlmbox.types.Status.GoogleAuthenticatorVerifiedCode status = 1;
+      mlmbox.types.GoogleAuthenticator result = 2; // not empty when [status_id == APPROVED]
+    }
+  }
+  mlmbox.types.Status.GoogleAuthenticator status = 1;
+  uint32 modified_at = 2;
+}

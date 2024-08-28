@@ -1,0 +1,159 @@
+syntax = "proto3";
+
+package mlmbox.types;
+import "mlmbox/types/asset.proto";
+import "mlmbox/types/relationship.proto";
+import "mlmbox/types/google_authenticator.proto";
+
+message Account {
+  message Id {
+    oneof unique_field {
+      uint32 account_id = 1;
+      string account_login = 2;
+      string ref_link_id = 3;
+    }
+  }
+  message RefLink {
+    uint32 account_id = 1;
+    uint32 source_id = 2;
+  }
+  message Username {
+    uint32 id = 1;
+    string login = 2;
+    string ref_link_id = 3;
+  }
+  message Profile {
+    message Ava {
+      uint32 collection_id = 1;
+      uint32 entity_id = 2;
+    }
+    string first_name = 1;
+    string last_name = 2;
+    uint64 tg_id = 3;
+    Ava ava = 4;
+  }
+  message Statistics {
+    uint32 partners_quantity = 1;
+    uint32 team_quantity = 2;
+    uint32 matrix_partners_quantity = 3;
+    uint32 matrix_team_quantity = 4;
+  }
+  message ShortInfo {
+    message List {
+      repeated mlmbox.types.Account.ShortInfo items = 1;
+    }
+    Profile profile = 1;
+    Username account = 2;
+    Username referral = 3;
+    mlmbox.types.Relationship relationship = 4;
+    uint32 registration_at = 5;
+  }
+  message FullInfo {
+    message List {
+      repeated mlmbox.types.Account.FullInfo items = 1;
+    }
+    Profile profile = 1;
+    Username account = 2;
+    Username referral = 3;
+    mlmbox.types.Relationship relationship = 4;
+    uint32 registration_at = 5;
+    uint32 matrix_started_at = 6;
+    int32 matrix_tree_ids_bit_mask = 7;
+    uint32 referral_branch = 8;
+    Statistics statistics = 9;
+  }
+  FullInfo info = 1;
+  mlmbox.types.GoogleAuthenticator google_authenticator = 2;
+  mlmbox.types.Matrix matrix_config = 3;
+  string locale = 5; // language identifier (en-US, ...)
+  bool is_admin = 6;
+}
+
+message Matrix {
+  message Group {
+    uint32 id = 1;
+    string title = 2;
+  }
+  message Tree {
+    uint32 id = 1;
+    string title = 2;
+    uint32 group_id = 3;
+    uint32 positions_quantity = 4;
+    uint32 default_position_width = 5;
+    mlmbox.types.Asset.Amount amount = 6;
+  }
+  message Position {
+    message Id {
+      uint32 view_position_id = 1;
+    }
+    uint32 position_id = 1; // Position identifier
+    uint32 position_ref_id = 2; // Superior position identifier
+    uint32 position_ref_line = 3; // Upstream branch identifier
+    uint32 position_width = 4; // Number of available branches
+    uint32 tree_account_id = 5; // Sequence number in the (tree + account) combination
+    bool reinvest_enabled = 6;
+    mlmbox.types.Account.ShortInfo account = 7;
+  }
+  message TreeAccount {
+    message Entity {
+      uint32 tree_account_id = 1; // Sequence number in the (tree + account) combination
+      uint32 position_id = 2; // Position identifier
+      bool filled = 3; // Is the position filled?
+      bool view_access = 4; // Access to the view
+    }
+    uint32 tree_id = 1;
+    repeated Entity entities = 4;
+  }
+  message View {
+    message Request {
+      message ByTreeAccount {
+        uint32 tree_id = 1;
+        uint32 account_id = 2;
+      }
+      uint32 view_level = 1;
+      oneof query {
+        uint32 view_position_id = 2;
+        ByTreeAccount tree_account_id = 3;
+      }
+    }
+    uint32 tree_id = 1;
+    uint32 self_position_id = 2;
+    uint32 view_position_id = 3;
+    repeated Position positions = 4;
+    repeated TreeAccount.Entity view_tree_account_entities = 5;
+    int32 self_matrix_tree_ids_bit_mask = 6;
+    int32 view_matrix_tree_ids_bit_mask = 7;
+  }
+  message Invoice {
+    message Request {
+      uint32 tree_id = 1;
+    }
+    message PreviewResponse {
+      message Item {
+        uint32 tree_id = 1;
+        mlmbox.types.Asset.Amount price = 2;
+        mlmbox.types.Asset.Amount unlock = 3;
+        mlmbox.types.Asset.Amount amount = 4;
+      }
+      repeated Item items = 1;
+      repeated mlmbox.types.Asset.Amount bill_amounts = 2;
+    }
+    message VerifiedResponse {
+      message Item {
+        uint32 tree_id = 1;
+        uint32 tree_account_id = 2;
+        uint32 position_id = 3;
+      }
+      repeated Item items = 1;
+    }
+  }
+  message Config {
+    message Reinvest {
+      uint32 position_id = 1;
+      bool reinvest_enabled = 2;
+    }
+  }
+  repeated Group groups = 1;
+  repeated Tree trees = 2;
+  repeated TreeAccount tree_accounts = 3;
+}
