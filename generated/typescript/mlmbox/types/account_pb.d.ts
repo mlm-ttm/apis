@@ -1,8 +1,8 @@
 import * as jspb from 'google-protobuf'
 
-import * as mlmbox_types_asset_pb from '../../mlmbox/types/asset_pb';
-import * as mlmbox_types_relationship_pb from '../../mlmbox/types/relationship_pb';
-import * as mlmbox_types_google_authenticator_pb from '../../mlmbox/types/google_authenticator_pb';
+import * as mlmbox_types_asset_pb from '../../mlmbox/types/asset_pb'; // proto import: "mlmbox/types/asset.proto"
+import * as mlmbox_types_relationship_pb from '../../mlmbox/types/relationship_pb'; // proto import: "mlmbox/types/relationship.proto"
+import * as mlmbox_types_google_authenticator_pb from '../../mlmbox/types/google_authenticator_pb'; // proto import: "mlmbox/types/google_authenticator.proto"
 
 
 export class Account extends jspb.Message {

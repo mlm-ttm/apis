@@ -1,7 +1,7 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_protobuf_any_pb from 'google-protobuf/google/protobuf/any_pb';
-import * as google_protobuf_source_context_pb from 'google-protobuf/google/protobuf/source_context_pb';
+import * as google_protobuf_any_pb from 'google-protobuf/google/protobuf/any_pb'; // proto import: "google/protobuf/any.proto"
+import * as google_protobuf_source_context_pb from 'google-protobuf/google/protobuf/source_context_pb'; // proto import: "google/protobuf/source_context.proto"
 
 
 export class Type extends jspb.Message {

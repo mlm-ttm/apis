@@ -1,7 +1,7 @@
 import * as jspb from 'google-protobuf'
 
-import * as mlmbox_types_account_pb from '../../../mlmbox/types/account_pb';
-import * as mlmbox_types_sort_pb from '../../../mlmbox/types/sort_pb';
+import * as mlmbox_types_account_pb from '../../../mlmbox/types/account_pb'; // proto import: "mlmbox/types/account.proto"
+import * as mlmbox_types_sort_pb from '../../../mlmbox/types/sort_pb'; // proto import: "mlmbox/types/sort.proto"
 
 
 export class AccountsSearchRequest extends jspb.Message {

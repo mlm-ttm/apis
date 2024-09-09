@@ -1,6 +1,6 @@
 import * as jspb from 'google-protobuf'
 
-import * as mlmbox_types_status_pb from '../../mlmbox/types/status_pb';
+import * as mlmbox_types_status_pb from '../../mlmbox/types/status_pb'; // proto import: "mlmbox/types/status.proto"
 
 
 export class GoogleAuthenticator extends jspb.Message {

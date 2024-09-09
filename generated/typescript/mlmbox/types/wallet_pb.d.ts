@@ -1,7 +1,7 @@
 import * as jspb from 'google-protobuf'
 
-import * as mlmbox_types_bonus_pb from '../../mlmbox/types/bonus_pb';
-import * as mlmbox_types_status_pb from '../../mlmbox/types/status_pb';
+import * as mlmbox_types_bonus_pb from '../../mlmbox/types/bonus_pb'; // proto import: "mlmbox/types/bonus.proto"
+import * as mlmbox_types_status_pb from '../../mlmbox/types/status_pb'; // proto import: "mlmbox/types/status.proto"
 
 
 export class Wallet extends jspb.Message {

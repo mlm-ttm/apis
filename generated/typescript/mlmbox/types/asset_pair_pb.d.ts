@@ -1,6 +1,6 @@
 import * as jspb from 'google-protobuf'
 
-import * as mlmbox_types_asset_pb from '../../mlmbox/types/asset_pb';
+import * as mlmbox_types_asset_pb from '../../mlmbox/types/asset_pb'; // proto import: "mlmbox/types/asset.proto"
 
 
 export class AssetPair extends jspb.Message {
