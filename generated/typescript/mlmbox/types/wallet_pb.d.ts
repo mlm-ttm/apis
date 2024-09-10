@@ -216,6 +216,9 @@ export namespace Wallet {
         hasBonus(): boolean;
         clearBonus(): Metadata;
 
+        getAccountId(): number;
+        setAccountId(value: number): Metadata;
+
         getUniqueFieldCase(): Metadata.UniqueFieldCase;
 
         serializeBinary(): Uint8Array;
@@ -233,6 +236,7 @@ export namespace Wallet {
           matrixKeeperInitialTreeId: number,
           matrixKeeperReinvest?: Wallet.Asset.Transaction.Metadata.MatrixHeader.AsObject,
           bonus?: Wallet.Asset.Transaction.Metadata.Bonus.AsObject,
+          accountId: number,
         }
 
         export class Withdrawal extends jspb.Message {
@@ -400,6 +404,7 @@ export namespace Wallet {
           MATRIX_KEEPER_INITIAL_TREE_ID = 3,
           MATRIX_KEEPER_REINVEST = 4,
           BONUS = 5,
+          ACCOUNT_ID = 6,
         }
       }
 

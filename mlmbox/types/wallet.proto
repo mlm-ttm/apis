@@ -68,6 +68,7 @@ message Wallet {
           uint32 matrix_keeper_initial_tree_id = 3;
           MatrixHeader matrix_keeper_reinvest = 4;
           Bonus bonus = 5;
+          uint32 account_id = 6;
         }
       }
       uint32 transaction_id = 1;
