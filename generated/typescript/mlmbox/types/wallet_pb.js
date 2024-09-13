@@ -1433,7 +1433,7 @@ proto.mlmbox.types.Wallet.Asset.Transaction.List.prototype.clearItemsList = func
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.oneofGroups_ = [[1,2,3,4,5,6]];
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.oneofGroups_ = [[1,2,3,4,5,6,7]];
 
 /**
  * @enum {number}
@@ -1445,7 +1445,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.UniqueFieldCase = {
   MATRIX_KEEPER_INITIAL_TREE_ID: 3,
   MATRIX_KEEPER_REINVEST: 4,
   BONUS: 5,
-  ACCOUNT_ID: 6
+  ACCOUNT_ID: 6,
+  MATRIX_POSITION_CREATED: 7
 };
 
 /**
@@ -1491,7 +1492,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.toObject = function(include
     matrixKeeperInitialTreeId: jspb.Message.getFieldWithDefault(msg, 3, 0),
     matrixKeeperReinvest: (f = msg.getMatrixKeeperReinvest()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader.toObject(includeInstance, f),
     bonus: (f = msg.getBonus()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.toObject(includeInstance, f),
-    accountId: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    accountId: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    matrixPositionCreated: (f = msg.getMatrixPositionCreated()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1554,6 +1556,11 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.deserializeBinaryFromReader
     case 6:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setAccountId(value);
+      break;
+    case 7:
+      var value = new proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader;
+      reader.readMessage(value,proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader.deserializeBinaryFromReader);
+      msg.setMatrixPositionCreated(value);
       break;
     default:
       reader.skipField();
@@ -1627,6 +1634,14 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.serializeBinaryToWriter = f
     writer.writeUint32(
       6,
       f
+    );
+  }
+  f = message.getMatrixPositionCreated();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader.serializeBinaryToWriter
     );
   }
 };
@@ -2051,7 +2066,7 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader.prototype.setP
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.oneofGroups_ = [[2,3,4]];
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.oneofGroups_ = [[2,3,4,5]];
 
 /**
  * @enum {number}
@@ -2060,7 +2075,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceCase = {
   SOURCE_NOT_SET: 0,
   MATRIX: 2,
   CARD_PARTNER_DAO: 3,
-  CARD_BONUS_HUNTER: 4
+  CARD_BONUS_HUNTER: 4,
+  DESCRIPTION: 5
 };
 
 /**
@@ -2104,7 +2120,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.toObject = function(i
     bonusId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     matrix: (f = msg.getMatrix()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceMatrix.toObject(includeInstance, f),
     cardPartnerDao: (f = msg.getCardPartnerDao()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.CardPool.toObject(includeInstance, f),
-    cardBonusHunter: (f = msg.getCardBonusHunter()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.CardPool.toObject(includeInstance, f)
+    cardBonusHunter: (f = msg.getCardBonusHunter()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.CardPool.toObject(includeInstance, f),
+    description: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -2159,6 +2176,10 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.deserializeBinaryFrom
       var value = new proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.CardPool;
       reader.readMessage(value,proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.CardPool.deserializeBinaryFromReader);
       msg.setCardBonusHunter(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
       break;
     default:
       reader.skipField();
@@ -2218,6 +2239,13 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.serializeBinaryToWrit
       4,
       f,
       proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.CardPool.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeString(
+      5,
+      f
     );
   }
 };
@@ -2745,6 +2773,42 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.hasCardBonu
 
 
 /**
+ * optional string description = 5;
+ * @return {string}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus} returns this
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.setDescription = function(value) {
+  return jspb.Message.setOneofField(this, 5, proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus} returns this
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.clearDescription = function() {
+  return jspb.Message.setOneofField(this, 5, proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.hasDescription = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
  * optional string description = 1;
  * @return {string}
  */
@@ -2960,6 +3024,43 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.clearAccountId = 
  */
 proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.hasAccountId = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional MatrixHeader matrix_position_created = 7;
+ * @return {?proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.getMatrixPositionCreated = function() {
+  return /** @type{?proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader} */ (
+    jspb.Message.getWrapperField(this, proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader, 7));
+};
+
+
+/**
+ * @param {?proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader|undefined} value
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata} returns this
+*/
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.setMatrixPositionCreated = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 7, proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata} returns this
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.clearMatrixPositionCreated = function() {
+  return this.setMatrixPositionCreated(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.hasMatrixPositionCreated = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 

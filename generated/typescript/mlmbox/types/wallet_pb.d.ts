@@ -219,6 +219,11 @@ export namespace Wallet {
         getAccountId(): number;
         setAccountId(value: number): Metadata;
 
+        getMatrixPositionCreated(): Wallet.Asset.Transaction.Metadata.MatrixHeader | undefined;
+        setMatrixPositionCreated(value?: Wallet.Asset.Transaction.Metadata.MatrixHeader): Metadata;
+        hasMatrixPositionCreated(): boolean;
+        clearMatrixPositionCreated(): Metadata;
+
         getUniqueFieldCase(): Metadata.UniqueFieldCase;
 
         serializeBinary(): Uint8Array;
@@ -237,6 +242,7 @@ export namespace Wallet {
           matrixKeeperReinvest?: Wallet.Asset.Transaction.Metadata.MatrixHeader.AsObject,
           bonus?: Wallet.Asset.Transaction.Metadata.Bonus.AsObject,
           accountId: number,
+          matrixPositionCreated?: Wallet.Asset.Transaction.Metadata.MatrixHeader.AsObject,
         }
 
         export class Withdrawal extends jspb.Message {
@@ -316,6 +322,9 @@ export namespace Wallet {
           hasCardBonusHunter(): boolean;
           clearCardBonusHunter(): Bonus;
 
+          getDescription(): string;
+          setDescription(value: string): Bonus;
+
           getSourceCase(): Bonus.SourceCase;
 
           serializeBinary(): Uint8Array;
@@ -332,6 +341,7 @@ export namespace Wallet {
             matrix?: Wallet.Asset.Transaction.Metadata.Bonus.SourceMatrix.AsObject,
             cardPartnerDao?: Wallet.Asset.Transaction.Metadata.Bonus.CardPool.AsObject,
             cardBonusHunter?: Wallet.Asset.Transaction.Metadata.Bonus.CardPool.AsObject,
+            description: string,
           }
 
           export class SourceMatrix extends jspb.Message {
@@ -393,6 +403,7 @@ export namespace Wallet {
             MATRIX = 2,
             CARD_PARTNER_DAO = 3,
             CARD_BONUS_HUNTER = 4,
+            DESCRIPTION = 5,
           }
         }
 
@@ -405,6 +416,7 @@ export namespace Wallet {
           MATRIX_KEEPER_REINVEST = 4,
           BONUS = 5,
           ACCOUNT_ID = 6,
+          MATRIX_POSITION_CREATED = 7,
         }
       }
 

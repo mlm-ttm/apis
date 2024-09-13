@@ -6014,9 +6014,10 @@ proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.toObject = func
 proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.toObject = function(includeInstance, msg) {
   var f, obj = {
     treeId: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    price: (f = msg.getPrice()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f),
-    unlock: (f = msg.getUnlock()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f),
-    amount: (f = msg.getAmount()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f)
+    assetId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    priceValue: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    unlockValue: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    amountValue: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -6058,19 +6059,20 @@ proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.deserializeBinaryFromRead
       msg.setTreeId(value);
       break;
     case 2:
-      var value = new mlmbox_types_asset_pb.Asset.Amount;
-      reader.readMessage(value,mlmbox_types_asset_pb.Asset.Amount.deserializeBinaryFromReader);
-      msg.setPrice(value);
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setAssetId(value);
       break;
     case 3:
-      var value = new mlmbox_types_asset_pb.Asset.Amount;
-      reader.readMessage(value,mlmbox_types_asset_pb.Asset.Amount.deserializeBinaryFromReader);
-      msg.setUnlock(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPriceValue(value);
       break;
     case 4:
-      var value = new mlmbox_types_asset_pb.Asset.Amount;
-      reader.readMessage(value,mlmbox_types_asset_pb.Asset.Amount.deserializeBinaryFromReader);
-      msg.setAmount(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUnlockValue(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAmountValue(value);
       break;
     default:
       reader.skipField();
@@ -6108,28 +6110,32 @@ proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.serializeBinaryToWriter =
       f
     );
   }
-  f = message.getPrice();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getAssetId();
+  if (f !== 0) {
+    writer.writeUint32(
       2,
-      f,
-      mlmbox_types_asset_pb.Asset.Amount.serializeBinaryToWriter
+      f
     );
   }
-  f = message.getUnlock();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getPriceValue();
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      mlmbox_types_asset_pb.Asset.Amount.serializeBinaryToWriter
+      f
     );
   }
-  f = message.getAmount();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getUnlockValue();
+  if (f.length > 0) {
+    writer.writeString(
       4,
-      f,
-      mlmbox_types_asset_pb.Asset.Amount.serializeBinaryToWriter
+      f
+    );
+  }
+  f = message.getAmountValue();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
     );
   }
 };
@@ -6154,113 +6160,74 @@ proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.setTreeId = fun
 
 
 /**
- * optional Asset.Amount price = 2;
- * @return {?proto.mlmbox.types.Asset.Amount}
+ * optional uint32 asset_id = 2;
+ * @return {number}
  */
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.getPrice = function() {
-  return /** @type{?proto.mlmbox.types.Asset.Amount} */ (
-    jspb.Message.getWrapperField(this, mlmbox_types_asset_pb.Asset.Amount, 2));
+proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.getAssetId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {?proto.mlmbox.types.Asset.Amount|undefined} value
- * @return {!proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item} returns this
-*/
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.setPrice = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
+ * @param {number} value
  * @return {!proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item} returns this
  */
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.clearPrice = function() {
-  return this.setPrice(undefined);
+proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.setAssetId = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {boolean}
+ * optional string price_value = 3;
+ * @return {string}
  */
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.hasPrice = function() {
-  return jspb.Message.getField(this, 2) != null;
+proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.getPriceValue = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * optional Asset.Amount unlock = 3;
- * @return {?proto.mlmbox.types.Asset.Amount}
- */
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.getUnlock = function() {
-  return /** @type{?proto.mlmbox.types.Asset.Amount} */ (
-    jspb.Message.getWrapperField(this, mlmbox_types_asset_pb.Asset.Amount, 3));
-};
-
-
-/**
- * @param {?proto.mlmbox.types.Asset.Amount|undefined} value
- * @return {!proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item} returns this
-*/
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.setUnlock = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
+ * @param {string} value
  * @return {!proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item} returns this
  */
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.clearUnlock = function() {
-  return this.setUnlock(undefined);
+proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.setPriceValue = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {boolean}
+ * optional string unlock_value = 4;
+ * @return {string}
  */
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.hasUnlock = function() {
-  return jspb.Message.getField(this, 3) != null;
+proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.getUnlockValue = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /**
- * optional Asset.Amount amount = 4;
- * @return {?proto.mlmbox.types.Asset.Amount}
- */
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.getAmount = function() {
-  return /** @type{?proto.mlmbox.types.Asset.Amount} */ (
-    jspb.Message.getWrapperField(this, mlmbox_types_asset_pb.Asset.Amount, 4));
-};
-
-
-/**
- * @param {?proto.mlmbox.types.Asset.Amount|undefined} value
- * @return {!proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item} returns this
-*/
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.setAmount = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
+ * @param {string} value
  * @return {!proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item} returns this
  */
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.clearAmount = function() {
-  return this.setAmount(undefined);
+proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.setUnlockValue = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {boolean}
+ * optional string amount_value = 5;
+ * @return {string}
  */
-proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.hasAmount = function() {
-  return jspb.Message.getField(this, 4) != null;
+proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.getAmountValue = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item} returns this
+ */
+proto.mlmbox.types.Matrix.Invoice.PreviewResponse.Item.prototype.setAmountValue = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 

@@ -747,20 +747,17 @@ export namespace Matrix {
         getTreeId(): number;
         setTreeId(value: number): Item;
 
-        getPrice(): mlmbox_types_asset_pb.Asset.Amount | undefined;
-        setPrice(value?: mlmbox_types_asset_pb.Asset.Amount): Item;
-        hasPrice(): boolean;
-        clearPrice(): Item;
+        getAssetId(): number;
+        setAssetId(value: number): Item;
 
-        getUnlock(): mlmbox_types_asset_pb.Asset.Amount | undefined;
-        setUnlock(value?: mlmbox_types_asset_pb.Asset.Amount): Item;
-        hasUnlock(): boolean;
-        clearUnlock(): Item;
+        getPriceValue(): string;
+        setPriceValue(value: string): Item;
 
-        getAmount(): mlmbox_types_asset_pb.Asset.Amount | undefined;
-        setAmount(value?: mlmbox_types_asset_pb.Asset.Amount): Item;
-        hasAmount(): boolean;
-        clearAmount(): Item;
+        getUnlockValue(): string;
+        setUnlockValue(value: string): Item;
+
+        getAmountValue(): string;
+        setAmountValue(value: string): Item;
 
         serializeBinary(): Uint8Array;
         toObject(includeInstance?: boolean): Item.AsObject;
@@ -773,9 +770,10 @@ export namespace Matrix {
       export namespace Item {
         export type AsObject = {
           treeId: number,
-          price?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
-          unlock?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
-          amount?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
+          assetId: number,
+          priceValue: string,
+          unlockValue: string,
+          amountValue: string,
         }
       }
 
