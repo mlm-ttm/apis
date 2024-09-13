@@ -60,6 +60,7 @@ message Wallet {
             SourceMatrix matrix = 2;
             CardPool card_partner_dao = 3;
             CardPool card_bonus_hunter = 4;
+            string description = 5;
           }
         }
         oneof unique_field {
@@ -69,6 +70,7 @@ message Wallet {
           MatrixHeader matrix_keeper_reinvest = 4;
           Bonus bonus = 5;
           uint32 account_id = 6;
+          MatrixHeader matrix_position_created = 7;
         }
       }
       uint32 transaction_id = 1;

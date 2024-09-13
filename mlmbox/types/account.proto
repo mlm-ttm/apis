@@ -131,9 +131,10 @@ message Matrix {
     message PreviewResponse {
       message Item {
         uint32 tree_id = 1;
-        mlmbox.types.Asset.Amount price = 2;
-        mlmbox.types.Asset.Amount unlock = 3;
-        mlmbox.types.Asset.Amount amount = 4;
+        uint32 asset_id = 2;
+        string price_value = 3;
+        string unlock_value = 4;
+        string amount_value = 5;
       }
       repeated Item items = 1;
       repeated mlmbox.types.Asset.Amount bill_amounts = 2;
