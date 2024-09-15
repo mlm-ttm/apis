@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as mlmbox_types_asset_pb from '../../mlmbox/types/asset_pb'; // proto import: "mlmbox/types/asset.proto"
 import * as mlmbox_types_bonus_pb from '../../mlmbox/types/bonus_pb'; // proto import: "mlmbox/types/bonus.proto"
 import * as mlmbox_types_status_pb from '../../mlmbox/types/status_pb'; // proto import: "mlmbox/types/status.proto"
 
@@ -224,6 +225,11 @@ export namespace Wallet {
         hasMatrixPositionCreated(): boolean;
         clearMatrixPositionCreated(): Metadata;
 
+        getAmount(): mlmbox_types_asset_pb.Asset.Amount | undefined;
+        setAmount(value?: mlmbox_types_asset_pb.Asset.Amount): Metadata;
+        hasAmount(): boolean;
+        clearAmount(): Metadata;
+
         getUniqueFieldCase(): Metadata.UniqueFieldCase;
 
         serializeBinary(): Uint8Array;
@@ -243,6 +249,7 @@ export namespace Wallet {
           bonus?: Wallet.Asset.Transaction.Metadata.Bonus.AsObject,
           accountId: number,
           matrixPositionCreated?: Wallet.Asset.Transaction.Metadata.MatrixHeader.AsObject,
+          amount?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
         }
 
         export class Withdrawal extends jspb.Message {
@@ -417,6 +424,7 @@ export namespace Wallet {
           BONUS = 5,
           ACCOUNT_ID = 6,
           MATRIX_POSITION_CREATED = 7,
+          AMOUNT = 8,
         }
       }
 

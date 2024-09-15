@@ -21,6 +21,8 @@ var global = (function() {
   return Function('return this')();
 }.call(null));
 
+var mlmbox_types_asset_pb = require('../../mlmbox/types/asset_pb.js');
+goog.object.extend(proto, mlmbox_types_asset_pb);
 var mlmbox_types_bonus_pb = require('../../mlmbox/types/bonus_pb.js');
 goog.object.extend(proto, mlmbox_types_bonus_pb);
 var mlmbox_types_status_pb = require('../../mlmbox/types/status_pb.js');
@@ -1433,7 +1435,7 @@ proto.mlmbox.types.Wallet.Asset.Transaction.List.prototype.clearItemsList = func
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.oneofGroups_ = [[1,2,3,4,5,6,7]];
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.oneofGroups_ = [[1,2,3,4,5,6,7,8]];
 
 /**
  * @enum {number}
@@ -1446,7 +1448,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.UniqueFieldCase = {
   MATRIX_KEEPER_REINVEST: 4,
   BONUS: 5,
   ACCOUNT_ID: 6,
-  MATRIX_POSITION_CREATED: 7
+  MATRIX_POSITION_CREATED: 7,
+  AMOUNT: 8
 };
 
 /**
@@ -1493,7 +1496,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.toObject = function(include
     matrixKeeperReinvest: (f = msg.getMatrixKeeperReinvest()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader.toObject(includeInstance, f),
     bonus: (f = msg.getBonus()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.toObject(includeInstance, f),
     accountId: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    matrixPositionCreated: (f = msg.getMatrixPositionCreated()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader.toObject(includeInstance, f)
+    matrixPositionCreated: (f = msg.getMatrixPositionCreated()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader.toObject(includeInstance, f),
+    amount: (f = msg.getAmount()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1561,6 +1565,11 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.deserializeBinaryFromReader
       var value = new proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader;
       reader.readMessage(value,proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader.deserializeBinaryFromReader);
       msg.setMatrixPositionCreated(value);
+      break;
+    case 8:
+      var value = new mlmbox_types_asset_pb.Asset.Amount;
+      reader.readMessage(value,mlmbox_types_asset_pb.Asset.Amount.deserializeBinaryFromReader);
+      msg.setAmount(value);
       break;
     default:
       reader.skipField();
@@ -1642,6 +1651,14 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.serializeBinaryToWriter = f
       7,
       f,
       proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.MatrixHeader.serializeBinaryToWriter
+    );
+  }
+  f = message.getAmount();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      mlmbox_types_asset_pb.Asset.Amount.serializeBinaryToWriter
     );
   }
 };
@@ -3061,6 +3078,43 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.clearMatrixPositi
  */
 proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.hasMatrixPositionCreated = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional Asset.Amount amount = 8;
+ * @return {?proto.mlmbox.types.Asset.Amount}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.getAmount = function() {
+  return /** @type{?proto.mlmbox.types.Asset.Amount} */ (
+    jspb.Message.getWrapperField(this, mlmbox_types_asset_pb.Asset.Amount, 8));
+};
+
+
+/**
+ * @param {?proto.mlmbox.types.Asset.Amount|undefined} value
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata} returns this
+*/
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.setAmount = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 8, proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata} returns this
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.clearAmount = function() {
+  return this.setAmount(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.hasAmount = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 

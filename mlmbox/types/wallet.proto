@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package mlmbox.types;
 
+import "mlmbox/types/asset.proto";
 import "mlmbox/types/bonus.proto";
 import "mlmbox/types/status.proto";
 
@@ -71,6 +72,7 @@ message Wallet {
           Bonus bonus = 5;
           uint32 account_id = 6;
           MatrixHeader matrix_position_created = 7;
+          mlmbox.types.Asset.Amount amount = 8;
         }
       }
       uint32 transaction_id = 1;
