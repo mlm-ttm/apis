@@ -72,15 +72,6 @@ message TeamResponse {
   repeated mlmbox.types.Matrix.TreeAccount.Set account_matrix_tree_accounts = 4;
 }
 ```
-- Обновлена модель в **mlmbox.client.network.TeamResponse**
-```protobuf
-message TeamResponse {
-  mlmbox.types.Account.Info account = 1;
-  repeated mlmbox.types.Account.Info partners = 2;
-  repeated mlmbox.types.Account.Info referrals = 3;
-  repeated mlmbox.types.Matrix.TreeAccount.Set account_matrix_tree_accounts = 4;
-}
-```
 - В модели **mlmbox.types.Account** заменен параметр "matrix_config" на "matrix_tree_accounts".
 - Значение групп, матричных деревьев и других важных системных данных, вынесены в отдельный метод **mlmbox.client.app.App::SchemeInfo()** 
 ```protobuf
