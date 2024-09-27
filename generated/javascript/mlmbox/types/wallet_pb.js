@@ -3313,8 +3313,9 @@ proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.toObject = function
  */
 proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.toObject = function(includeInstance, msg) {
   var f, obj = {
-    available: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    used: jspb.Message.getFieldWithDefault(msg, 2, "")
+    used: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    capacity: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    available: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -3353,11 +3354,15 @@ proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.deserializeBinaryFromReader =
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAvailable(value);
+      msg.setUsed(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUsed(value);
+      msg.setCapacity(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAvailable(value);
       break;
     default:
       reader.skipField();
@@ -3388,17 +3393,24 @@ proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.serializeBinary = f
  */
 proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getAvailable();
+  f = message.getUsed();
   if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getUsed();
+  f = message.getCapacity();
   if (f.length > 0) {
     writer.writeString(
       2,
+      f
+    );
+  }
+  f = message.getAvailable();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
       f
     );
   }
@@ -3406,10 +3418,10 @@ proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.serializeBinaryToWriter = fun
 
 
 /**
- * optional string available = 1;
+ * optional string used = 1;
  * @return {string}
  */
-proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.getAvailable = function() {
+proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.getUsed = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -3418,16 +3430,16 @@ proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.getAvailable = func
  * @param {string} value
  * @return {!proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity} returns this
  */
-proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.setAvailable = function(value) {
+proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.setUsed = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * optional string used = 2;
+ * optional string capacity = 2;
  * @return {string}
  */
-proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.getUsed = function() {
+proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.getCapacity = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -3436,8 +3448,26 @@ proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.getUsed = function(
  * @param {string} value
  * @return {!proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity} returns this
  */
-proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.setUsed = function(value) {
+proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.setCapacity = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string available = 3;
+ * @return {string}
+ */
+proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.getAvailable = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity} returns this
+ */
+proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.prototype.setAvailable = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 

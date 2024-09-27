@@ -11,7 +11,7 @@ service Account {
   rpc SetLogin (SetLoginRequest) returns (mlmbox.types.Account.Username) {} // Update profile details
   rpc SetLocale (mlmbox.types.Locale.Id) returns (mlmbox.types.Locale) {} // Update the language of communication
   rpc SetProfile (SetProfileRequest) returns (mlmbox.types.Account.Profile) {} // Update profile details
-  rpc SetReferral (mlmbox.types.Account.Id) returns (mlmbox.types.Account.FullInfo) {} // Set referral (if the user has no referral)
+  rpc SetReferral (mlmbox.types.Account.Id) returns (mlmbox.types.Account.Info) {} // Set referral (if the user has no referral)
 }
 message SetLoginRequest {
   string login = 1;

@@ -6,8 +6,8 @@ import * as mlmbox_types_google_authenticator_pb from '../../mlmbox/types/google
 
 
 export class Account extends jspb.Message {
-  getInfo(): Account.FullInfo | undefined;
-  setInfo(value?: Account.FullInfo): Account;
+  getInfo(): Account.Info | undefined;
+  setInfo(value?: Account.Info): Account;
   hasInfo(): boolean;
   clearInfo(): Account;
 
@@ -16,10 +16,10 @@ export class Account extends jspb.Message {
   hasGoogleAuthenticator(): boolean;
   clearGoogleAuthenticator(): Account;
 
-  getMatrixConfig(): Matrix | undefined;
-  setMatrixConfig(value?: Matrix): Account;
-  hasMatrixConfig(): boolean;
-  clearMatrixConfig(): Account;
+  getMatrixTreeAccountsList(): Array<Matrix.TreeAccount>;
+  setMatrixTreeAccountsList(value: Array<Matrix.TreeAccount>): Account;
+  clearMatrixTreeAccountsList(): Account;
+  addMatrixTreeAccounts(value?: Matrix.TreeAccount, index?: number): Matrix.TreeAccount;
 
   getLocale(): string;
   setLocale(value: string): Account;
@@ -37,9 +37,9 @@ export class Account extends jspb.Message {
 
 export namespace Account {
   export type AsObject = {
-    info?: Account.FullInfo.AsObject,
+    info?: Account.Info.AsObject,
     googleAuthenticator?: mlmbox_types_google_authenticator_pb.GoogleAuthenticator.AsObject,
-    matrixConfig?: Matrix.AsObject,
+    matrixTreeAccountsList: Array<Matrix.TreeAccount.AsObject>,
     locale: string,
     isAdmin: boolean,
   }
@@ -137,8 +137,10 @@ export namespace Account {
     getLastName(): string;
     setLastName(value: string): Profile;
 
-    getTgId(): number;
-    setTgId(value: number): Profile;
+    getTelegram(): Account.Profile.Telegram | undefined;
+    setTelegram(value?: Account.Profile.Telegram): Profile;
+    hasTelegram(): boolean;
+    clearTelegram(): Profile;
 
     getAva(): Account.Profile.Ava | undefined;
     setAva(value?: Account.Profile.Ava): Profile;
@@ -157,7 +159,7 @@ export namespace Account {
     export type AsObject = {
       firstName: string,
       lastName: string,
-      tgId: number,
+      telegram?: Account.Profile.Telegram.AsObject,
       ava?: Account.Profile.Ava.AsObject,
     }
 
@@ -180,6 +182,29 @@ export namespace Account {
       export type AsObject = {
         collectionId: number,
         entityId: number,
+      }
+    }
+
+
+    export class Telegram extends jspb.Message {
+      getId(): number;
+      setId(value: number): Telegram;
+
+      getUsername(): string;
+      setUsername(value: string): Telegram;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Telegram.AsObject;
+      static toObject(includeInstance: boolean, msg: Telegram): Telegram.AsObject;
+      static serializeBinaryToWriter(message: Telegram, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Telegram;
+      static deserializeBinaryFromReader(message: Telegram, reader: jspb.BinaryReader): Telegram;
+    }
+
+    export namespace Telegram {
+      export type AsObject = {
+        id: number,
+        username: string,
       }
     }
 
@@ -217,117 +242,53 @@ export namespace Account {
   }
 
 
-  export class ShortInfo extends jspb.Message {
+  export class Info extends jspb.Message {
     getProfile(): Account.Profile | undefined;
-    setProfile(value?: Account.Profile): ShortInfo;
+    setProfile(value?: Account.Profile): Info;
     hasProfile(): boolean;
-    clearProfile(): ShortInfo;
+    clearProfile(): Info;
 
     getAccount(): Account.Username | undefined;
-    setAccount(value?: Account.Username): ShortInfo;
+    setAccount(value?: Account.Username): Info;
     hasAccount(): boolean;
-    clearAccount(): ShortInfo;
+    clearAccount(): Info;
 
     getReferral(): Account.Username | undefined;
-    setReferral(value?: Account.Username): ShortInfo;
+    setReferral(value?: Account.Username): Info;
     hasReferral(): boolean;
-    clearReferral(): ShortInfo;
+    clearReferral(): Info;
 
     getRelationship(): mlmbox_types_relationship_pb.Relationship | undefined;
-    setRelationship(value?: mlmbox_types_relationship_pb.Relationship): ShortInfo;
+    setRelationship(value?: mlmbox_types_relationship_pb.Relationship): Info;
     hasRelationship(): boolean;
-    clearRelationship(): ShortInfo;
+    clearRelationship(): Info;
 
     getRegistrationAt(): number;
-    setRegistrationAt(value: number): ShortInfo;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): ShortInfo.AsObject;
-    static toObject(includeInstance: boolean, msg: ShortInfo): ShortInfo.AsObject;
-    static serializeBinaryToWriter(message: ShortInfo, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): ShortInfo;
-    static deserializeBinaryFromReader(message: ShortInfo, reader: jspb.BinaryReader): ShortInfo;
-  }
-
-  export namespace ShortInfo {
-    export type AsObject = {
-      profile?: Account.Profile.AsObject,
-      account?: Account.Username.AsObject,
-      referral?: Account.Username.AsObject,
-      relationship?: mlmbox_types_relationship_pb.Relationship.AsObject,
-      registrationAt: number,
-    }
-
-    export class List extends jspb.Message {
-      getItemsList(): Array<Account.ShortInfo>;
-      setItemsList(value: Array<Account.ShortInfo>): List;
-      clearItemsList(): List;
-      addItems(value?: Account.ShortInfo, index?: number): Account.ShortInfo;
-
-      serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): List.AsObject;
-      static toObject(includeInstance: boolean, msg: List): List.AsObject;
-      static serializeBinaryToWriter(message: List, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): List;
-      static deserializeBinaryFromReader(message: List, reader: jspb.BinaryReader): List;
-    }
-
-    export namespace List {
-      export type AsObject = {
-        itemsList: Array<Account.ShortInfo.AsObject>,
-      }
-    }
-
-  }
-
-
-  export class FullInfo extends jspb.Message {
-    getProfile(): Account.Profile | undefined;
-    setProfile(value?: Account.Profile): FullInfo;
-    hasProfile(): boolean;
-    clearProfile(): FullInfo;
-
-    getAccount(): Account.Username | undefined;
-    setAccount(value?: Account.Username): FullInfo;
-    hasAccount(): boolean;
-    clearAccount(): FullInfo;
-
-    getReferral(): Account.Username | undefined;
-    setReferral(value?: Account.Username): FullInfo;
-    hasReferral(): boolean;
-    clearReferral(): FullInfo;
-
-    getRelationship(): mlmbox_types_relationship_pb.Relationship | undefined;
-    setRelationship(value?: mlmbox_types_relationship_pb.Relationship): FullInfo;
-    hasRelationship(): boolean;
-    clearRelationship(): FullInfo;
-
-    getRegistrationAt(): number;
-    setRegistrationAt(value: number): FullInfo;
+    setRegistrationAt(value: number): Info;
 
     getMatrixStartedAt(): number;
-    setMatrixStartedAt(value: number): FullInfo;
+    setMatrixStartedAt(value: number): Info;
 
     getMatrixTreeIdsBitMask(): number;
-    setMatrixTreeIdsBitMask(value: number): FullInfo;
+    setMatrixTreeIdsBitMask(value: number): Info;
 
     getReferralBranch(): number;
-    setReferralBranch(value: number): FullInfo;
+    setReferralBranch(value: number): Info;
 
     getStatistics(): Account.Statistics | undefined;
-    setStatistics(value?: Account.Statistics): FullInfo;
+    setStatistics(value?: Account.Statistics): Info;
     hasStatistics(): boolean;
-    clearStatistics(): FullInfo;
+    clearStatistics(): Info;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): FullInfo.AsObject;
-    static toObject(includeInstance: boolean, msg: FullInfo): FullInfo.AsObject;
-    static serializeBinaryToWriter(message: FullInfo, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): FullInfo;
-    static deserializeBinaryFromReader(message: FullInfo, reader: jspb.BinaryReader): FullInfo;
+    toObject(includeInstance?: boolean): Info.AsObject;
+    static toObject(includeInstance: boolean, msg: Info): Info.AsObject;
+    static serializeBinaryToWriter(message: Info, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Info;
+    static deserializeBinaryFromReader(message: Info, reader: jspb.BinaryReader): Info;
   }
 
-  export namespace FullInfo {
+  export namespace Info {
     export type AsObject = {
       profile?: Account.Profile.AsObject,
       account?: Account.Username.AsObject,
@@ -341,10 +302,10 @@ export namespace Account {
     }
 
     export class List extends jspb.Message {
-      getItemsList(): Array<Account.FullInfo>;
-      setItemsList(value: Array<Account.FullInfo>): List;
+      getItemsList(): Array<Account.Info>;
+      setItemsList(value: Array<Account.Info>): List;
       clearItemsList(): List;
-      addItems(value?: Account.FullInfo, index?: number): Account.FullInfo;
+      addItems(value?: Account.Info, index?: number): Account.Info;
 
       serializeBinary(): Uint8Array;
       toObject(includeInstance?: boolean): List.AsObject;
@@ -356,7 +317,7 @@ export namespace Account {
 
     export namespace List {
       export type AsObject = {
-        itemsList: Array<Account.FullInfo.AsObject>,
+        itemsList: Array<Account.Info.AsObject>,
       }
     }
 
@@ -472,16 +433,14 @@ export namespace Matrix {
     getPositionWidth(): number;
     setPositionWidth(value: number): Position;
 
+    getAccountId(): number;
+    setAccountId(value: number): Position;
+
     getTreeAccountId(): number;
     setTreeAccountId(value: number): Position;
 
     getReinvestEnabled(): boolean;
     setReinvestEnabled(value: boolean): Position;
-
-    getAccount(): Account.ShortInfo | undefined;
-    setAccount(value?: Account.ShortInfo): Position;
-    hasAccount(): boolean;
-    clearAccount(): Position;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Position.AsObject;
@@ -497,9 +456,9 @@ export namespace Matrix {
       positionRefId: number,
       positionRefLine: number,
       positionWidth: number,
+      accountId: number,
       treeAccountId: number,
       reinvestEnabled: boolean,
-      account?: Account.ShortInfo.AsObject,
     }
 
     export class Id extends jspb.Message {
@@ -576,6 +535,35 @@ export namespace Matrix {
       }
     }
 
+
+    export class Set extends jspb.Message {
+      getTreeId(): number;
+      setTreeId(value: number): Set;
+
+      getEntity(): Matrix.TreeAccount.Entity | undefined;
+      setEntity(value?: Matrix.TreeAccount.Entity): Set;
+      hasEntity(): boolean;
+      clearEntity(): Set;
+
+      getFilled2w2lBitMask(): number;
+      setFilled2w2lBitMask(value: number): Set;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Set.AsObject;
+      static toObject(includeInstance: boolean, msg: Set): Set.AsObject;
+      static serializeBinaryToWriter(message: Set, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Set;
+      static deserializeBinaryFromReader(message: Set, reader: jspb.BinaryReader): Set;
+    }
+
+    export namespace Set {
+      export type AsObject = {
+        treeId: number,
+        entity?: Matrix.TreeAccount.Entity.AsObject,
+        filled2w2lBitMask: number,
+      }
+    }
+
   }
 
 
@@ -593,6 +581,11 @@ export namespace Matrix {
     setPositionsList(value: Array<Matrix.Position>): View;
     clearPositionsList(): View;
     addPositions(value?: Matrix.Position, index?: number): Matrix.Position;
+
+    getAccountsList(): Array<Account.Info>;
+    setAccountsList(value: Array<Account.Info>): View;
+    clearAccountsList(): View;
+    addAccounts(value?: Account.Info, index?: number): Account.Info;
 
     getViewTreeAccountEntitiesList(): Array<Matrix.TreeAccount.Entity>;
     setViewTreeAccountEntitiesList(value: Array<Matrix.TreeAccount.Entity>): View;
@@ -619,6 +612,7 @@ export namespace Matrix {
       selfPositionId: number,
       viewPositionId: number,
       positionsList: Array<Matrix.Position.AsObject>,
+      accountsList: Array<Account.Info.AsObject>,
       viewTreeAccountEntitiesList: Array<Matrix.TreeAccount.Entity.AsObject>,
       selfMatrixTreeIdsBitMask: number,
       viewMatrixTreeIdsBitMask: number,

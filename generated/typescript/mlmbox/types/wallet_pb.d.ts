@@ -432,11 +432,14 @@ export namespace Wallet {
 
 
     export class WithdrawalCapacity extends jspb.Message {
-      getAvailable(): string;
-      setAvailable(value: string): WithdrawalCapacity;
-
       getUsed(): string;
       setUsed(value: string): WithdrawalCapacity;
+
+      getCapacity(): string;
+      setCapacity(value: string): WithdrawalCapacity;
+
+      getAvailable(): string;
+      setAvailable(value: string): WithdrawalCapacity;
 
       serializeBinary(): Uint8Array;
       toObject(includeInstance?: boolean): WithdrawalCapacity.AsObject;
@@ -448,8 +451,9 @@ export namespace Wallet {
 
     export namespace WithdrawalCapacity {
       export type AsObject = {
-        available: string,
         used: string,
+        capacity: string,
+        available: string,
       }
     }
 

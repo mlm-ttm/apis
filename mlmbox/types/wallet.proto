@@ -85,8 +85,9 @@ message Wallet {
       Metadata metadata = 8;
     }
     message WithdrawalCapacity {
-      string available = 1;
-      string used = 2;
+      string used = 1; // The value of the volume used
+      string capacity = 2; // Limit value
+      string available = 3; // Remaining available volume
     }
     message List {
       repeated Asset items = 1;

@@ -511,7 +511,7 @@ proto.mlmbox.client.network.TeamRequest.prototype.setFilterMatrixTreeIdsBitMask 
  * @private {!Array<number>}
  * @const
  */
-proto.mlmbox.client.network.TeamResponse.repeatedFields_ = [2];
+proto.mlmbox.client.network.TeamResponse.repeatedFields_ = [2,3,4];
 
 
 
@@ -544,9 +544,13 @@ proto.mlmbox.client.network.TeamResponse.prototype.toObject = function(opt_inclu
  */
 proto.mlmbox.client.network.TeamResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    account: (f = msg.getAccount()) && mlmbox_types_account_pb.Account.FullInfo.toObject(includeInstance, f),
+    account: (f = msg.getAccount()) && mlmbox_types_account_pb.Account.Info.toObject(includeInstance, f),
     partnersList: jspb.Message.toObjectList(msg.getPartnersList(),
-    mlmbox_types_account_pb.Account.FullInfo.toObject, includeInstance)
+    mlmbox_types_account_pb.Account.Info.toObject, includeInstance),
+    referralsList: jspb.Message.toObjectList(msg.getReferralsList(),
+    mlmbox_types_account_pb.Account.Info.toObject, includeInstance),
+    accountMatrixTreeAccountsList: jspb.Message.toObjectList(msg.getAccountMatrixTreeAccountsList(),
+    mlmbox_types_account_pb.Matrix.TreeAccount.Set.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -584,14 +588,24 @@ proto.mlmbox.client.network.TeamResponse.deserializeBinaryFromReader = function(
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new mlmbox_types_account_pb.Account.FullInfo;
-      reader.readMessage(value,mlmbox_types_account_pb.Account.FullInfo.deserializeBinaryFromReader);
+      var value = new mlmbox_types_account_pb.Account.Info;
+      reader.readMessage(value,mlmbox_types_account_pb.Account.Info.deserializeBinaryFromReader);
       msg.setAccount(value);
       break;
     case 2:
-      var value = new mlmbox_types_account_pb.Account.FullInfo;
-      reader.readMessage(value,mlmbox_types_account_pb.Account.FullInfo.deserializeBinaryFromReader);
+      var value = new mlmbox_types_account_pb.Account.Info;
+      reader.readMessage(value,mlmbox_types_account_pb.Account.Info.deserializeBinaryFromReader);
       msg.addPartners(value);
+      break;
+    case 3:
+      var value = new mlmbox_types_account_pb.Account.Info;
+      reader.readMessage(value,mlmbox_types_account_pb.Account.Info.deserializeBinaryFromReader);
+      msg.addReferrals(value);
+      break;
+    case 4:
+      var value = new mlmbox_types_account_pb.Matrix.TreeAccount.Set;
+      reader.readMessage(value,mlmbox_types_account_pb.Matrix.TreeAccount.Set.deserializeBinaryFromReader);
+      msg.addAccountMatrixTreeAccounts(value);
       break;
     default:
       reader.skipField();
@@ -627,7 +641,7 @@ proto.mlmbox.client.network.TeamResponse.serializeBinaryToWriter = function(mess
     writer.writeMessage(
       1,
       f,
-      mlmbox_types_account_pb.Account.FullInfo.serializeBinaryToWriter
+      mlmbox_types_account_pb.Account.Info.serializeBinaryToWriter
     );
   }
   f = message.getPartnersList();
@@ -635,24 +649,40 @@ proto.mlmbox.client.network.TeamResponse.serializeBinaryToWriter = function(mess
     writer.writeRepeatedMessage(
       2,
       f,
-      mlmbox_types_account_pb.Account.FullInfo.serializeBinaryToWriter
+      mlmbox_types_account_pb.Account.Info.serializeBinaryToWriter
+    );
+  }
+  f = message.getReferralsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      mlmbox_types_account_pb.Account.Info.serializeBinaryToWriter
+    );
+  }
+  f = message.getAccountMatrixTreeAccountsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      4,
+      f,
+      mlmbox_types_account_pb.Matrix.TreeAccount.Set.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional mlmbox.types.Account.FullInfo account = 1;
- * @return {?proto.mlmbox.types.Account.FullInfo}
+ * optional mlmbox.types.Account.Info account = 1;
+ * @return {?proto.mlmbox.types.Account.Info}
  */
 proto.mlmbox.client.network.TeamResponse.prototype.getAccount = function() {
-  return /** @type{?proto.mlmbox.types.Account.FullInfo} */ (
-    jspb.Message.getWrapperField(this, mlmbox_types_account_pb.Account.FullInfo, 1));
+  return /** @type{?proto.mlmbox.types.Account.Info} */ (
+    jspb.Message.getWrapperField(this, mlmbox_types_account_pb.Account.Info, 1));
 };
 
 
 /**
- * @param {?proto.mlmbox.types.Account.FullInfo|undefined} value
+ * @param {?proto.mlmbox.types.Account.Info|undefined} value
  * @return {!proto.mlmbox.client.network.TeamResponse} returns this
 */
 proto.mlmbox.client.network.TeamResponse.prototype.setAccount = function(value) {
@@ -679,17 +709,17 @@ proto.mlmbox.client.network.TeamResponse.prototype.hasAccount = function() {
 
 
 /**
- * repeated mlmbox.types.Account.FullInfo partners = 2;
- * @return {!Array<!proto.mlmbox.types.Account.FullInfo>}
+ * repeated mlmbox.types.Account.Info partners = 2;
+ * @return {!Array<!proto.mlmbox.types.Account.Info>}
  */
 proto.mlmbox.client.network.TeamResponse.prototype.getPartnersList = function() {
-  return /** @type{!Array<!proto.mlmbox.types.Account.FullInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, mlmbox_types_account_pb.Account.FullInfo, 2));
+  return /** @type{!Array<!proto.mlmbox.types.Account.Info>} */ (
+    jspb.Message.getRepeatedWrapperField(this, mlmbox_types_account_pb.Account.Info, 2));
 };
 
 
 /**
- * @param {!Array<!proto.mlmbox.types.Account.FullInfo>} value
+ * @param {!Array<!proto.mlmbox.types.Account.Info>} value
  * @return {!proto.mlmbox.client.network.TeamResponse} returns this
 */
 proto.mlmbox.client.network.TeamResponse.prototype.setPartnersList = function(value) {
@@ -698,12 +728,12 @@ proto.mlmbox.client.network.TeamResponse.prototype.setPartnersList = function(va
 
 
 /**
- * @param {!proto.mlmbox.types.Account.FullInfo=} opt_value
+ * @param {!proto.mlmbox.types.Account.Info=} opt_value
  * @param {number=} opt_index
- * @return {!proto.mlmbox.types.Account.FullInfo}
+ * @return {!proto.mlmbox.types.Account.Info}
  */
 proto.mlmbox.client.network.TeamResponse.prototype.addPartners = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.mlmbox.types.Account.FullInfo, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.mlmbox.types.Account.Info, opt_index);
 };
 
 
@@ -713,6 +743,82 @@ proto.mlmbox.client.network.TeamResponse.prototype.addPartners = function(opt_va
  */
 proto.mlmbox.client.network.TeamResponse.prototype.clearPartnersList = function() {
   return this.setPartnersList([]);
+};
+
+
+/**
+ * repeated mlmbox.types.Account.Info referrals = 3;
+ * @return {!Array<!proto.mlmbox.types.Account.Info>}
+ */
+proto.mlmbox.client.network.TeamResponse.prototype.getReferralsList = function() {
+  return /** @type{!Array<!proto.mlmbox.types.Account.Info>} */ (
+    jspb.Message.getRepeatedWrapperField(this, mlmbox_types_account_pb.Account.Info, 3));
+};
+
+
+/**
+ * @param {!Array<!proto.mlmbox.types.Account.Info>} value
+ * @return {!proto.mlmbox.client.network.TeamResponse} returns this
+*/
+proto.mlmbox.client.network.TeamResponse.prototype.setReferralsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 3, value);
+};
+
+
+/**
+ * @param {!proto.mlmbox.types.Account.Info=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.mlmbox.types.Account.Info}
+ */
+proto.mlmbox.client.network.TeamResponse.prototype.addReferrals = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.mlmbox.types.Account.Info, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.mlmbox.client.network.TeamResponse} returns this
+ */
+proto.mlmbox.client.network.TeamResponse.prototype.clearReferralsList = function() {
+  return this.setReferralsList([]);
+};
+
+
+/**
+ * repeated mlmbox.types.Matrix.TreeAccount.Set account_matrix_tree_accounts = 4;
+ * @return {!Array<!proto.mlmbox.types.Matrix.TreeAccount.Set>}
+ */
+proto.mlmbox.client.network.TeamResponse.prototype.getAccountMatrixTreeAccountsList = function() {
+  return /** @type{!Array<!proto.mlmbox.types.Matrix.TreeAccount.Set>} */ (
+    jspb.Message.getRepeatedWrapperField(this, mlmbox_types_account_pb.Matrix.TreeAccount.Set, 4));
+};
+
+
+/**
+ * @param {!Array<!proto.mlmbox.types.Matrix.TreeAccount.Set>} value
+ * @return {!proto.mlmbox.client.network.TeamResponse} returns this
+*/
+proto.mlmbox.client.network.TeamResponse.prototype.setAccountMatrixTreeAccountsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 4, value);
+};
+
+
+/**
+ * @param {!proto.mlmbox.types.Matrix.TreeAccount.Set=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.mlmbox.types.Matrix.TreeAccount.Set}
+ */
+proto.mlmbox.client.network.TeamResponse.prototype.addAccountMatrixTreeAccounts = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.mlmbox.types.Matrix.TreeAccount.Set, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.mlmbox.client.network.TeamResponse} returns this
+ */
+proto.mlmbox.client.network.TeamResponse.prototype.clearAccountMatrixTreeAccountsList = function() {
+  return this.setAccountMatrixTreeAccountsList([]);
 };
 
 

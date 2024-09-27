@@ -44,28 +44,28 @@ export class NetworkClient {
     '/mlmbox.client.network.Network/MemberGet',
     grpcWeb.MethodType.UNARY,
     mlmbox_types_account_pb.Account.Id,
-    mlmbox_types_account_pb.Account.ShortInfo,
+    mlmbox_types_account_pb.Account.Info,
     (request: mlmbox_types_account_pb.Account.Id) => {
       return request.serializeBinary();
     },
-    mlmbox_types_account_pb.Account.ShortInfo.deserializeBinary
+    mlmbox_types_account_pb.Account.Info.deserializeBinary
   );
 
   memberGet(
     request: mlmbox_types_account_pb.Account.Id,
-    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.ShortInfo>;
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.Info>;
 
   memberGet(
     request: mlmbox_types_account_pb.Account.Id,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.ShortInfo) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.ShortInfo>;
+               response: mlmbox_types_account_pb.Account.Info) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.Info>;
 
   memberGet(
     request: mlmbox_types_account_pb.Account.Id,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.ShortInfo) => void) {
+               response: mlmbox_types_account_pb.Account.Info) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
@@ -87,28 +87,28 @@ export class NetworkClient {
     '/mlmbox.client.network.Network/MemberSearch',
     grpcWeb.MethodType.UNARY,
     mlmbox_client_network_network_pb.AccountsSearchRequest,
-    mlmbox_types_account_pb.Account.ShortInfo.List,
+    mlmbox_types_account_pb.Account.Info.List,
     (request: mlmbox_client_network_network_pb.AccountsSearchRequest) => {
       return request.serializeBinary();
     },
-    mlmbox_types_account_pb.Account.ShortInfo.List.deserializeBinary
+    mlmbox_types_account_pb.Account.Info.List.deserializeBinary
   );
 
   memberSearch(
     request: mlmbox_client_network_network_pb.AccountsSearchRequest,
-    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.ShortInfo.List>;
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.Info.List>;
 
   memberSearch(
     request: mlmbox_client_network_network_pb.AccountsSearchRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.ShortInfo.List) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.ShortInfo.List>;
+               response: mlmbox_types_account_pb.Account.Info.List) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.Info.List>;
 
   memberSearch(
     request: mlmbox_client_network_network_pb.AccountsSearchRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.ShortInfo.List) => void) {
+               response: mlmbox_types_account_pb.Account.Info.List) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
@@ -173,28 +173,28 @@ export class NetworkClient {
     '/mlmbox.client.network.Network/TeamSearch',
     grpcWeb.MethodType.UNARY,
     mlmbox_client_network_network_pb.AccountsSearchRequest,
-    mlmbox_types_account_pb.Account.ShortInfo.List,
+    mlmbox_types_account_pb.Account.Info.List,
     (request: mlmbox_client_network_network_pb.AccountsSearchRequest) => {
       return request.serializeBinary();
     },
-    mlmbox_types_account_pb.Account.ShortInfo.List.deserializeBinary
+    mlmbox_types_account_pb.Account.Info.List.deserializeBinary
   );
 
   teamSearch(
     request: mlmbox_client_network_network_pb.AccountsSearchRequest,
-    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.ShortInfo.List>;
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.Info.List>;
 
   teamSearch(
     request: mlmbox_client_network_network_pb.AccountsSearchRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.ShortInfo.List) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.ShortInfo.List>;
+               response: mlmbox_types_account_pb.Account.Info.List) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.Info.List>;
 
   teamSearch(
     request: mlmbox_client_network_network_pb.AccountsSearchRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.ShortInfo.List) => void) {
+               response: mlmbox_types_account_pb.Account.Info.List) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
@@ -216,28 +216,28 @@ export class NetworkClient {
     '/mlmbox.client.network.Network/TeamPartnerList',
     grpcWeb.MethodType.UNARY,
     mlmbox_client_network_network_pb.TeamPartnerListRequest,
-    mlmbox_types_account_pb.Account.FullInfo.List,
+    mlmbox_types_account_pb.Account.Info.List,
     (request: mlmbox_client_network_network_pb.TeamPartnerListRequest) => {
       return request.serializeBinary();
     },
-    mlmbox_types_account_pb.Account.FullInfo.List.deserializeBinary
+    mlmbox_types_account_pb.Account.Info.List.deserializeBinary
   );
 
   teamPartnerList(
     request: mlmbox_client_network_network_pb.TeamPartnerListRequest,
-    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.FullInfo.List>;
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.Info.List>;
 
   teamPartnerList(
     request: mlmbox_client_network_network_pb.TeamPartnerListRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.FullInfo.List) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.FullInfo.List>;
+               response: mlmbox_types_account_pb.Account.Info.List) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.Info.List>;
 
   teamPartnerList(
     request: mlmbox_client_network_network_pb.TeamPartnerListRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.FullInfo.List) => void) {
+               response: mlmbox_types_account_pb.Account.Info.List) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +

@@ -218,28 +218,28 @@ export class AccountClient {
     '/mlmbox.client.account.Account/SetReferral',
     grpcWeb.MethodType.UNARY,
     mlmbox_types_account_pb.Account.Id,
-    mlmbox_types_account_pb.Account.FullInfo,
+    mlmbox_types_account_pb.Account.Info,
     (request: mlmbox_types_account_pb.Account.Id) => {
       return request.serializeBinary();
     },
-    mlmbox_types_account_pb.Account.FullInfo.deserializeBinary
+    mlmbox_types_account_pb.Account.Info.deserializeBinary
   );
 
   setReferral(
     request: mlmbox_types_account_pb.Account.Id,
-    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.FullInfo>;
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.Info>;
 
   setReferral(
     request: mlmbox_types_account_pb.Account.Id,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.FullInfo) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.FullInfo>;
+               response: mlmbox_types_account_pb.Account.Info) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.Info>;
 
   setReferral(
     request: mlmbox_types_account_pb.Account.Id,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.FullInfo) => void) {
+               response: mlmbox_types_account_pb.Account.Info) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +

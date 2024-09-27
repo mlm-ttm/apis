@@ -6,11 +6,11 @@ import "mlmbox/types/account.proto";
 import "mlmbox/types/sort.proto";
 
 service Network {
-  rpc MemberGet (mlmbox.types.Account.Id) returns (mlmbox.types.Account.ShortInfo) {} // Display the data of the selected user in the system (global access)
-  rpc MemberSearch (AccountsSearchRequest) returns (mlmbox.types.Account.ShortInfo.List) {} // Search for users in the system with a matching login prefix (global access)
+  rpc MemberGet (mlmbox.types.Account.Id) returns (mlmbox.types.Account.Info) {} // Display the data of the selected user in the system (global access)
+  rpc MemberSearch (AccountsSearchRequest) returns (mlmbox.types.Account.Info.List) {} // Search for users in the system with a matching login prefix (global access)
   rpc TeamInfo (TeamRequest) returns (TeamResponse) {} // Display the data of the selected user (+personally invited partners) in the system (access via personal referral structure)
-  rpc TeamSearch (AccountsSearchRequest) returns (mlmbox.types.Account.ShortInfo.List) {} // Search for users in the system with a matching login prefix (access via personal referral structure)
-  rpc TeamPartnerList (TeamPartnerListRequest) returns (mlmbox.types.Account.FullInfo.List) {} // Display a list of personally invited partners of the selected user (access via personal referral structure)
+  rpc TeamSearch (AccountsSearchRequest) returns (mlmbox.types.Account.Info.List) {} // Search for users in the system with a matching login prefix (access via personal referral structure)
+  rpc TeamPartnerList (TeamPartnerListRequest) returns (mlmbox.types.Account.Info.List) {} // Display a list of personally invited partners of the selected user (access via personal referral structure)
 }
 
 message AccountsSearchRequest {
@@ -23,8 +23,10 @@ message TeamRequest {
   int32 filter_matrix_tree_ids_bit_mask = 3;
 }
 message TeamResponse {
-  mlmbox.types.Account.FullInfo account = 1;
-  repeated mlmbox.types.Account.FullInfo partners = 2;
+  mlmbox.types.Account.Info account = 1;
+  repeated mlmbox.types.Account.Info partners = 2;
+  repeated mlmbox.types.Account.Info referrals = 3;
+  repeated mlmbox.types.Matrix.TreeAccount.Set account_matrix_tree_accounts = 4;
 }
 message TeamPartnerListRequest {
   TeamRequest request = 1;

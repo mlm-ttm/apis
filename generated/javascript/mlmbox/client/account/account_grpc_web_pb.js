@@ -330,13 +330,13 @@ proto.mlmbox.client.account.AccountPromiseClient.prototype.setProfile =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.mlmbox.types.Account.Id,
- *   !proto.mlmbox.types.Account.FullInfo>}
+ *   !proto.mlmbox.types.Account.Info>}
  */
 const methodDescriptor_Account_SetReferral = new grpc.web.MethodDescriptor(
   '/mlmbox.client.account.Account/SetReferral',
   grpc.web.MethodType.UNARY,
   mlmbox_types_account_pb.Account.Id,
-  mlmbox_types_account_pb.Account.FullInfo,
+  mlmbox_types_account_pb.Account.Info,
   /**
    * @param {!proto.mlmbox.types.Account.Id} request
    * @return {!Uint8Array}
@@ -344,7 +344,7 @@ const methodDescriptor_Account_SetReferral = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  mlmbox_types_account_pb.Account.FullInfo.deserializeBinary
+  mlmbox_types_account_pb.Account.Info.deserializeBinary
 );
 
 
@@ -353,9 +353,9 @@ const methodDescriptor_Account_SetReferral = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.FullInfo)}
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.Info)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.FullInfo>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.Info>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.mlmbox.client.account.AccountClient.prototype.setReferral =
@@ -374,7 +374,7 @@ proto.mlmbox.client.account.AccountClient.prototype.setReferral =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.mlmbox.types.Account.FullInfo>}
+ * @return {!Promise<!proto.mlmbox.types.Account.Info>}
  *     Promise that resolves to the response
  */
 proto.mlmbox.client.account.AccountPromiseClient.prototype.setReferral =

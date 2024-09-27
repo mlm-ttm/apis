@@ -84,13 +84,13 @@ proto.mlmbox.client.network.NetworkPromiseClient =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.mlmbox.types.Account.Id,
- *   !proto.mlmbox.types.Account.ShortInfo>}
+ *   !proto.mlmbox.types.Account.Info>}
  */
 const methodDescriptor_Network_MemberGet = new grpc.web.MethodDescriptor(
   '/mlmbox.client.network.Network/MemberGet',
   grpc.web.MethodType.UNARY,
   mlmbox_types_account_pb.Account.Id,
-  mlmbox_types_account_pb.Account.ShortInfo,
+  mlmbox_types_account_pb.Account.Info,
   /**
    * @param {!proto.mlmbox.types.Account.Id} request
    * @return {!Uint8Array}
@@ -98,7 +98,7 @@ const methodDescriptor_Network_MemberGet = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  mlmbox_types_account_pb.Account.ShortInfo.deserializeBinary
+  mlmbox_types_account_pb.Account.Info.deserializeBinary
 );
 
 
@@ -107,9 +107,9 @@ const methodDescriptor_Network_MemberGet = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.ShortInfo)}
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.Info)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.ShortInfo>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.Info>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.mlmbox.client.network.NetworkClient.prototype.memberGet =
@@ -128,7 +128,7 @@ proto.mlmbox.client.network.NetworkClient.prototype.memberGet =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.mlmbox.types.Account.ShortInfo>}
+ * @return {!Promise<!proto.mlmbox.types.Account.Info>}
  *     Promise that resolves to the response
  */
 proto.mlmbox.client.network.NetworkPromiseClient.prototype.memberGet =
@@ -145,13 +145,13 @@ proto.mlmbox.client.network.NetworkPromiseClient.prototype.memberGet =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.mlmbox.client.network.AccountsSearchRequest,
- *   !proto.mlmbox.types.Account.ShortInfo.List>}
+ *   !proto.mlmbox.types.Account.Info.List>}
  */
 const methodDescriptor_Network_MemberSearch = new grpc.web.MethodDescriptor(
   '/mlmbox.client.network.Network/MemberSearch',
   grpc.web.MethodType.UNARY,
   proto.mlmbox.client.network.AccountsSearchRequest,
-  mlmbox_types_account_pb.Account.ShortInfo.List,
+  mlmbox_types_account_pb.Account.Info.List,
   /**
    * @param {!proto.mlmbox.client.network.AccountsSearchRequest} request
    * @return {!Uint8Array}
@@ -159,7 +159,7 @@ const methodDescriptor_Network_MemberSearch = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  mlmbox_types_account_pb.Account.ShortInfo.List.deserializeBinary
+  mlmbox_types_account_pb.Account.Info.List.deserializeBinary
 );
 
 
@@ -168,9 +168,9 @@ const methodDescriptor_Network_MemberSearch = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.ShortInfo.List)}
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.Info.List)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.ShortInfo.List>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.Info.List>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.mlmbox.client.network.NetworkClient.prototype.memberSearch =
@@ -189,7 +189,7 @@ proto.mlmbox.client.network.NetworkClient.prototype.memberSearch =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.mlmbox.types.Account.ShortInfo.List>}
+ * @return {!Promise<!proto.mlmbox.types.Account.Info.List>}
  *     Promise that resolves to the response
  */
 proto.mlmbox.client.network.NetworkPromiseClient.prototype.memberSearch =
@@ -267,13 +267,13 @@ proto.mlmbox.client.network.NetworkPromiseClient.prototype.teamInfo =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.mlmbox.client.network.AccountsSearchRequest,
- *   !proto.mlmbox.types.Account.ShortInfo.List>}
+ *   !proto.mlmbox.types.Account.Info.List>}
  */
 const methodDescriptor_Network_TeamSearch = new grpc.web.MethodDescriptor(
   '/mlmbox.client.network.Network/TeamSearch',
   grpc.web.MethodType.UNARY,
   proto.mlmbox.client.network.AccountsSearchRequest,
-  mlmbox_types_account_pb.Account.ShortInfo.List,
+  mlmbox_types_account_pb.Account.Info.List,
   /**
    * @param {!proto.mlmbox.client.network.AccountsSearchRequest} request
    * @return {!Uint8Array}
@@ -281,7 +281,7 @@ const methodDescriptor_Network_TeamSearch = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  mlmbox_types_account_pb.Account.ShortInfo.List.deserializeBinary
+  mlmbox_types_account_pb.Account.Info.List.deserializeBinary
 );
 
 
@@ -290,9 +290,9 @@ const methodDescriptor_Network_TeamSearch = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.ShortInfo.List)}
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.Info.List)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.ShortInfo.List>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.Info.List>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.mlmbox.client.network.NetworkClient.prototype.teamSearch =
@@ -311,7 +311,7 @@ proto.mlmbox.client.network.NetworkClient.prototype.teamSearch =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.mlmbox.types.Account.ShortInfo.List>}
+ * @return {!Promise<!proto.mlmbox.types.Account.Info.List>}
  *     Promise that resolves to the response
  */
 proto.mlmbox.client.network.NetworkPromiseClient.prototype.teamSearch =
@@ -328,13 +328,13 @@ proto.mlmbox.client.network.NetworkPromiseClient.prototype.teamSearch =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.mlmbox.client.network.TeamPartnerListRequest,
- *   !proto.mlmbox.types.Account.FullInfo.List>}
+ *   !proto.mlmbox.types.Account.Info.List>}
  */
 const methodDescriptor_Network_TeamPartnerList = new grpc.web.MethodDescriptor(
   '/mlmbox.client.network.Network/TeamPartnerList',
   grpc.web.MethodType.UNARY,
   proto.mlmbox.client.network.TeamPartnerListRequest,
-  mlmbox_types_account_pb.Account.FullInfo.List,
+  mlmbox_types_account_pb.Account.Info.List,
   /**
    * @param {!proto.mlmbox.client.network.TeamPartnerListRequest} request
    * @return {!Uint8Array}
@@ -342,7 +342,7 @@ const methodDescriptor_Network_TeamPartnerList = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  mlmbox_types_account_pb.Account.FullInfo.List.deserializeBinary
+  mlmbox_types_account_pb.Account.Info.List.deserializeBinary
 );
 
 
@@ -351,9 +351,9 @@ const methodDescriptor_Network_TeamPartnerList = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.FullInfo.List)}
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.Info.List)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.FullInfo.List>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.Info.List>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.mlmbox.client.network.NetworkClient.prototype.teamPartnerList =
@@ -372,7 +372,7 @@ proto.mlmbox.client.network.NetworkClient.prototype.teamPartnerList =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.mlmbox.types.Account.FullInfo.List>}
+ * @return {!Promise<!proto.mlmbox.types.Account.Info.List>}
  *     Promise that resolves to the response
  */
 proto.mlmbox.client.network.NetworkPromiseClient.prototype.teamPartnerList =

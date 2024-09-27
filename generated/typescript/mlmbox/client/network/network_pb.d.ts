@@ -57,15 +57,25 @@ export namespace TeamRequest {
 }
 
 export class TeamResponse extends jspb.Message {
-  getAccount(): mlmbox_types_account_pb.Account.FullInfo | undefined;
-  setAccount(value?: mlmbox_types_account_pb.Account.FullInfo): TeamResponse;
+  getAccount(): mlmbox_types_account_pb.Account.Info | undefined;
+  setAccount(value?: mlmbox_types_account_pb.Account.Info): TeamResponse;
   hasAccount(): boolean;
   clearAccount(): TeamResponse;
 
-  getPartnersList(): Array<mlmbox_types_account_pb.Account.FullInfo>;
-  setPartnersList(value: Array<mlmbox_types_account_pb.Account.FullInfo>): TeamResponse;
+  getPartnersList(): Array<mlmbox_types_account_pb.Account.Info>;
+  setPartnersList(value: Array<mlmbox_types_account_pb.Account.Info>): TeamResponse;
   clearPartnersList(): TeamResponse;
-  addPartners(value?: mlmbox_types_account_pb.Account.FullInfo, index?: number): mlmbox_types_account_pb.Account.FullInfo;
+  addPartners(value?: mlmbox_types_account_pb.Account.Info, index?: number): mlmbox_types_account_pb.Account.Info;
+
+  getReferralsList(): Array<mlmbox_types_account_pb.Account.Info>;
+  setReferralsList(value: Array<mlmbox_types_account_pb.Account.Info>): TeamResponse;
+  clearReferralsList(): TeamResponse;
+  addReferrals(value?: mlmbox_types_account_pb.Account.Info, index?: number): mlmbox_types_account_pb.Account.Info;
+
+  getAccountMatrixTreeAccountsList(): Array<mlmbox_types_account_pb.Matrix.TreeAccount.Set>;
+  setAccountMatrixTreeAccountsList(value: Array<mlmbox_types_account_pb.Matrix.TreeAccount.Set>): TeamResponse;
+  clearAccountMatrixTreeAccountsList(): TeamResponse;
+  addAccountMatrixTreeAccounts(value?: mlmbox_types_account_pb.Matrix.TreeAccount.Set, index?: number): mlmbox_types_account_pb.Matrix.TreeAccount.Set;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TeamResponse.AsObject;
@@ -77,8 +87,10 @@ export class TeamResponse extends jspb.Message {
 
 export namespace TeamResponse {
   export type AsObject = {
-    account?: mlmbox_types_account_pb.Account.FullInfo.AsObject,
-    partnersList: Array<mlmbox_types_account_pb.Account.FullInfo.AsObject>,
+    account?: mlmbox_types_account_pb.Account.Info.AsObject,
+    partnersList: Array<mlmbox_types_account_pb.Account.Info.AsObject>,
+    referralsList: Array<mlmbox_types_account_pb.Account.Info.AsObject>,
+    accountMatrixTreeAccountsList: Array<mlmbox_types_account_pb.Matrix.TreeAccount.Set.AsObject>,
   }
 }
 

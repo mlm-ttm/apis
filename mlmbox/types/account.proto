@@ -27,9 +27,13 @@ message Account {
       uint32 collection_id = 1;
       uint32 entity_id = 2;
     }
+    message Telegram {
+      uint64 id = 1;
+      string username = 2;
+    }
     string first_name = 1;
     string last_name = 2;
-    uint64 tg_id = 3;
+    Telegram telegram = 3;
     Ava ava = 4;
   }
   message Statistics {
@@ -38,19 +42,9 @@ message Account {
     uint32 matrix_partners_quantity = 3;
     uint32 matrix_team_quantity = 4;
   }
-  message ShortInfo {
+  message Info {
     message List {
-      repeated mlmbox.types.Account.ShortInfo items = 1;
-    }
-    Profile profile = 1;
-    Username account = 2;
-    Username referral = 3;
-    mlmbox.types.Relationship relationship = 4;
-    uint32 registration_at = 5;
-  }
-  message FullInfo {
-    message List {
-      repeated mlmbox.types.Account.FullInfo items = 1;
+      repeated mlmbox.types.Account.Info items = 1;
     }
     Profile profile = 1;
     Username account = 2;
@@ -62,9 +56,9 @@ message Account {
     uint32 referral_branch = 8;
     Statistics statistics = 9;
   }
-  FullInfo info = 1;
+  Info info = 1;
   mlmbox.types.GoogleAuthenticator google_authenticator = 2;
-  mlmbox.types.Matrix matrix_config = 3;
+  repeated mlmbox.types.Matrix.TreeAccount matrix_tree_accounts = 3;
   string locale = 5; // language identifier (en-US, ...)
   bool is_admin = 6;
 }
@@ -90,9 +84,9 @@ message Matrix {
     uint32 position_ref_id = 2; // Superior position identifier
     uint32 position_ref_line = 3; // Upstream branch identifier
     uint32 position_width = 4; // Number of available branches
-    uint32 tree_account_id = 5; // Sequence number in the (tree + account) combination
-    bool reinvest_enabled = 6;
-    mlmbox.types.Account.ShortInfo account = 7;
+    uint32 account_id = 5; // Account identifier
+    uint32 tree_account_id = 6; // Sequence number in the (tree + account) combination
+    bool reinvest_enabled = 7;
   }
   message TreeAccount {
     message Entity {
@@ -100,6 +94,11 @@ message Matrix {
       uint32 position_id = 2; // Position identifier
       bool filled = 3; // Is the position filled?
       bool view_access = 4; // Access to the view
+    }
+    message Set {
+      uint32 tree_id = 1;
+      Entity entity = 2;
+      int32 filled_2w2l_bit_mask = 3;
     }
     uint32 tree_id = 1;
     repeated Entity entities = 4;
@@ -120,9 +119,10 @@ message Matrix {
     uint32 self_position_id = 2;
     uint32 view_position_id = 3;
     repeated Position positions = 4;
-    repeated TreeAccount.Entity view_tree_account_entities = 5;
-    int32 self_matrix_tree_ids_bit_mask = 6;
-    int32 view_matrix_tree_ids_bit_mask = 7;
+    repeated mlmbox.types.Account.Info accounts = 5;
+    repeated TreeAccount.Entity view_tree_account_entities = 6;
+    int32 self_matrix_tree_ids_bit_mask = 7;
+    int32 view_matrix_tree_ids_bit_mask = 8;
   }
   message Invoice {
     message Request {
