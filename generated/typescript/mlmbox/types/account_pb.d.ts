@@ -505,6 +505,27 @@ export namespace Matrix {
       entitiesList: Array<Matrix.TreeAccount.Entity.AsObject>,
     }
 
+    export class List extends jspb.Message {
+      getItemsList(): Array<Matrix.TreeAccount>;
+      setItemsList(value: Array<Matrix.TreeAccount>): List;
+      clearItemsList(): List;
+      addItems(value?: Matrix.TreeAccount, index?: number): Matrix.TreeAccount;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): List.AsObject;
+      static toObject(includeInstance: boolean, msg: List): List.AsObject;
+      static serializeBinaryToWriter(message: List, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): List;
+      static deserializeBinaryFromReader(message: List, reader: jspb.BinaryReader): List;
+    }
+
+    export namespace List {
+      export type AsObject = {
+        itemsList: Array<Matrix.TreeAccount.AsObject>,
+      }
+    }
+
+
     export class Entity extends jspb.Message {
       getTreeAccountId(): number;
       setTreeAccountId(value: number): Entity;

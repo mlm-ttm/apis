@@ -40,47 +40,47 @@ export class MatrixClient {
     this.options_ = options;
   }
 
-  methodDescriptorConfig = new grpcWeb.MethodDescriptor(
-    '/mlmbox.client.matrix.Matrix/Config',
+  methodDescriptorInfo = new grpcWeb.MethodDescriptor(
+    '/mlmbox.client.matrix.Matrix/Info',
     grpcWeb.MethodType.UNARY,
     google_protobuf_empty_pb.Empty,
-    mlmbox_types_account_pb.Matrix,
+    mlmbox_types_account_pb.Matrix.TreeAccount.List,
     (request: google_protobuf_empty_pb.Empty) => {
       return request.serializeBinary();
     },
-    mlmbox_types_account_pb.Matrix.deserializeBinary
+    mlmbox_types_account_pb.Matrix.TreeAccount.List.deserializeBinary
   );
 
-  config(
+  info(
     request: google_protobuf_empty_pb.Empty,
-    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Matrix>;
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Matrix.TreeAccount.List>;
 
-  config(
+  info(
     request: google_protobuf_empty_pb.Empty,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Matrix) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Matrix>;
+               response: mlmbox_types_account_pb.Matrix.TreeAccount.List) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Matrix.TreeAccount.List>;
 
-  config(
+  info(
     request: google_protobuf_empty_pb.Empty,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Matrix) => void) {
+               response: mlmbox_types_account_pb.Matrix.TreeAccount.List) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/mlmbox.client.matrix.Matrix/Config',
+          '/mlmbox.client.matrix.Matrix/Info',
         request,
         metadata || {},
-        this.methodDescriptorConfig,
+        this.methodDescriptorInfo,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/Config',
+      '/mlmbox.client.matrix.Matrix/Info',
     request,
     metadata || {},
-    this.methodDescriptorConfig);
+    this.methodDescriptorInfo);
   }
 
   methodDescriptorView = new grpcWeb.MethodDescriptor(

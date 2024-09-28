@@ -84,13 +84,13 @@ proto.mlmbox.client.matrix.MatrixPromiseClient =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.google.protobuf.Empty,
- *   !proto.mlmbox.types.Matrix>}
+ *   !proto.mlmbox.types.Matrix.TreeAccount.List>}
  */
-const methodDescriptor_Matrix_Config = new grpc.web.MethodDescriptor(
-  '/mlmbox.client.matrix.Matrix/Config',
+const methodDescriptor_Matrix_Info = new grpc.web.MethodDescriptor(
+  '/mlmbox.client.matrix.Matrix/Info',
   grpc.web.MethodType.UNARY,
   google_protobuf_empty_pb.Empty,
-  mlmbox_types_account_pb.Matrix,
+  mlmbox_types_account_pb.Matrix.TreeAccount.List,
   /**
    * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
@@ -98,7 +98,7 @@ const methodDescriptor_Matrix_Config = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  mlmbox_types_account_pb.Matrix.deserializeBinary
+  mlmbox_types_account_pb.Matrix.TreeAccount.List.deserializeBinary
 );
 
 
@@ -107,18 +107,18 @@ const methodDescriptor_Matrix_Config = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Matrix)}
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Matrix.TreeAccount.List)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Matrix>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Matrix.TreeAccount.List>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.mlmbox.client.matrix.MatrixClient.prototype.config =
+proto.mlmbox.client.matrix.MatrixClient.prototype.info =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/Config',
+      '/mlmbox.client.matrix.Matrix/Info',
       request,
       metadata || {},
-      methodDescriptor_Matrix_Config,
+      methodDescriptor_Matrix_Info,
       callback);
 };
 
@@ -128,16 +128,16 @@ proto.mlmbox.client.matrix.MatrixClient.prototype.config =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.mlmbox.types.Matrix>}
+ * @return {!Promise<!proto.mlmbox.types.Matrix.TreeAccount.List>}
  *     Promise that resolves to the response
  */
-proto.mlmbox.client.matrix.MatrixPromiseClient.prototype.config =
+proto.mlmbox.client.matrix.MatrixPromiseClient.prototype.info =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/Config',
+      '/mlmbox.client.matrix.Matrix/Info',
       request,
       metadata || {},
-      methodDescriptor_Matrix_Config);
+      methodDescriptor_Matrix_Info);
 };
 
 
