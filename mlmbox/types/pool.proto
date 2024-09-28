@@ -5,19 +5,19 @@ package mlmbox.types;
 message Pool {
   message Hunter {
     message Info {
-      uint32 asset_id = 1;
-      string accumulated_value = 2;
-      uint32 next_distribution_at = 3;
+      uint32 asset_id = 1; // идентификатор валюты
+      string accumulated_value = 2; // накопленное значение суммы пула
+      uint32 next_distribution_at = 3; // дата и время следующего распределения пула
     }
     message History {
       message List {
         repeated History items = 1;
       }
-      uint32 distribution_id = 1;
-      string distribution_value = 2;
-      uint32 quantity_cards = 3;
-      uint32 quantity_accounts = 4;
-      uint32 created_at = 5;
+      uint32 distribution_id = 1; // уникальный идентификатор распределения пула
+      string distribution_value = 2; // сумма распределения пула
+      uint32 quantity_cards = 3; // количество карт участвовавшие в распределении
+      uint32 quantity_accounts = 4; // количество аккаунтов участвовавшие в распределении
+      uint32 created_at = 5; // дата и время создания распределения
     }
     message Card {
       message Id {
@@ -27,21 +27,21 @@ message Pool {
         message List {
           repeated Info items = 1;
         }
-        uint32 card_id = 1;
-        uint32 created_at = 2;
-        uint32 energy_init = 3;
-        uint32 energy_total = 4;
-        uint32 energy_value = 5;
-        string earned_total_value = 6;
+        uint32 card_id = 1; // идентификатор карты пула пользователя
+        uint32 created_at = 2; // дата и время создания карты
+        uint32 energy_init = 3; // начальное значение энергии карты
+        uint32 energy_total = 4; // общее значение энергии карты
+        uint32 energy_value = 5; // текущее значение энергии карты
+        string earned_total_value = 6; // общее значение заработанной суммы карты
       }
       message Transaction {
         message List {
           repeated Transaction transactions = 1;
         }
-        uint32 distribution_id = 1;
-        string distribution_value = 2;
-        string earned_value = 3;
-        uint32 created_at = 4;
+        uint32 distribution_id = 1; // уникальный идентификатор распределения пула
+        string distribution_value = 2; // сумма распределения пула
+        string earned_value = 3; // заработанная сумма пользователем
+        uint32 created_at = 4; // дата и время создания транзакции
       }
       Info info = 1;
       repeated Transaction transactions = 2;
