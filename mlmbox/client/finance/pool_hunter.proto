@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package mlmbox.client.finance;
+
+import "google/protobuf/empty.proto";
+import "mlmbox/types/pool.proto";
+
+service PoolHunter {
+  rpc Info (google.protobuf.Empty) returns (mlmbox.types.Pool.Hunter) {}
+  rpc History (google.protobuf.Empty) returns (mlmbox.types.Pool.Hunter.History.List) {}
+  rpc CardGet (mlmbox.types.Pool.Hunter.Card.Id) returns (mlmbox.types.Pool.Hunter.Card) {}
+  rpc CardsAll (google.protobuf.Empty) returns (mlmbox.types.Pool.Hunter.Card.Info.List) {}
+  rpc CardTransactionsAll (mlmbox.types.Pool.Hunter.Card.Id) returns (mlmbox.types.Pool.Hunter.Card.Transaction.List) {}
+}

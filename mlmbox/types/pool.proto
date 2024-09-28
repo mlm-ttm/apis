@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package mlmbox.types;
+
+message Pool {
+  message Hunter {
+    message Info {
+      uint32 asset_id = 1;
+      string accumulated_value = 2;
+      uint32 next_distribution_at = 3;
+    }
+    message History {
+      message List {
+        repeated History items = 1;
+      }
+      uint32 distribution_id = 1;
+      string distribution_value = 2;
+      uint32 quantity_cards = 3;
+      uint32 quantity_accounts = 4;
+      uint32 created_at = 5;
+    }
+    message Card {
+      message Id {
+        uint32 card_id = 1;
+      }
+      message Info {
+        message List {
+          repeated Info items = 1;
+        }
+        uint32 card_id = 1;
+        uint32 created_at = 2;
+        uint32 energy_init = 3;
+        uint32 energy_total = 4;
+        uint32 energy_value = 5;
+        string earned_total_value = 6;
+      }
+      message Transaction {
+        message List {
+          repeated Transaction transactions = 1;
+        }
+        uint32 distribution_id = 1;
+        string distribution_value = 2;
+        string earned_value = 3;
+        uint32 created_at = 4;
+      }
+      Info info = 1;
+      repeated Transaction transactions = 2;
+    }
+    Info info = 1;
+    repeated Card cards = 2;
+  }
+}

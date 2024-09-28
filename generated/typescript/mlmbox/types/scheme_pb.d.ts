@@ -1,10 +1,11 @@
 import * as jspb from 'google-protobuf'
 
+import * as mlmbox_types_account_pb from '../../mlmbox/types/account_pb'; // proto import: "mlmbox/types/account.proto"
 import * as mlmbox_types_asset_pb from '../../mlmbox/types/asset_pb'; // proto import: "mlmbox/types/asset.proto"
 import * as mlmbox_types_exchanger_pb from '../../mlmbox/types/exchanger_pb'; // proto import: "mlmbox/types/exchanger.proto"
 import * as mlmbox_types_locale_pb from '../../mlmbox/types/locale_pb'; // proto import: "mlmbox/types/locale.proto"
+import * as mlmbox_types_pool_pb from '../../mlmbox/types/pool_pb'; // proto import: "mlmbox/types/pool.proto"
 import * as mlmbox_types_wallet_pb from '../../mlmbox/types/wallet_pb'; // proto import: "mlmbox/types/wallet.proto"
-import * as mlmbox_types_account_pb from '../../mlmbox/types/account_pb'; // proto import: "mlmbox/types/account.proto"
 
 
 export class Scheme extends jspb.Message {
@@ -43,6 +44,11 @@ export class Scheme extends jspb.Message {
   clearMatrixTreesList(): Scheme;
   addMatrixTrees(value?: mlmbox_types_account_pb.Matrix.Tree, index?: number): mlmbox_types_account_pb.Matrix.Tree;
 
+  getPoolHunter(): mlmbox_types_pool_pb.Pool.Hunter | undefined;
+  setPoolHunter(value?: mlmbox_types_pool_pb.Pool.Hunter): Scheme;
+  hasPoolHunter(): boolean;
+  clearPoolHunter(): Scheme;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Scheme.AsObject;
   static toObject(includeInstance: boolean, msg: Scheme): Scheme.AsObject;
@@ -60,6 +66,7 @@ export namespace Scheme {
     walletProcessingsList: Array<mlmbox_types_wallet_pb.Wallet.Processing.AsObject>,
     matrixGroupsList: Array<mlmbox_types_account_pb.Matrix.Group.AsObject>,
     matrixTreesList: Array<mlmbox_types_account_pb.Matrix.Tree.AsObject>,
+    poolHunter?: mlmbox_types_pool_pb.Pool.Hunter.AsObject,
   }
 }
 
