@@ -21,10 +21,10 @@ export namespace Pool {
     hasInfo(): boolean;
     clearInfo(): Hunter;
 
-    getCardsList(): Array<Pool.Hunter.Card>;
-    setCardsList(value: Array<Pool.Hunter.Card>): Hunter;
+    getCardsList(): Array<Pool.Hunter.Card.Info>;
+    setCardsList(value: Array<Pool.Hunter.Card.Info>): Hunter;
     clearCardsList(): Hunter;
-    addCards(value?: Pool.Hunter.Card, index?: number): Pool.Hunter.Card;
+    addCards(value?: Pool.Hunter.Card.Info, index?: number): Pool.Hunter.Card.Info;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Hunter.AsObject;
@@ -37,7 +37,7 @@ export namespace Pool {
   export namespace Hunter {
     export type AsObject = {
       info?: Pool.Hunter.Info.AsObject,
-      cardsList: Array<Pool.Hunter.Card.AsObject>,
+      cardsList: Array<Pool.Hunter.Card.Info.AsObject>,
     }
 
     export class Info extends jspb.Message {

@@ -47,6 +47,6 @@ message Pool {
       repeated Transaction transactions = 2;
     }
     Info info = 1;
-    repeated Card cards = 2;
+    repeated Card.Info cards = 2;
   }
 }

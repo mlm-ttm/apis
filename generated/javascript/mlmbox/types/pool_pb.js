@@ -405,7 +405,7 @@ proto.mlmbox.types.Pool.Hunter.toObject = function(includeInstance, msg) {
   var f, obj = {
     info: (f = msg.getInfo()) && proto.mlmbox.types.Pool.Hunter.Info.toObject(includeInstance, f),
     cardsList: jspb.Message.toObjectList(msg.getCardsList(),
-    proto.mlmbox.types.Pool.Hunter.Card.toObject, includeInstance)
+    proto.mlmbox.types.Pool.Hunter.Card.Info.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -448,8 +448,8 @@ proto.mlmbox.types.Pool.Hunter.deserializeBinaryFromReader = function(msg, reade
       msg.setInfo(value);
       break;
     case 2:
-      var value = new proto.mlmbox.types.Pool.Hunter.Card;
-      reader.readMessage(value,proto.mlmbox.types.Pool.Hunter.Card.deserializeBinaryFromReader);
+      var value = new proto.mlmbox.types.Pool.Hunter.Card.Info;
+      reader.readMessage(value,proto.mlmbox.types.Pool.Hunter.Card.Info.deserializeBinaryFromReader);
       msg.addCards(value);
       break;
     default:
@@ -494,7 +494,7 @@ proto.mlmbox.types.Pool.Hunter.serializeBinaryToWriter = function(message, write
     writer.writeRepeatedMessage(
       2,
       f,
-      proto.mlmbox.types.Pool.Hunter.Card.serializeBinaryToWriter
+      proto.mlmbox.types.Pool.Hunter.Card.Info.serializeBinaryToWriter
     );
   }
 };
@@ -2299,17 +2299,17 @@ proto.mlmbox.types.Pool.Hunter.prototype.hasInfo = function() {
 
 
 /**
- * repeated Card cards = 2;
- * @return {!Array<!proto.mlmbox.types.Pool.Hunter.Card>}
+ * repeated Card.Info cards = 2;
+ * @return {!Array<!proto.mlmbox.types.Pool.Hunter.Card.Info>}
  */
 proto.mlmbox.types.Pool.Hunter.prototype.getCardsList = function() {
-  return /** @type{!Array<!proto.mlmbox.types.Pool.Hunter.Card>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.mlmbox.types.Pool.Hunter.Card, 2));
+  return /** @type{!Array<!proto.mlmbox.types.Pool.Hunter.Card.Info>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.mlmbox.types.Pool.Hunter.Card.Info, 2));
 };
 
 
 /**
- * @param {!Array<!proto.mlmbox.types.Pool.Hunter.Card>} value
+ * @param {!Array<!proto.mlmbox.types.Pool.Hunter.Card.Info>} value
  * @return {!proto.mlmbox.types.Pool.Hunter} returns this
 */
 proto.mlmbox.types.Pool.Hunter.prototype.setCardsList = function(value) {
@@ -2318,12 +2318,12 @@ proto.mlmbox.types.Pool.Hunter.prototype.setCardsList = function(value) {
 
 
 /**
- * @param {!proto.mlmbox.types.Pool.Hunter.Card=} opt_value
+ * @param {!proto.mlmbox.types.Pool.Hunter.Card.Info=} opt_value
  * @param {number=} opt_index
- * @return {!proto.mlmbox.types.Pool.Hunter.Card}
+ * @return {!proto.mlmbox.types.Pool.Hunter.Card.Info}
  */
 proto.mlmbox.types.Pool.Hunter.prototype.addCards = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.mlmbox.types.Pool.Hunter.Card, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.mlmbox.types.Pool.Hunter.Card.Info, opt_index);
 };
 
 
