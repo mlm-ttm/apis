@@ -82,3 +82,12 @@ message Account {
   ...
 }
 ```
+- Метод **mlmbox.client.matrix.Matrix::Config()** заменен на **mlmbox.client.matrix.Matrix::Info()**.
+- Значение групп, матричных деревьев расположены в **mlmbox.client.app.App::SchemeInfo()**
+```protobuf
+service Matrix {
+  ...
+  rpc Info (google.protobuf.Empty) returns (mlmbox.types.Matrix.TreeAccount.List) {}
+  ...
+}
+```

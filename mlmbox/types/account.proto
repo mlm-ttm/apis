@@ -89,6 +89,9 @@ message Matrix {
     bool reinvest_enabled = 7;
   }
   message TreeAccount {
+    message List {
+      repeated mlmbox.types.Matrix.TreeAccount items = 1;
+    }
     message Entity {
       uint32 tree_account_id = 1; // Sequence number in the (tree + account) combination
       uint32 position_id = 2; // Position identifier
