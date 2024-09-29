@@ -40,7 +40,7 @@ goog.exportSymbol('proto.mlmbox.client.network.TeamResponse', null, global);
  * @constructor
  */
 proto.mlmbox.client.network.AccountsSearchRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.mlmbox.client.network.AccountsSearchRequest.repeatedFields_, null);
 };
 goog.inherits(proto.mlmbox.client.network.AccountsSearchRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -61,7 +61,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.mlmbox.client.network.TeamRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.mlmbox.client.network.TeamRequest.repeatedFields_, null);
 };
 goog.inherits(proto.mlmbox.client.network.TeamRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -114,6 +114,13 @@ if (goog.DEBUG && !COMPILED) {
   proto.mlmbox.client.network.TeamPartnerListRequest.displayName = 'proto.mlmbox.client.network.TeamPartnerListRequest';
 }
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.mlmbox.client.network.AccountsSearchRequest.repeatedFields_ = [3];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -146,7 +153,8 @@ proto.mlmbox.client.network.AccountsSearchRequest.prototype.toObject = function(
 proto.mlmbox.client.network.AccountsSearchRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     loginPrefix: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    limit: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    limit: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    filterChannelsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -191,6 +199,12 @@ proto.mlmbox.client.network.AccountsSearchRequest.deserializeBinaryFromReader = 
       var value = /** @type {number} */ (reader.readUint32());
       msg.setLimit(value);
       break;
+    case 3:
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addFilterChannels(values[i]);
+      }
+      break;
     default:
       reader.skipField();
       break;
@@ -234,6 +248,13 @@ proto.mlmbox.client.network.AccountsSearchRequest.serializeBinaryToWriter = func
       f
     );
   }
+  f = message.getFilterChannelsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -273,6 +294,50 @@ proto.mlmbox.client.network.AccountsSearchRequest.prototype.setLimit = function(
 };
 
 
+/**
+ * repeated uint32 filter_channels = 3;
+ * @return {!Array<number>}
+ */
+proto.mlmbox.client.network.AccountsSearchRequest.prototype.getFilterChannelsList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 3));
+};
+
+
+/**
+ * @param {!Array<number>} value
+ * @return {!proto.mlmbox.client.network.AccountsSearchRequest} returns this
+ */
+proto.mlmbox.client.network.AccountsSearchRequest.prototype.setFilterChannelsList = function(value) {
+  return jspb.Message.setField(this, 3, value || []);
+};
+
+
+/**
+ * @param {number} value
+ * @param {number=} opt_index
+ * @return {!proto.mlmbox.client.network.AccountsSearchRequest} returns this
+ */
+proto.mlmbox.client.network.AccountsSearchRequest.prototype.addFilterChannels = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.mlmbox.client.network.AccountsSearchRequest} returns this
+ */
+proto.mlmbox.client.network.AccountsSearchRequest.prototype.clearFilterChannelsList = function() {
+  return this.setFilterChannelsList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.mlmbox.client.network.TeamRequest.repeatedFields_ = [4];
 
 
 
@@ -307,7 +372,8 @@ proto.mlmbox.client.network.TeamRequest.toObject = function(includeInstance, msg
   var f, obj = {
     viewPartner: (f = msg.getViewPartner()) && mlmbox_types_account_pb.Account.Id.toObject(includeInstance, f),
     partnersSort: (f = msg.getPartnersSort()) && mlmbox_types_sort_pb.Sort.toObject(includeInstance, f),
-    filterMatrixTreeIdsBitMask: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    filterMatrixTreeIdsBitMask: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    filterChannelsList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -358,6 +424,12 @@ proto.mlmbox.client.network.TeamRequest.deserializeBinaryFromReader = function(m
       var value = /** @type {number} */ (reader.readInt32());
       msg.setFilterMatrixTreeIdsBitMask(value);
       break;
+    case 4:
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addFilterChannels(values[i]);
+      }
+      break;
     default:
       reader.skipField();
       break;
@@ -407,6 +479,13 @@ proto.mlmbox.client.network.TeamRequest.serializeBinaryToWriter = function(messa
   if (f !== 0) {
     writer.writeInt32(
       3,
+      f
+    );
+  }
+  f = message.getFilterChannelsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      4,
       f
     );
   }
@@ -502,6 +581,43 @@ proto.mlmbox.client.network.TeamRequest.prototype.getFilterMatrixTreeIdsBitMask 
  */
 proto.mlmbox.client.network.TeamRequest.prototype.setFilterMatrixTreeIdsBitMask = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * repeated uint32 filter_channels = 4;
+ * @return {!Array<number>}
+ */
+proto.mlmbox.client.network.TeamRequest.prototype.getFilterChannelsList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 4));
+};
+
+
+/**
+ * @param {!Array<number>} value
+ * @return {!proto.mlmbox.client.network.TeamRequest} returns this
+ */
+proto.mlmbox.client.network.TeamRequest.prototype.setFilterChannelsList = function(value) {
+  return jspb.Message.setField(this, 4, value || []);
+};
+
+
+/**
+ * @param {number} value
+ * @param {number=} opt_index
+ * @return {!proto.mlmbox.client.network.TeamRequest} returns this
+ */
+proto.mlmbox.client.network.TeamRequest.prototype.addFilterChannels = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 4, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.mlmbox.client.network.TeamRequest} returns this
+ */
+proto.mlmbox.client.network.TeamRequest.prototype.clearFilterChannelsList = function() {
+  return this.setFilterChannelsList([]);
 };
 
 

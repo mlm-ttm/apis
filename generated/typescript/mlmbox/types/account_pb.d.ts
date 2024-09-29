@@ -280,6 +280,11 @@ export namespace Account {
     hasStatistics(): boolean;
     clearStatistics(): Info;
 
+    getChannelsList(): Array<number>;
+    setChannelsList(value: Array<number>): Info;
+    clearChannelsList(): Info;
+    addChannels(value: number, index?: number): Info;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Info.AsObject;
     static toObject(includeInstance: boolean, msg: Info): Info.AsObject;
@@ -299,6 +304,7 @@ export namespace Account {
       matrixTreeIdsBitMask: number,
       referralBranch: number,
       statistics?: Account.Statistics.AsObject,
+      channelsList: Array<number>,
     }
 
     export class List extends jspb.Message {

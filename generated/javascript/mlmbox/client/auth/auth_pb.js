@@ -123,7 +123,7 @@ proto.mlmbox.client.auth.TelegramBotSignRequest.prototype.toObject = function(op
  */
 proto.mlmbox.client.auth.TelegramBotSignRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    authChanelId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    channelId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     initData: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
@@ -163,7 +163,7 @@ proto.mlmbox.client.auth.TelegramBotSignRequest.deserializeBinaryFromReader = fu
     switch (field) {
     case 1:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setAuthChanelId(value);
+      msg.setChannelId(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -198,7 +198,7 @@ proto.mlmbox.client.auth.TelegramBotSignRequest.prototype.serializeBinary = func
  */
 proto.mlmbox.client.auth.TelegramBotSignRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getAuthChanelId();
+  f = message.getChannelId();
   if (f !== 0) {
     writer.writeUint32(
       1,
@@ -216,10 +216,10 @@ proto.mlmbox.client.auth.TelegramBotSignRequest.serializeBinaryToWriter = functi
 
 
 /**
- * optional uint32 auth_chanel_id = 1;
+ * optional uint32 channel_id = 1;
  * @return {number}
  */
-proto.mlmbox.client.auth.TelegramBotSignRequest.prototype.getAuthChanelId = function() {
+proto.mlmbox.client.auth.TelegramBotSignRequest.prototype.getChannelId = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
@@ -228,7 +228,7 @@ proto.mlmbox.client.auth.TelegramBotSignRequest.prototype.getAuthChanelId = func
  * @param {number} value
  * @return {!proto.mlmbox.client.auth.TelegramBotSignRequest} returns this
  */
-proto.mlmbox.client.auth.TelegramBotSignRequest.prototype.setAuthChanelId = function(value) {
+proto.mlmbox.client.auth.TelegramBotSignRequest.prototype.setChannelId = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
 

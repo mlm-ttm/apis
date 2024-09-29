@@ -11,6 +11,11 @@ export class AccountsSearchRequest extends jspb.Message {
   getLimit(): number;
   setLimit(value: number): AccountsSearchRequest;
 
+  getFilterChannelsList(): Array<number>;
+  setFilterChannelsList(value: Array<number>): AccountsSearchRequest;
+  clearFilterChannelsList(): AccountsSearchRequest;
+  addFilterChannels(value: number, index?: number): AccountsSearchRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AccountsSearchRequest.AsObject;
   static toObject(includeInstance: boolean, msg: AccountsSearchRequest): AccountsSearchRequest.AsObject;
@@ -23,6 +28,7 @@ export namespace AccountsSearchRequest {
   export type AsObject = {
     loginPrefix: string,
     limit: number,
+    filterChannelsList: Array<number>,
   }
 }
 
@@ -40,6 +46,11 @@ export class TeamRequest extends jspb.Message {
   getFilterMatrixTreeIdsBitMask(): number;
   setFilterMatrixTreeIdsBitMask(value: number): TeamRequest;
 
+  getFilterChannelsList(): Array<number>;
+  setFilterChannelsList(value: Array<number>): TeamRequest;
+  clearFilterChannelsList(): TeamRequest;
+  addFilterChannels(value: number, index?: number): TeamRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TeamRequest.AsObject;
   static toObject(includeInstance: boolean, msg: TeamRequest): TeamRequest.AsObject;
@@ -53,6 +64,7 @@ export namespace TeamRequest {
     viewPartner?: mlmbox_types_account_pb.Account.Id.AsObject,
     partnersSort?: mlmbox_types_sort_pb.Sort.AsObject,
     filterMatrixTreeIdsBitMask: number,
+    filterChannelsList: Array<number>,
   }
 }
 

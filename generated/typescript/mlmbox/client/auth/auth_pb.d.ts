@@ -5,8 +5,8 @@ import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty
 
 
 export class TelegramBotSignRequest extends jspb.Message {
-  getAuthChanelId(): number;
-  setAuthChanelId(value: number): TelegramBotSignRequest;
+  getChannelId(): number;
+  setChannelId(value: number): TelegramBotSignRequest;
 
   getInitData(): string;
   setInitData(value: string): TelegramBotSignRequest;
@@ -21,7 +21,7 @@ export class TelegramBotSignRequest extends jspb.Message {
 
 export namespace TelegramBotSignRequest {
   export type AsObject = {
-    authChanelId: number,
+    channelId: number,
     initData: string,
   }
 }

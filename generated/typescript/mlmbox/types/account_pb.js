@@ -238,7 +238,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.mlmbox.types.Account.Info = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.mlmbox.types.Account.Info.repeatedFields_, null);
 };
 goog.inherits(proto.mlmbox.types.Account.Info, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -2287,6 +2287,13 @@ proto.mlmbox.types.Account.Statistics.prototype.setMatrixTeamQuantity = function
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.mlmbox.types.Account.Info.repeatedFields_ = [10];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -2326,7 +2333,8 @@ proto.mlmbox.types.Account.Info.toObject = function(includeInstance, msg) {
     matrixStartedAt: jspb.Message.getFieldWithDefault(msg, 6, 0),
     matrixTreeIdsBitMask: jspb.Message.getFieldWithDefault(msg, 7, 0),
     referralBranch: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    statistics: (f = msg.getStatistics()) && proto.mlmbox.types.Account.Statistics.toObject(includeInstance, f)
+    statistics: (f = msg.getStatistics()) && proto.mlmbox.types.Account.Statistics.toObject(includeInstance, f),
+    channelsList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -2403,6 +2411,12 @@ proto.mlmbox.types.Account.Info.deserializeBinaryFromReader = function(msg, read
       var value = new proto.mlmbox.types.Account.Statistics;
       reader.readMessage(value,proto.mlmbox.types.Account.Statistics.deserializeBinaryFromReader);
       msg.setStatistics(value);
+      break;
+    case 10:
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addChannels(values[i]);
+      }
       break;
     default:
       reader.skipField();
@@ -2499,6 +2513,13 @@ proto.mlmbox.types.Account.Info.serializeBinaryToWriter = function(message, writ
       9,
       f,
       proto.mlmbox.types.Account.Statistics.serializeBinaryToWriter
+    );
+  }
+  f = message.getChannelsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      10,
+      f
     );
   }
 };
@@ -2918,6 +2939,43 @@ proto.mlmbox.types.Account.Info.prototype.clearStatistics = function() {
  */
 proto.mlmbox.types.Account.Info.prototype.hasStatistics = function() {
   return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * repeated uint32 channels = 10;
+ * @return {!Array<number>}
+ */
+proto.mlmbox.types.Account.Info.prototype.getChannelsList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 10));
+};
+
+
+/**
+ * @param {!Array<number>} value
+ * @return {!proto.mlmbox.types.Account.Info} returns this
+ */
+proto.mlmbox.types.Account.Info.prototype.setChannelsList = function(value) {
+  return jspb.Message.setField(this, 10, value || []);
+};
+
+
+/**
+ * @param {number} value
+ * @param {number=} opt_index
+ * @return {!proto.mlmbox.types.Account.Info} returns this
+ */
+proto.mlmbox.types.Account.Info.prototype.addChannels = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 10, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.mlmbox.types.Account.Info} returns this
+ */
+proto.mlmbox.types.Account.Info.prototype.clearChannelsList = function() {
+  return this.setChannelsList([]);
 };
 
 
