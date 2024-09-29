@@ -55,6 +55,7 @@ message Account {
     int32 matrix_tree_ids_bit_mask = 7;
     uint32 referral_branch = 8;
     Statistics statistics = 9;
+    repeated uint32 channels = 10; // List of channel IDs in which the user participates
   }
   Info info = 1;
   mlmbox.types.GoogleAuthenticator google_authenticator = 2;

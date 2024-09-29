@@ -16,11 +16,13 @@ service Network {
 message AccountsSearchRequest {
   string login_prefix = 1;
   uint32 limit = 2;
+  repeated uint32 filter_channels = 3;
 }
 message TeamRequest {
   mlmbox.types.Account.Id view_partner = 1;
   mlmbox.types.Sort partners_sort = 2;
   int32 filter_matrix_tree_ids_bit_mask = 3;
+  repeated uint32 filter_channels = 4;
 }
 message TeamResponse {
   mlmbox.types.Account.Info account = 1;

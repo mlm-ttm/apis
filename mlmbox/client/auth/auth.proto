@@ -11,7 +11,7 @@ service Auth {
 }
 
 message TelegramBotSignRequest {
-  uint32 auth_chanel_id = 1;
+  uint32 channel_id = 1;
   string init_data = 2;
 }
 message AuthSignResponse {
