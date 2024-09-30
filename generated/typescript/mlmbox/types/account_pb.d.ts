@@ -492,6 +492,9 @@ export namespace Matrix {
     getTreeId(): number;
     setTreeId(value: number): TreeAccount;
 
+    getBookingQuantity(): number;
+    setBookingQuantity(value: number): TreeAccount;
+
     getEntitiesList(): Array<Matrix.TreeAccount.Entity>;
     setEntitiesList(value: Array<Matrix.TreeAccount.Entity>): TreeAccount;
     clearEntitiesList(): TreeAccount;
@@ -508,6 +511,7 @@ export namespace Matrix {
   export namespace TreeAccount {
     export type AsObject = {
       treeId: number,
+      bookingQuantity: number,
       entitiesList: Array<Matrix.TreeAccount.Entity.AsObject>,
     }
 
@@ -575,6 +579,9 @@ export namespace Matrix {
       getFilled2w2lBitMask(): number;
       setFilled2w2lBitMask(value: number): Set;
 
+      getBookingQuantity(): number;
+      setBookingQuantity(value: number): Set;
+
       serializeBinary(): Uint8Array;
       toObject(includeInstance?: boolean): Set.AsObject;
       static toObject(includeInstance: boolean, msg: Set): Set.AsObject;
@@ -588,6 +595,7 @@ export namespace Matrix {
         treeId: number,
         entity?: Matrix.TreeAccount.Entity.AsObject,
         filled2w2lBitMask: number,
+        bookingQuantity: number,
       }
     }
 
@@ -830,6 +838,9 @@ export namespace Matrix {
         getPositionId(): number;
         setPositionId(value: number): Item;
 
+        getIsBooking(): boolean;
+        setIsBooking(value: boolean): Item;
+
         serializeBinary(): Uint8Array;
         toObject(includeInstance?: boolean): Item.AsObject;
         static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
@@ -843,6 +854,7 @@ export namespace Matrix {
           treeId: number,
           treeAccountId: number,
           positionId: number,
+          isBooking: boolean,
         }
       }
 

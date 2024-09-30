@@ -4220,6 +4220,7 @@ proto.mlmbox.types.Matrix.TreeAccount.prototype.toObject = function(opt_includeI
 proto.mlmbox.types.Matrix.TreeAccount.toObject = function(includeInstance, msg) {
   var f, obj = {
     treeId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    bookingQuantity: jspb.Message.getFieldWithDefault(msg, 2, 0),
     entitiesList: jspb.Message.toObjectList(msg.getEntitiesList(),
     proto.mlmbox.types.Matrix.TreeAccount.Entity.toObject, includeInstance)
   };
@@ -4262,6 +4263,10 @@ proto.mlmbox.types.Matrix.TreeAccount.deserializeBinaryFromReader = function(msg
       var value = /** @type {number} */ (reader.readUint32());
       msg.setTreeId(value);
       break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setBookingQuantity(value);
+      break;
     case 4:
       var value = new proto.mlmbox.types.Matrix.TreeAccount.Entity;
       reader.readMessage(value,proto.mlmbox.types.Matrix.TreeAccount.Entity.deserializeBinaryFromReader);
@@ -4300,6 +4305,13 @@ proto.mlmbox.types.Matrix.TreeAccount.serializeBinaryToWriter = function(message
   if (f !== 0) {
     writer.writeUint32(
       1,
+      f
+    );
+  }
+  f = message.getBookingQuantity();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
       f
     );
   }
@@ -4728,7 +4740,8 @@ proto.mlmbox.types.Matrix.TreeAccount.Set.toObject = function(includeInstance, m
   var f, obj = {
     treeId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     entity: (f = msg.getEntity()) && proto.mlmbox.types.Matrix.TreeAccount.Entity.toObject(includeInstance, f),
-    filled2w2lBitMask: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    filled2w2lBitMask: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    bookingQuantity: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -4778,6 +4791,10 @@ proto.mlmbox.types.Matrix.TreeAccount.Set.deserializeBinaryFromReader = function
       var value = /** @type {number} */ (reader.readInt32());
       msg.setFilled2w2lBitMask(value);
       break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setBookingQuantity(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -4826,6 +4843,13 @@ proto.mlmbox.types.Matrix.TreeAccount.Set.serializeBinaryToWriter = function(mes
   if (f !== 0) {
     writer.writeInt32(
       3,
+      f
+    );
+  }
+  f = message.getBookingQuantity();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
       f
     );
   }
@@ -4906,6 +4930,24 @@ proto.mlmbox.types.Matrix.TreeAccount.Set.prototype.setFilled2w2lBitMask = funct
 
 
 /**
+ * optional uint32 booking_quantity = 4;
+ * @return {number}
+ */
+proto.mlmbox.types.Matrix.TreeAccount.Set.prototype.getBookingQuantity = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.mlmbox.types.Matrix.TreeAccount.Set} returns this
+ */
+proto.mlmbox.types.Matrix.TreeAccount.Set.prototype.setBookingQuantity = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
  * optional uint32 tree_id = 1;
  * @return {number}
  */
@@ -4920,6 +4962,24 @@ proto.mlmbox.types.Matrix.TreeAccount.prototype.getTreeId = function() {
  */
 proto.mlmbox.types.Matrix.TreeAccount.prototype.setTreeId = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 booking_quantity = 2;
+ * @return {number}
+ */
+proto.mlmbox.types.Matrix.TreeAccount.prototype.getBookingQuantity = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.mlmbox.types.Matrix.TreeAccount} returns this
+ */
+proto.mlmbox.types.Matrix.TreeAccount.prototype.setBookingQuantity = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -6642,7 +6702,8 @@ proto.mlmbox.types.Matrix.Invoice.VerifiedResponse.Item.toObject = function(incl
   var f, obj = {
     treeId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     treeAccountId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    positionId: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    positionId: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    isBooking: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -6691,6 +6752,10 @@ proto.mlmbox.types.Matrix.Invoice.VerifiedResponse.Item.deserializeBinaryFromRea
       var value = /** @type {number} */ (reader.readUint32());
       msg.setPositionId(value);
       break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsBooking(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -6738,6 +6803,13 @@ proto.mlmbox.types.Matrix.Invoice.VerifiedResponse.Item.serializeBinaryToWriter 
   if (f !== 0) {
     writer.writeUint32(
       3,
+      f
+    );
+  }
+  f = message.getIsBooking();
+  if (f) {
+    writer.writeBool(
+      4,
       f
     );
   }
@@ -6795,6 +6867,24 @@ proto.mlmbox.types.Matrix.Invoice.VerifiedResponse.Item.prototype.getPositionId 
  */
 proto.mlmbox.types.Matrix.Invoice.VerifiedResponse.Item.prototype.setPositionId = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional bool is_booking = 4;
+ * @return {boolean}
+ */
+proto.mlmbox.types.Matrix.Invoice.VerifiedResponse.Item.prototype.getIsBooking = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.mlmbox.types.Matrix.Invoice.VerifiedResponse.Item} returns this
+ */
+proto.mlmbox.types.Matrix.Invoice.VerifiedResponse.Item.prototype.setIsBooking = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 4, value);
 };
 
 

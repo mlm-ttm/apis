@@ -103,8 +103,10 @@ message Matrix {
       uint32 tree_id = 1;
       Entity entity = 2;
       int32 filled_2w2l_bit_mask = 3;
+      uint32 booking_quantity = 4; // Number of positions booked
     }
     uint32 tree_id = 1;
+    uint32 booking_quantity = 2; // Number of positions booked
     repeated Entity entities = 4;
   }
   message View {
@@ -148,6 +150,7 @@ message Matrix {
         uint32 tree_id = 1;
         uint32 tree_account_id = 2;
         uint32 position_id = 3;
+        bool is_booking = 4;
       }
       repeated Item items = 1;
     }
