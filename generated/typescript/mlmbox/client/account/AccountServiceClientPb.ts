@@ -257,5 +257,48 @@ export class AccountClient {
     this.methodDescriptorSetReferral);
   }
 
+  methodDescriptorGetAvaFiles = new grpcWeb.MethodDescriptor(
+    '/mlmbox.client.account.Account/GetAvaFiles',
+    grpcWeb.MethodType.UNARY,
+    mlmbox_types_account_pb.Account.Profile.Ava.List,
+    mlmbox_types_account_pb.Account.Profile.Ava.File.List,
+    (request: mlmbox_types_account_pb.Account.Profile.Ava.List) => {
+      return request.serializeBinary();
+    },
+    mlmbox_types_account_pb.Account.Profile.Ava.File.List.deserializeBinary
+  );
+
+  getAvaFiles(
+    request: mlmbox_types_account_pb.Account.Profile.Ava.List,
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.Profile.Ava.File.List>;
+
+  getAvaFiles(
+    request: mlmbox_types_account_pb.Account.Profile.Ava.List,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: mlmbox_types_account_pb.Account.Profile.Ava.File.List) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.Profile.Ava.File.List>;
+
+  getAvaFiles(
+    request: mlmbox_types_account_pb.Account.Profile.Ava.List,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: mlmbox_types_account_pb.Account.Profile.Ava.File.List) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/mlmbox.client.account.Account/GetAvaFiles',
+        request,
+        metadata || {},
+        this.methodDescriptorGetAvaFiles,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/mlmbox.client.account.Account/GetAvaFiles',
+    request,
+    metadata || {},
+    this.methodDescriptorGetAvaFiles);
+  }
+
 }
 

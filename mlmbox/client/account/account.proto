@@ -12,6 +12,7 @@ service Account {
   rpc SetLocale (mlmbox.types.Locale.Id) returns (mlmbox.types.Locale) {} // Update the language of communication
   rpc SetProfile (SetProfileRequest) returns (mlmbox.types.Account.Profile) {} // Update profile details
   rpc SetReferral (mlmbox.types.Account.Id) returns (mlmbox.types.Account.Info) {} // Set referral (if the user has no referral)
+  rpc GetAvaFiles (mlmbox.types.Account.Profile.Ava.List) returns (mlmbox.types.Account.Profile.Ava.File.List) {}
 }
 message SetLoginRequest {
   string login = 1;

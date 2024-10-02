@@ -31,3 +31,10 @@ message Wallet.Processing.Asset.WithdrawalAddressHistory {
   repeated Value items = 1;
 }
 ```
+- Добавлен новый метод **GetAvaFiles** в **mlmbox.client.account.Account**. (Необходимый для загрузки аватарок в формате base64).
+```protobuf
+service mlmbox.client.account.Account {
+  ...
+  rpc GetAvaFiles (mlmbox.types.Account.Profile.Ava.List) returns (mlmbox.types.Account.Profile.Ava.File.List) {}
+}
+```
