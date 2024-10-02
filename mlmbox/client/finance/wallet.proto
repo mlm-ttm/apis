@@ -22,6 +22,7 @@ service Wallet {
   rpc DepositAddress (mlmbox.types.Wallet.Processing.Id) returns (WalletDepositAddressResponse) {}
   rpc ValidateAddress (WalletValidateAddressRequest) returns (WalletValidateAddressResponse) {}
   rpc Withdrawal (WalletWithdrawalRequest) returns (mlmbox.types.Wallet.Asset.Transaction) {}
+  rpc WithdrawalAddressHistory (mlmbox.types.Wallet.Processing.Asset.Id) returns (mlmbox.types.Wallet.Processing.Asset.WithdrawalAddressHistory) {}
 }
 
 message WalletAssetGetRequest {

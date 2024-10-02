@@ -818,5 +818,66 @@ proto.mlmbox.client.finance.WalletPromiseClient.prototype.withdrawal =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.mlmbox.types.Wallet.Processing.Asset.Id,
+ *   !proto.mlmbox.types.Wallet.Processing.Asset.WithdrawalAddressHistory>}
+ */
+const methodDescriptor_Wallet_WithdrawalAddressHistory = new grpc.web.MethodDescriptor(
+  '/mlmbox.client.finance.Wallet/WithdrawalAddressHistory',
+  grpc.web.MethodType.UNARY,
+  mlmbox_types_wallet_pb.Wallet.Processing.Asset.Id,
+  mlmbox_types_wallet_pb.Wallet.Processing.Asset.WithdrawalAddressHistory,
+  /**
+   * @param {!proto.mlmbox.types.Wallet.Processing.Asset.Id} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  mlmbox_types_wallet_pb.Wallet.Processing.Asset.WithdrawalAddressHistory.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.mlmbox.types.Wallet.Processing.Asset.Id} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Wallet.Processing.Asset.WithdrawalAddressHistory)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Wallet.Processing.Asset.WithdrawalAddressHistory>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.mlmbox.client.finance.WalletClient.prototype.withdrawalAddressHistory =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/mlmbox.client.finance.Wallet/WithdrawalAddressHistory',
+      request,
+      metadata || {},
+      methodDescriptor_Wallet_WithdrawalAddressHistory,
+      callback);
+};
+
+
+/**
+ * @param {!proto.mlmbox.types.Wallet.Processing.Asset.Id} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.mlmbox.types.Wallet.Processing.Asset.WithdrawalAddressHistory>}
+ *     Promise that resolves to the response
+ */
+proto.mlmbox.client.finance.WalletPromiseClient.prototype.withdrawalAddressHistory =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/mlmbox.client.finance.Wallet/WithdrawalAddressHistory',
+      request,
+      metadata || {},
+      methodDescriptor_Wallet_WithdrawalAddressHistory);
+};
+
+
 module.exports = proto.mlmbox.client.finance;
 

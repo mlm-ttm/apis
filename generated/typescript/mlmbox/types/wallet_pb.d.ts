@@ -230,6 +230,9 @@ export namespace Wallet {
         hasAmount(): boolean;
         clearAmount(): Metadata;
 
+        getMatrixKeeperBookingTreeId(): number;
+        setMatrixKeeperBookingTreeId(value: number): Metadata;
+
         getUniqueFieldCase(): Metadata.UniqueFieldCase;
 
         serializeBinary(): Uint8Array;
@@ -250,6 +253,7 @@ export namespace Wallet {
           accountId: number,
           matrixPositionCreated?: Wallet.Asset.Transaction.Metadata.MatrixHeader.AsObject,
           amount?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
+          matrixKeeperBookingTreeId: number,
         }
 
         export class Withdrawal extends jspb.Message {
@@ -425,6 +429,7 @@ export namespace Wallet {
           ACCOUNT_ID = 6,
           MATRIX_POSITION_CREATED = 7,
           AMOUNT = 8,
+          MATRIX_KEEPER_BOOKING_TREE_ID = 9,
         }
       }
 
@@ -441,6 +446,9 @@ export namespace Wallet {
       getAvailable(): string;
       setAvailable(value: string): WithdrawalCapacity;
 
+      getEnabled(): boolean;
+      setEnabled(value: boolean): WithdrawalCapacity;
+
       serializeBinary(): Uint8Array;
       toObject(includeInstance?: boolean): WithdrawalCapacity.AsObject;
       static toObject(includeInstance: boolean, msg: WithdrawalCapacity): WithdrawalCapacity.AsObject;
@@ -454,6 +462,7 @@ export namespace Wallet {
         used: string,
         capacity: string,
         available: string,
+        enabled: boolean,
       }
     }
 
@@ -588,6 +597,50 @@ export namespace Wallet {
           processingId: number,
           assetId: number,
         }
+      }
+
+
+      export class WithdrawalAddressHistory extends jspb.Message {
+        getItemsList(): Array<Wallet.Processing.Asset.WithdrawalAddressHistory.Value>;
+        setItemsList(value: Array<Wallet.Processing.Asset.WithdrawalAddressHistory.Value>): WithdrawalAddressHistory;
+        clearItemsList(): WithdrawalAddressHistory;
+        addItems(value?: Wallet.Processing.Asset.WithdrawalAddressHistory.Value, index?: number): Wallet.Processing.Asset.WithdrawalAddressHistory.Value;
+
+        serializeBinary(): Uint8Array;
+        toObject(includeInstance?: boolean): WithdrawalAddressHistory.AsObject;
+        static toObject(includeInstance: boolean, msg: WithdrawalAddressHistory): WithdrawalAddressHistory.AsObject;
+        static serializeBinaryToWriter(message: WithdrawalAddressHistory, writer: jspb.BinaryWriter): void;
+        static deserializeBinary(bytes: Uint8Array): WithdrawalAddressHistory;
+        static deserializeBinaryFromReader(message: WithdrawalAddressHistory, reader: jspb.BinaryReader): WithdrawalAddressHistory;
+      }
+
+      export namespace WithdrawalAddressHistory {
+        export type AsObject = {
+          itemsList: Array<Wallet.Processing.Asset.WithdrawalAddressHistory.Value.AsObject>,
+        }
+
+        export class Value extends jspb.Message {
+          getAddress(): string;
+          setAddress(value: string): Value;
+
+          getLastUsedAt(): number;
+          setLastUsedAt(value: number): Value;
+
+          serializeBinary(): Uint8Array;
+          toObject(includeInstance?: boolean): Value.AsObject;
+          static toObject(includeInstance: boolean, msg: Value): Value.AsObject;
+          static serializeBinaryToWriter(message: Value, writer: jspb.BinaryWriter): void;
+          static deserializeBinary(bytes: Uint8Array): Value;
+          static deserializeBinaryFromReader(message: Value, reader: jspb.BinaryReader): Value;
+        }
+
+        export namespace Value {
+          export type AsObject = {
+            address: string,
+            lastUsedAt: number,
+          }
+        }
+
       }
 
     }

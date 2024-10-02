@@ -76,6 +76,7 @@ message Matrix {
     uint32 positions_quantity = 4;
     uint32 default_position_width = 5;
     mlmbox.types.Asset.Amount amount = 6;
+    bool booking_enabled = 7;
   }
   message Position {
     message Id {

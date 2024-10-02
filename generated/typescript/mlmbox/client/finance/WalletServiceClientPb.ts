@@ -558,5 +558,48 @@ export class WalletClient {
     this.methodDescriptorWithdrawal);
   }
 
+  methodDescriptorWithdrawalAddressHistory = new grpcWeb.MethodDescriptor(
+    '/mlmbox.client.finance.Wallet/WithdrawalAddressHistory',
+    grpcWeb.MethodType.UNARY,
+    mlmbox_types_wallet_pb.Wallet.Processing.Asset.Id,
+    mlmbox_types_wallet_pb.Wallet.Processing.Asset.WithdrawalAddressHistory,
+    (request: mlmbox_types_wallet_pb.Wallet.Processing.Asset.Id) => {
+      return request.serializeBinary();
+    },
+    mlmbox_types_wallet_pb.Wallet.Processing.Asset.WithdrawalAddressHistory.deserializeBinary
+  );
+
+  withdrawalAddressHistory(
+    request: mlmbox_types_wallet_pb.Wallet.Processing.Asset.Id,
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_wallet_pb.Wallet.Processing.Asset.WithdrawalAddressHistory>;
+
+  withdrawalAddressHistory(
+    request: mlmbox_types_wallet_pb.Wallet.Processing.Asset.Id,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: mlmbox_types_wallet_pb.Wallet.Processing.Asset.WithdrawalAddressHistory) => void): grpcWeb.ClientReadableStream<mlmbox_types_wallet_pb.Wallet.Processing.Asset.WithdrawalAddressHistory>;
+
+  withdrawalAddressHistory(
+    request: mlmbox_types_wallet_pb.Wallet.Processing.Asset.Id,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: mlmbox_types_wallet_pb.Wallet.Processing.Asset.WithdrawalAddressHistory) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/mlmbox.client.finance.Wallet/WithdrawalAddressHistory',
+        request,
+        metadata || {},
+        this.methodDescriptorWithdrawalAddressHistory,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/mlmbox.client.finance.Wallet/WithdrawalAddressHistory',
+    request,
+    metadata || {},
+    this.methodDescriptorWithdrawalAddressHistory);
+  }
+
 }
 

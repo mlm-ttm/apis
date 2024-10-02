@@ -406,6 +406,9 @@ export namespace Matrix {
     hasAmount(): boolean;
     clearAmount(): Tree;
 
+    getBookingEnabled(): boolean;
+    setBookingEnabled(value: boolean): Tree;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Tree.AsObject;
     static toObject(includeInstance: boolean, msg: Tree): Tree.AsObject;
@@ -422,6 +425,7 @@ export namespace Matrix {
       positionsQuantity: number,
       defaultPositionWidth: number,
       amount?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
+      bookingEnabled: boolean,
     }
   }
 

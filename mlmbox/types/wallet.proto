@@ -73,6 +73,7 @@ message Wallet {
           uint32 account_id = 6;
           MatrixHeader matrix_position_created = 7;
           mlmbox.types.Asset.Amount amount = 8;
+          uint32 matrix_keeper_booking_tree_id = 9;
         }
       }
       uint32 transaction_id = 1;
@@ -88,6 +89,7 @@ message Wallet {
       string used = 1; // The value of the volume used
       string capacity = 2; // Limit value
       string available = 3; // Remaining available volume
+      bool enabled = 4; // Is the limit used
     }
     message List {
       repeated Asset items = 1;
@@ -106,6 +108,13 @@ message Wallet {
       message Id {
         uint32 processing_id = 1;
         uint32 asset_id = 2;
+      }
+      message WithdrawalAddressHistory {
+        message Value {
+          string address = 3;
+          uint32 last_used_at = 4;
+        }
+        repeated Value items = 1;
       }
       uint32 asset_id = 1;
       bool settings_deposit_enabled = 2;

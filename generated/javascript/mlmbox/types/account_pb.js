@@ -3476,7 +3476,8 @@ proto.mlmbox.types.Matrix.Tree.toObject = function(includeInstance, msg) {
     groupId: jspb.Message.getFieldWithDefault(msg, 3, 0),
     positionsQuantity: jspb.Message.getFieldWithDefault(msg, 4, 0),
     defaultPositionWidth: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    amount: (f = msg.getAmount()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f)
+    amount: (f = msg.getAmount()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f),
+    bookingEnabled: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
   };
 
   if (includeInstance) {
@@ -3537,6 +3538,10 @@ proto.mlmbox.types.Matrix.Tree.deserializeBinaryFromReader = function(msg, reade
       var value = new mlmbox_types_asset_pb.Asset.Amount;
       reader.readMessage(value,mlmbox_types_asset_pb.Asset.Amount.deserializeBinaryFromReader);
       msg.setAmount(value);
+      break;
+    case 7:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setBookingEnabled(value);
       break;
     default:
       reader.skipField();
@@ -3608,6 +3613,13 @@ proto.mlmbox.types.Matrix.Tree.serializeBinaryToWriter = function(message, write
       6,
       f,
       mlmbox_types_asset_pb.Asset.Amount.serializeBinaryToWriter
+    );
+  }
+  f = message.getBookingEnabled();
+  if (f) {
+    writer.writeBool(
+      7,
+      f
     );
   }
 };
@@ -3737,6 +3749,24 @@ proto.mlmbox.types.Matrix.Tree.prototype.clearAmount = function() {
  */
 proto.mlmbox.types.Matrix.Tree.prototype.hasAmount = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional bool booking_enabled = 7;
+ * @return {boolean}
+ */
+proto.mlmbox.types.Matrix.Tree.prototype.getBookingEnabled = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 7, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.mlmbox.types.Matrix.Tree} returns this
+ */
+proto.mlmbox.types.Matrix.Tree.prototype.setBookingEnabled = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 7, value);
 };
 
 
