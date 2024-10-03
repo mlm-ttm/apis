@@ -84,6 +84,58 @@ export namespace Asset {
     }
   }
 
+
+  export class MarketCap extends jspb.Message {
+    getAssetId(): number;
+    setAssetId(value: number): MarketCap;
+
+    getAssetName(): string;
+    setAssetName(value: string): MarketCap;
+
+    getMarketCap(): string;
+    setMarketCap(value: string): MarketCap;
+
+    getModifiedAt(): number;
+    setModifiedAt(value: number): MarketCap;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): MarketCap.AsObject;
+    static toObject(includeInstance: boolean, msg: MarketCap): MarketCap.AsObject;
+    static serializeBinaryToWriter(message: MarketCap, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): MarketCap;
+    static deserializeBinaryFromReader(message: MarketCap, reader: jspb.BinaryReader): MarketCap;
+  }
+
+  export namespace MarketCap {
+    export type AsObject = {
+      assetId: number,
+      assetName: string,
+      marketCap: string,
+      modifiedAt: number,
+    }
+
+    export class List extends jspb.Message {
+      getItemsList(): Array<Asset.MarketCap>;
+      setItemsList(value: Array<Asset.MarketCap>): List;
+      clearItemsList(): List;
+      addItems(value?: Asset.MarketCap, index?: number): Asset.MarketCap;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): List.AsObject;
+      static toObject(includeInstance: boolean, msg: List): List.AsObject;
+      static serializeBinaryToWriter(message: List, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): List;
+      static deserializeBinaryFromReader(message: List, reader: jspb.BinaryReader): List;
+    }
+
+    export namespace List {
+      export type AsObject = {
+        itemsList: Array<Asset.MarketCap.AsObject>,
+      }
+    }
+
+  }
+
 }
 
 export class AssetList extends jspb.Message {

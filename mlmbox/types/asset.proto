@@ -13,6 +13,15 @@ message Asset {
     uint32 asset_id = 1;
     string value = 2;
   }
+  message MarketCap {
+    message List {
+      repeated mlmbox.types.Asset.MarketCap items = 1;
+    }
+    uint32 asset_id = 1;
+    string asset_name = 2;
+    string market_cap = 3;
+    uint32 modified_at = 4;
+  }
   uint32 asset_id = 1;
   string asset_name = 2;
   string asset_title = 3;

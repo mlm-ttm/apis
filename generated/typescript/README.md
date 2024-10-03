@@ -20,6 +20,7 @@ npx grpc_tools_node_protoc -I=$MLMBOX_API_PATH --js_out=import_style=commonjs,bi
 npx grpc_tools_node_protoc -I=$MLMBOX_API_PATH --js_out=import_style=commonjs,binary:. --grpc-web_out=import_style=typescript,mode=grpcwebtext:. mlmbox/client/account/account.proto
 npx grpc_tools_node_protoc -I=$MLMBOX_API_PATH --js_out=import_style=commonjs,binary:. --grpc-web_out=import_style=typescript,mode=grpcwebtext:. mlmbox/client/app/app.proto
 npx grpc_tools_node_protoc -I=$MLMBOX_API_PATH --js_out=import_style=commonjs,binary:. --grpc-web_out=import_style=typescript,mode=grpcwebtext:. mlmbox/client/asset/asset.proto
+npx grpc_tools_node_protoc -I=$MLMBOX_API_PATH --js_out=import_style=commonjs,binary:. --grpc-web_out=import_style=typescript,mode=grpcwebtext:. mlmbox/client/asset/coin_market_cap.proto
 npx grpc_tools_node_protoc -I=$MLMBOX_API_PATH --js_out=import_style=commonjs,binary:. --grpc-web_out=import_style=typescript,mode=grpcwebtext:. mlmbox/client/asset_pair/asset_pair.proto
 npx grpc_tools_node_protoc -I=$MLMBOX_API_PATH --js_out=import_style=commonjs,binary:. --grpc-web_out=import_style=typescript,mode=grpcwebtext:. mlmbox/client/auth/auth.proto
 npx grpc_tools_node_protoc -I=$MLMBOX_API_PATH --js_out=import_style=commonjs,binary:. --grpc-web_out=import_style=typescript,mode=grpcwebtext:. mlmbox/client/finance/pool_hunter.proto
