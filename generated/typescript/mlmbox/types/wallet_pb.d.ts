@@ -52,6 +52,12 @@ export namespace Wallet {
     hasWithdrawalCapacity(): boolean;
     clearWithdrawalCapacity(): Asset;
 
+    getSettingsTransferEnabled(): boolean;
+    setSettingsTransferEnabled(value: boolean): Asset;
+
+    getSettingsTransferLimitMin(): string;
+    setSettingsTransferLimitMin(value: string): Asset;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Asset.AsObject;
     static toObject(includeInstance: boolean, msg: Asset): Asset.AsObject;
@@ -67,6 +73,8 @@ export namespace Wallet {
       transactionsList: Array<Wallet.Asset.Transaction.AsObject>,
       incomeBonusesStatistics?: mlmbox_types_bonus_pb.Bonus.Summary.AsObject,
       withdrawalCapacity?: Wallet.Asset.WithdrawalCapacity.AsObject,
+      settingsTransferEnabled: boolean,
+      settingsTransferLimitMin: string,
     }
 
     export class Transaction extends jspb.Message {

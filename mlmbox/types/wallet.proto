@@ -99,6 +99,8 @@ message Wallet {
     repeated Transaction transactions = 3;
     mlmbox.types.Bonus.Summary income_bonuses_statistics = 4;
     WithdrawalCapacity withdrawal_capacity = 5;
+    bool settings_transfer_enabled = 6;
+    string settings_transfer_limit_min = 7;
   }
   message Processing {
     message Id {

@@ -673,7 +673,9 @@ proto.mlmbox.types.Wallet.Asset.toObject = function(includeInstance, msg) {
     transactionsList: jspb.Message.toObjectList(msg.getTransactionsList(),
     proto.mlmbox.types.Wallet.Asset.Transaction.toObject, includeInstance),
     incomeBonusesStatistics: (f = msg.getIncomeBonusesStatistics()) && mlmbox_types_bonus_pb.Bonus.Summary.toObject(includeInstance, f),
-    withdrawalCapacity: (f = msg.getWithdrawalCapacity()) && proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.toObject(includeInstance, f)
+    withdrawalCapacity: (f = msg.getWithdrawalCapacity()) && proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.toObject(includeInstance, f),
+    settingsTransferEnabled: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
+    settingsTransferLimitMin: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -732,6 +734,14 @@ proto.mlmbox.types.Wallet.Asset.deserializeBinaryFromReader = function(msg, read
       var value = new proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity;
       reader.readMessage(value,proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.deserializeBinaryFromReader);
       msg.setWithdrawalCapacity(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSettingsTransferEnabled(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSettingsTransferLimitMin(value);
       break;
     default:
       reader.skipField();
@@ -798,6 +808,20 @@ proto.mlmbox.types.Wallet.Asset.serializeBinaryToWriter = function(message, writ
       5,
       f,
       proto.mlmbox.types.Wallet.Asset.WithdrawalCapacity.serializeBinaryToWriter
+    );
+  }
+  f = message.getSettingsTransferEnabled();
+  if (f) {
+    writer.writeBool(
+      6,
+      f
+    );
+  }
+  f = message.getSettingsTransferLimitMin();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
     );
   }
 };
@@ -3899,6 +3923,42 @@ proto.mlmbox.types.Wallet.Asset.prototype.clearWithdrawalCapacity = function() {
  */
 proto.mlmbox.types.Wallet.Asset.prototype.hasWithdrawalCapacity = function() {
   return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional bool settings_transfer_enabled = 6;
+ * @return {boolean}
+ */
+proto.mlmbox.types.Wallet.Asset.prototype.getSettingsTransferEnabled = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.mlmbox.types.Wallet.Asset} returns this
+ */
+proto.mlmbox.types.Wallet.Asset.prototype.setSettingsTransferEnabled = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 6, value);
+};
+
+
+/**
+ * optional string settings_transfer_limit_min = 7;
+ * @return {string}
+ */
+proto.mlmbox.types.Wallet.Asset.prototype.getSettingsTransferLimitMin = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.mlmbox.types.Wallet.Asset} returns this
+ */
+proto.mlmbox.types.Wallet.Asset.prototype.setSettingsTransferLimitMin = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
