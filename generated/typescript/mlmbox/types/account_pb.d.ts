@@ -478,6 +478,14 @@ export namespace Matrix {
     getBookingEnabled(): boolean;
     setBookingEnabled(value: boolean): Tree;
 
+    getTreeModeId(): Matrix.Tree.Mode;
+    setTreeModeId(value: Matrix.Tree.Mode): Tree;
+
+    getRequireTreeIdsList(): Array<number>;
+    setRequireTreeIdsList(value: Array<number>): Tree;
+    clearRequireTreeIdsList(): Tree;
+    addRequireTreeIds(value: number, index?: number): Tree;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Tree.AsObject;
     static toObject(includeInstance: boolean, msg: Tree): Tree.AsObject;
@@ -495,6 +503,14 @@ export namespace Matrix {
       defaultPositionWidth: number,
       amount?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
       bookingEnabled: boolean,
+      treeModeId: Matrix.Tree.Mode,
+      requireTreeIdsList: Array<number>,
+    }
+
+    export enum Mode { 
+      UNKNOWN = 0,
+      MATRIX = 1,
+      BINARY = 2,
     }
   }
 
@@ -802,8 +818,10 @@ export namespace Matrix {
     }
 
     export class Request extends jspb.Message {
-      getTreeId(): number;
-      setTreeId(value: number): Request;
+      getEntitiesList(): Array<Matrix.Invoice.Request.Entity>;
+      setEntitiesList(value: Array<Matrix.Invoice.Request.Entity>): Request;
+      clearEntitiesList(): Request;
+      addEntities(value?: Matrix.Invoice.Request.Entity, index?: number): Matrix.Invoice.Request.Entity;
 
       serializeBinary(): Uint8Array;
       toObject(includeInstance?: boolean): Request.AsObject;
@@ -815,8 +833,31 @@ export namespace Matrix {
 
     export namespace Request {
       export type AsObject = {
-        treeId: number,
+        entitiesList: Array<Matrix.Invoice.Request.Entity.AsObject>,
       }
+
+      export class Entity extends jspb.Message {
+        getTreeId(): number;
+        setTreeId(value: number): Entity;
+
+        getQuantity(): number;
+        setQuantity(value: number): Entity;
+
+        serializeBinary(): Uint8Array;
+        toObject(includeInstance?: boolean): Entity.AsObject;
+        static toObject(includeInstance: boolean, msg: Entity): Entity.AsObject;
+        static serializeBinaryToWriter(message: Entity, writer: jspb.BinaryWriter): void;
+        static deserializeBinary(bytes: Uint8Array): Entity;
+        static deserializeBinaryFromReader(message: Entity, reader: jspb.BinaryReader): Entity;
+      }
+
+      export namespace Entity {
+        export type AsObject = {
+          treeId: number,
+          quantity: number,
+        }
+      }
+
     }
 
 
@@ -861,6 +902,9 @@ export namespace Matrix {
         getAmountValue(): string;
         setAmountValue(value: string): Item;
 
+        getQuantity(): number;
+        setQuantity(value: number): Item;
+
         serializeBinary(): Uint8Array;
         toObject(includeInstance?: boolean): Item.AsObject;
         static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
@@ -876,6 +920,7 @@ export namespace Matrix {
           priceValue: string,
           unlockValue: string,
           amountValue: string,
+          quantity: number,
         }
       }
 

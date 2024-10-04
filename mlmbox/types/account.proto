@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package mlmbox.types;
+
 import "mlmbox/types/asset.proto";
 import "mlmbox/types/relationship.proto";
 import "mlmbox/types/google_authenticator.proto";
@@ -81,6 +82,11 @@ message Matrix {
     string title = 2;
   }
   message Tree {
+    enum Mode {
+      UNKNOWN = 0;
+      MATRIX = 1;
+      BINARY = 2;
+    }
     uint32 id = 1;
     string title = 2;
     uint32 group_id = 3;
@@ -88,6 +94,8 @@ message Matrix {
     uint32 default_position_width = 5;
     mlmbox.types.Asset.Amount amount = 6;
     bool booking_enabled = 7;
+    Mode tree_mode_id = 8;
+    repeated uint32 require_tree_ids = 9;
   }
   message Position {
     message Id {
@@ -144,7 +152,11 @@ message Matrix {
   }
   message Invoice {
     message Request {
-      uint32 tree_id = 1;
+      message Entity {
+        uint32 tree_id = 1;
+        uint32 quantity = 2;
+      }
+      repeated Entity entities = 2;
     }
     message PreviewResponse {
       message Item {
@@ -153,6 +165,7 @@ message Matrix {
         string price_value = 3;
         string unlock_value = 4;
         string amount_value = 5;
+        uint32 quantity = 6;
       }
       repeated Item items = 1;
       repeated mlmbox.types.Asset.Amount bill_amounts = 2;
