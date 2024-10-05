@@ -126,6 +126,8 @@ message Matrix {
       uint32 booking_quantity = 4; // Number of positions booked
     }
     uint32 tree_id = 1;
+    uint32 capacity = 3;
+    string pool_value = 5;
     uint32 booking_quantity = 2; // Number of positions booked
     repeated Entity entities = 4;
   }
