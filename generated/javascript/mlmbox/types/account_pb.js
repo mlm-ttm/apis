@@ -4946,6 +4946,8 @@ proto.mlmbox.types.Matrix.TreeAccount.prototype.toObject = function(opt_includeI
 proto.mlmbox.types.Matrix.TreeAccount.toObject = function(includeInstance, msg) {
   var f, obj = {
     treeId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    capacity: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    poolValue: jspb.Message.getFieldWithDefault(msg, 5, ""),
     bookingQuantity: jspb.Message.getFieldWithDefault(msg, 2, 0),
     entitiesList: jspb.Message.toObjectList(msg.getEntitiesList(),
     proto.mlmbox.types.Matrix.TreeAccount.Entity.toObject, includeInstance)
@@ -4989,6 +4991,14 @@ proto.mlmbox.types.Matrix.TreeAccount.deserializeBinaryFromReader = function(msg
       var value = /** @type {number} */ (reader.readUint32());
       msg.setTreeId(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setCapacity(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolValue(value);
+      break;
     case 2:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setBookingQuantity(value);
@@ -5031,6 +5041,20 @@ proto.mlmbox.types.Matrix.TreeAccount.serializeBinaryToWriter = function(message
   if (f !== 0) {
     writer.writeUint32(
       1,
+      f
+    );
+  }
+  f = message.getCapacity();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = message.getPoolValue();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -5688,6 +5712,42 @@ proto.mlmbox.types.Matrix.TreeAccount.prototype.getTreeId = function() {
  */
 proto.mlmbox.types.Matrix.TreeAccount.prototype.setTreeId = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 capacity = 3;
+ * @return {number}
+ */
+proto.mlmbox.types.Matrix.TreeAccount.prototype.getCapacity = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.mlmbox.types.Matrix.TreeAccount} returns this
+ */
+proto.mlmbox.types.Matrix.TreeAccount.prototype.setCapacity = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional string pool_value = 5;
+ * @return {string}
+ */
+proto.mlmbox.types.Matrix.TreeAccount.prototype.getPoolValue = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.mlmbox.types.Matrix.TreeAccount} returns this
+ */
+proto.mlmbox.types.Matrix.TreeAccount.prototype.setPoolValue = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 

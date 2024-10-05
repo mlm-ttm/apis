@@ -581,6 +581,12 @@ export namespace Matrix {
     getTreeId(): number;
     setTreeId(value: number): TreeAccount;
 
+    getCapacity(): number;
+    setCapacity(value: number): TreeAccount;
+
+    getPoolValue(): string;
+    setPoolValue(value: string): TreeAccount;
+
     getBookingQuantity(): number;
     setBookingQuantity(value: number): TreeAccount;
 
@@ -600,6 +606,8 @@ export namespace Matrix {
   export namespace TreeAccount {
     export type AsObject = {
       treeId: number,
+      capacity: number,
+      poolValue: string,
       bookingQuantity: number,
       entitiesList: Array<Matrix.TreeAccount.Entity.AsObject>,
     }
