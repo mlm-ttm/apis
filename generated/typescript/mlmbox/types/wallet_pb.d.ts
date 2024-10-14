@@ -241,6 +241,11 @@ export namespace Wallet {
         getMatrixKeeperBookingTreeId(): number;
         setMatrixKeeperBookingTreeId(value: number): Metadata;
 
+        getDeposit(): Wallet.Asset.Transaction.Metadata.Deposit | undefined;
+        setDeposit(value?: Wallet.Asset.Transaction.Metadata.Deposit): Metadata;
+        hasDeposit(): boolean;
+        clearDeposit(): Metadata;
+
         getUniqueFieldCase(): Metadata.UniqueFieldCase;
 
         serializeBinary(): Uint8Array;
@@ -262,7 +267,31 @@ export namespace Wallet {
           matrixPositionCreated?: Wallet.Asset.Transaction.Metadata.MatrixHeader.AsObject,
           amount?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
           matrixKeeperBookingTreeId: number,
+          deposit?: Wallet.Asset.Transaction.Metadata.Deposit.AsObject,
         }
+
+        export class Deposit extends jspb.Message {
+          getProcessingId(): number;
+          setProcessingId(value: number): Deposit;
+
+          getHash(): string;
+          setHash(value: string): Deposit;
+
+          serializeBinary(): Uint8Array;
+          toObject(includeInstance?: boolean): Deposit.AsObject;
+          static toObject(includeInstance: boolean, msg: Deposit): Deposit.AsObject;
+          static serializeBinaryToWriter(message: Deposit, writer: jspb.BinaryWriter): void;
+          static deserializeBinary(bytes: Uint8Array): Deposit;
+          static deserializeBinaryFromReader(message: Deposit, reader: jspb.BinaryReader): Deposit;
+        }
+
+        export namespace Deposit {
+          export type AsObject = {
+            processingId: number,
+            hash: string,
+          }
+        }
+
 
         export class Withdrawal extends jspb.Message {
           getProcessingId(): number;
@@ -438,6 +467,7 @@ export namespace Wallet {
           MATRIX_POSITION_CREATED = 7,
           AMOUNT = 8,
           MATRIX_KEEPER_BOOKING_TREE_ID = 9,
+          DEPOSIT = 10,
         }
       }
 

@@ -35,6 +35,10 @@ message Wallet {
         repeated mlmbox.types.Wallet.Asset.Transaction items = 1;
       }
       message Metadata {
+        message Deposit {
+          uint32 processing_id = 1;
+          string hash = 2;
+        }
         message Withdrawal {
           uint32 processing_id = 1;
           string address = 2;
@@ -74,6 +78,7 @@ message Wallet {
           MatrixHeader matrix_position_created = 7;
           mlmbox.types.Asset.Amount amount = 8;
           uint32 matrix_keeper_booking_tree_id = 9;
+          Deposit deposit = 10;
         }
       }
       uint32 transaction_id = 1;
