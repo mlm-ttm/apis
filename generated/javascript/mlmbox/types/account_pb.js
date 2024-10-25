@@ -908,7 +908,7 @@ proto.mlmbox.types.Account.toObject = function(includeInstance, msg) {
   var f, obj = {
     info: (f = msg.getInfo()) && proto.mlmbox.types.Account.Info.toObject(includeInstance, f),
     googleAuthenticator: (f = msg.getGoogleAuthenticator()) && mlmbox_types_google_authenticator_pb.GoogleAuthenticator.toObject(includeInstance, f),
-    matrixTreeAccountsList: jspb.Message.toObjectList(msg.getMatrixTreeAccountsList(),
+    treeAccountsList: jspb.Message.toObjectList(msg.getTreeAccountsList(),
     proto.mlmbox.types.TreeAccount.toObject, includeInstance),
     locale: jspb.Message.getFieldWithDefault(msg, 5, ""),
     isAdmin: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
@@ -961,7 +961,7 @@ proto.mlmbox.types.Account.deserializeBinaryFromReader = function(msg, reader) {
     case 3:
       var value = new proto.mlmbox.types.TreeAccount;
       reader.readMessage(value,proto.mlmbox.types.TreeAccount.deserializeBinaryFromReader);
-      msg.addMatrixTreeAccounts(value);
+      msg.addTreeAccounts(value);
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
@@ -1016,7 +1016,7 @@ proto.mlmbox.types.Account.serializeBinaryToWriter = function(message, writer) {
       mlmbox_types_google_authenticator_pb.GoogleAuthenticator.serializeBinaryToWriter
     );
   }
-  f = message.getMatrixTreeAccountsList();
+  f = message.getTreeAccountsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       3,
@@ -3742,10 +3742,10 @@ proto.mlmbox.types.Account.prototype.hasGoogleAuthenticator = function() {
 
 
 /**
- * repeated TreeAccount matrix_tree_accounts = 3;
+ * repeated TreeAccount tree_accounts = 3;
  * @return {!Array<!proto.mlmbox.types.TreeAccount>}
  */
-proto.mlmbox.types.Account.prototype.getMatrixTreeAccountsList = function() {
+proto.mlmbox.types.Account.prototype.getTreeAccountsList = function() {
   return /** @type{!Array<!proto.mlmbox.types.TreeAccount>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.mlmbox.types.TreeAccount, 3));
 };
@@ -3755,7 +3755,7 @@ proto.mlmbox.types.Account.prototype.getMatrixTreeAccountsList = function() {
  * @param {!Array<!proto.mlmbox.types.TreeAccount>} value
  * @return {!proto.mlmbox.types.Account} returns this
 */
-proto.mlmbox.types.Account.prototype.setMatrixTreeAccountsList = function(value) {
+proto.mlmbox.types.Account.prototype.setTreeAccountsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
 
@@ -3765,7 +3765,7 @@ proto.mlmbox.types.Account.prototype.setMatrixTreeAccountsList = function(value)
  * @param {number=} opt_index
  * @return {!proto.mlmbox.types.TreeAccount}
  */
-proto.mlmbox.types.Account.prototype.addMatrixTreeAccounts = function(opt_value, opt_index) {
+proto.mlmbox.types.Account.prototype.addTreeAccounts = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.mlmbox.types.TreeAccount, opt_index);
 };
 
@@ -3774,8 +3774,8 @@ proto.mlmbox.types.Account.prototype.addMatrixTreeAccounts = function(opt_value,
  * Clears the list making it empty but non-null.
  * @return {!proto.mlmbox.types.Account} returns this
  */
-proto.mlmbox.types.Account.prototype.clearMatrixTreeAccountsList = function() {
-  return this.setMatrixTreeAccountsList([]);
+proto.mlmbox.types.Account.prototype.clearTreeAccountsList = function() {
+  return this.setTreeAccountsList([]);
 };
 
 

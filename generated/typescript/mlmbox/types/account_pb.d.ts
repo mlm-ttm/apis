@@ -16,10 +16,10 @@ export class Account extends jspb.Message {
   hasGoogleAuthenticator(): boolean;
   clearGoogleAuthenticator(): Account;
 
-  getMatrixTreeAccountsList(): Array<TreeAccount>;
-  setMatrixTreeAccountsList(value: Array<TreeAccount>): Account;
-  clearMatrixTreeAccountsList(): Account;
-  addMatrixTreeAccounts(value?: TreeAccount, index?: number): TreeAccount;
+  getTreeAccountsList(): Array<TreeAccount>;
+  setTreeAccountsList(value: Array<TreeAccount>): Account;
+  clearTreeAccountsList(): Account;
+  addTreeAccounts(value?: TreeAccount, index?: number): TreeAccount;
 
   getLocale(): string;
   setLocale(value: string): Account;
@@ -39,7 +39,7 @@ export namespace Account {
   export type AsObject = {
     info?: Account.Info.AsObject,
     googleAuthenticator?: mlmbox_types_google_authenticator_pb.GoogleAuthenticator.AsObject,
-    matrixTreeAccountsList: Array<TreeAccount.AsObject>,
+    treeAccountsList: Array<TreeAccount.AsObject>,
     locale: string,
     isAdmin: boolean,
   }
