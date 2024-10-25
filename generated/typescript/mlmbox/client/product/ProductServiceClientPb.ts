@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for mlmbox.client.matrix
+ * @fileoverview gRPC-Web generated client stub for mlmbox.client.product
  * @enhanceable
  * @public
  */
@@ -40,7 +40,7 @@ export class ProductClient {
   }
 
   methodDescriptorPreviewPurchase = new grpcWeb.MethodDescriptor(
-    '/mlmbox.client.matrix.Product/PreviewPurchase',
+    '/mlmbox.client.product.Product/PreviewPurchase',
     grpcWeb.MethodType.UNARY,
     mlmbox_types_product_pb.Invoice.Request,
     mlmbox_types_product_pb.Invoice.PreviewResponse,
@@ -68,7 +68,7 @@ export class ProductClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/mlmbox.client.matrix.Product/PreviewPurchase',
+          '/mlmbox.client.product.Product/PreviewPurchase',
         request,
         metadata || {},
         this.methodDescriptorPreviewPurchase,
@@ -76,14 +76,14 @@ export class ProductClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/mlmbox.client.matrix.Product/PreviewPurchase',
+      '/mlmbox.client.product.Product/PreviewPurchase',
     request,
     metadata || {},
     this.methodDescriptorPreviewPurchase);
   }
 
   methodDescriptorVerifiedPurchase = new grpcWeb.MethodDescriptor(
-    '/mlmbox.client.matrix.Product/VerifiedPurchase',
+    '/mlmbox.client.product.Product/VerifiedPurchase',
     grpcWeb.MethodType.UNARY,
     mlmbox_types_product_pb.Invoice.Request,
     mlmbox_types_product_pb.Invoice.VerifiedResponse,
@@ -111,7 +111,7 @@ export class ProductClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/mlmbox.client.matrix.Product/VerifiedPurchase',
+          '/mlmbox.client.product.Product/VerifiedPurchase',
         request,
         metadata || {},
         this.methodDescriptorVerifiedPurchase,
@@ -119,7 +119,7 @@ export class ProductClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/mlmbox.client.matrix.Product/VerifiedPurchase',
+      '/mlmbox.client.product.Product/VerifiedPurchase',
     request,
     metadata || {},
     this.methodDescriptorVerifiedPurchase);

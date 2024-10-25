@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for mlmbox.client.matrix
+ * @fileoverview gRPC-Web generated client stub for mlmbox.client.product
  * @enhanceable
  * @public
  */
@@ -24,7 +24,7 @@ var mlmbox_types_product_pb = require('../../../mlmbox/types/product_pb.js')
 const proto = {};
 proto.mlmbox = {};
 proto.mlmbox.client = {};
-proto.mlmbox.client.matrix = require('./product_pb.js');
+proto.mlmbox.client.product = require('./product_pb.js');
 
 /**
  * @param {string} hostname
@@ -34,7 +34,7 @@ proto.mlmbox.client.matrix = require('./product_pb.js');
  * @struct
  * @final
  */
-proto.mlmbox.client.matrix.ProductClient =
+proto.mlmbox.client.product.ProductClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -60,7 +60,7 @@ proto.mlmbox.client.matrix.ProductClient =
  * @struct
  * @final
  */
-proto.mlmbox.client.matrix.ProductPromiseClient =
+proto.mlmbox.client.product.ProductPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -85,7 +85,7 @@ proto.mlmbox.client.matrix.ProductPromiseClient =
  *   !proto.mlmbox.types.Invoice.PreviewResponse>}
  */
 const methodDescriptor_Product_PreviewPurchase = new grpc.web.MethodDescriptor(
-  '/mlmbox.client.matrix.Product/PreviewPurchase',
+  '/mlmbox.client.product.Product/PreviewPurchase',
   grpc.web.MethodType.UNARY,
   mlmbox_types_product_pb.Invoice.Request,
   mlmbox_types_product_pb.Invoice.PreviewResponse,
@@ -110,10 +110,10 @@ const methodDescriptor_Product_PreviewPurchase = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Invoice.PreviewResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.mlmbox.client.matrix.ProductClient.prototype.previewPurchase =
+proto.mlmbox.client.product.ProductClient.prototype.previewPurchase =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/mlmbox.client.matrix.Product/PreviewPurchase',
+      '/mlmbox.client.product.Product/PreviewPurchase',
       request,
       metadata || {},
       methodDescriptor_Product_PreviewPurchase,
@@ -129,10 +129,10 @@ proto.mlmbox.client.matrix.ProductClient.prototype.previewPurchase =
  * @return {!Promise<!proto.mlmbox.types.Invoice.PreviewResponse>}
  *     Promise that resolves to the response
  */
-proto.mlmbox.client.matrix.ProductPromiseClient.prototype.previewPurchase =
+proto.mlmbox.client.product.ProductPromiseClient.prototype.previewPurchase =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/mlmbox.client.matrix.Product/PreviewPurchase',
+      '/mlmbox.client.product.Product/PreviewPurchase',
       request,
       metadata || {},
       methodDescriptor_Product_PreviewPurchase);
@@ -146,7 +146,7 @@ proto.mlmbox.client.matrix.ProductPromiseClient.prototype.previewPurchase =
  *   !proto.mlmbox.types.Invoice.VerifiedResponse>}
  */
 const methodDescriptor_Product_VerifiedPurchase = new grpc.web.MethodDescriptor(
-  '/mlmbox.client.matrix.Product/VerifiedPurchase',
+  '/mlmbox.client.product.Product/VerifiedPurchase',
   grpc.web.MethodType.UNARY,
   mlmbox_types_product_pb.Invoice.Request,
   mlmbox_types_product_pb.Invoice.VerifiedResponse,
@@ -171,10 +171,10 @@ const methodDescriptor_Product_VerifiedPurchase = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Invoice.VerifiedResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.mlmbox.client.matrix.ProductClient.prototype.verifiedPurchase =
+proto.mlmbox.client.product.ProductClient.prototype.verifiedPurchase =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/mlmbox.client.matrix.Product/VerifiedPurchase',
+      '/mlmbox.client.product.Product/VerifiedPurchase',
       request,
       metadata || {},
       methodDescriptor_Product_VerifiedPurchase,
@@ -190,15 +190,15 @@ proto.mlmbox.client.matrix.ProductClient.prototype.verifiedPurchase =
  * @return {!Promise<!proto.mlmbox.types.Invoice.VerifiedResponse>}
  *     Promise that resolves to the response
  */
-proto.mlmbox.client.matrix.ProductPromiseClient.prototype.verifiedPurchase =
+proto.mlmbox.client.product.ProductPromiseClient.prototype.verifiedPurchase =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/mlmbox.client.matrix.Product/VerifiedPurchase',
+      '/mlmbox.client.product.Product/VerifiedPurchase',
       request,
       metadata || {},
       methodDescriptor_Product_VerifiedPurchase);
 };
 
 
-module.exports = proto.mlmbox.client.matrix;
+module.exports = proto.mlmbox.client.product;
 
