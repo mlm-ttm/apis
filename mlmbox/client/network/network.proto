@@ -28,7 +28,7 @@ message TeamResponse {
   mlmbox.types.Account.Info account = 1;
   repeated mlmbox.types.Account.Info partners = 2;
   repeated mlmbox.types.Account.Info referrals = 3;
-  repeated mlmbox.types.Matrix.TreeAccount.Set account_matrix_tree_accounts = 4;
+  repeated mlmbox.types.TreeAccount.Set account_tree_accounts = 4;
 }
 message TeamPartnerListRequest {
   TeamRequest request = 1;

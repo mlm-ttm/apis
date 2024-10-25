@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package mlmbox.client.binary;
+
+import "google/protobuf/empty.proto";
+import "mlmbox/types/account.proto";
+
+service Binary {
+  rpc Info (google.protobuf.Empty) returns (mlmbox.types.Binary.Info) {}
+  rpc View (mlmbox.types.PositionView.Team) returns (mlmbox.types.Binary.View) {}
+  rpc SetPositionBranchSelectStrategy (mlmbox.types.Binary.BranchSelectStrategy.Request) returns (mlmbox.types.Binary.Position) {}
+}

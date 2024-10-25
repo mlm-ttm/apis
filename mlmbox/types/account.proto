@@ -71,36 +71,89 @@ message Account {
   }
   Info info = 1;
   mlmbox.types.GoogleAuthenticator google_authenticator = 2;
-  repeated mlmbox.types.Matrix.TreeAccount matrix_tree_accounts = 3;
+  repeated mlmbox.types.TreeAccount matrix_tree_accounts = 3;
   string locale = 5; // language identifier (en-US, ...)
   bool is_admin = 6;
 }
 
-message Matrix {
+message Tree {
+  enum Mode {
+    UNKNOWN = 0;
+    MATRIX = 1;
+    BINARY = 2;
+  }
   message Group {
     uint32 id = 1;
     string title = 2;
   }
-  message Tree {
-    enum Mode {
-      UNKNOWN = 0;
-      MATRIX = 1;
-      BINARY = 2;
-    }
-    uint32 id = 1;
-    string title = 2;
-    uint32 group_id = 3;
-    uint32 positions_quantity = 4;
-    uint32 default_position_width = 5;
-    mlmbox.types.Asset.Amount amount = 6;
-    bool booking_enabled = 7;
-    Mode tree_mode_id = 8;
-    repeated uint32 require_tree_ids = 9;
+  uint32 id = 1;
+  string title = 2;
+  uint32 group_id = 3;
+  uint32 positions_quantity = 4;
+  uint32 default_position_width = 5;
+  mlmbox.types.Asset.Amount amount = 6;
+  bool booking_enabled = 7;
+  Mode tree_mode_id = 8;
+  repeated uint32 require_tree_ids = 9;
+}
+
+message TreeAccount {
+  message Id {
+    uint32 tree_id = 1;
+    uint32 account_id = 2;
   }
-  message Position {
-    message Id {
-      uint32 view_position_id = 1;
+  message List {
+    repeated TreeAccount items = 1;
+  }
+  message Entity {
+    uint32 position_id = 1; // Position identifier
+    uint32 tree_chain_id = 2; // Main chain (tree_chain_id==0) or in a separate substructure (tree_chain_id>0)
+    uint32 tree_entity_id = 3; // Sequence number in the "tree"
+    uint32 tree_account_entity_id = 4; // Sequence number in the ("tree" + "account") combination
+    uint32 filled_2w2l_bit_mask = 5;
+    bool filled = 6; // Is the position filled?
+    bool view_access = 7; // Access to the view
+  }
+  message Set {
+    uint32 tree_id = 1;
+    uint32 quantity = 2;
+    uint32 activated_quantity = 3;
+    uint32 activated_capacity = 4;
+    string pool_value = 5;
+    uint32 booking_quantity = 6;
+    Entity entity = 7;
+  }
+  uint32 tree_id = 1;
+  uint32 quantity = 2;
+  uint32 activated_quantity = 3;
+  uint32 activated_capacity = 4;
+  string pool_value = 5;
+  uint32 booking_quantity = 6;
+  repeated Entity entities = 7;
+}
+
+message PositionView {
+  message Id {
+    uint32 view_position_id = 1;
+  }
+  message Team {
+    uint32 view_level = 1;
+    oneof query {
+      uint32 view_position_id = 2;
+      TreeAccount.Id tree_account_id = 3;
     }
+  }
+}
+
+message Matrix {
+  message Reinvest {
+    message Request {
+      uint32 position_id = 1;
+      bool reinvest_enabled = 2;
+    }
+  }
+
+  message Position {
     uint32 position_id = 1; // Position identifier
     uint32 position_ref_id = 2; // Superior position identifier
     uint32 position_ref_line = 3; // Upstream branch identifier
@@ -109,86 +162,77 @@ message Matrix {
     uint32 tree_account_id = 6; // Sequence number in the (tree + account) combination
     bool reinvest_enabled = 7;
   }
-  message TreeAccount {
-    message List {
-      repeated mlmbox.types.Matrix.TreeAccount items = 1;
-    }
-    message Entity {
-      uint32 tree_account_id = 1; // Sequence number in the (tree + account) combination
-      uint32 position_id = 2; // Position identifier
-      bool filled = 3; // Is the position filled?
-      bool view_access = 4; // Access to the view
-    }
-    message Set {
-      uint32 tree_id = 1;
-      Entity entity = 2;
-      int32 filled_2w2l_bit_mask = 3;
-      uint32 booking_quantity = 4; // Number of positions booked
-    }
-    uint32 tree_id = 1;
-    uint32 capacity = 3;
-    string pool_value = 5;
-    uint32 booking_quantity = 2; // Number of positions booked
-    repeated Entity entities = 4;
-  }
   message View {
-    message Request {
-      message ByTreeAccount {
-        uint32 tree_id = 1;
-        uint32 account_id = 2;
-      }
-      uint32 view_level = 1;
-      oneof query {
-        uint32 view_position_id = 2;
-        ByTreeAccount tree_account_id = 3;
-      }
-    }
     uint32 tree_id = 1;
     uint32 self_position_id = 2;
-    uint32 view_position_id = 3;
-    repeated Position positions = 4;
-    repeated mlmbox.types.Account.Info accounts = 5;
-    repeated TreeAccount.Entity view_tree_account_entities = 6;
-    int32 self_matrix_tree_ids_bit_mask = 7;
-    int32 view_matrix_tree_ids_bit_mask = 8;
+    uint32 self_tree_ids_bit_mask = 3;
+    uint32 view_position_id = 4;
+    uint32 view_tree_ids_bit_mask = 5;
+    repeated Position positions = 6;
+    repeated mlmbox.types.Account.Info accounts = 7;
+    repeated mlmbox.types.TreeAccount.Entity view_tree_account_entities = 8;
   }
-  message Invoice {
+  message Info {
+    repeated mlmbox.types.TreeAccount items = 1;
+  }
+}
+
+message Binary {
+  message BranchSelectStrategy {
+    enum Id {
+      UNKNOWN = 0;
+      LEFT = 1;
+      RIGHT = 2;
+      EVENLY = 3;
+    }
     message Request {
-      message Entity {
-        uint32 tree_id = 1;
-        uint32 quantity = 2;
-      }
-      repeated Entity entities = 2;
+      uint32 position_id = 1;
+      Id branch_select_strategy_id = 2;
     }
-    message PreviewResponse {
-      message Item {
-        uint32 tree_id = 1;
-        uint32 asset_id = 2;
-        string price_value = 3;
-        string unlock_value = 4;
-        string amount_value = 5;
-        uint32 quantity = 6;
-      }
-      repeated Item items = 1;
-      repeated mlmbox.types.Asset.Amount bill_amounts = 2;
-    }
-    message VerifiedResponse {
-      message Item {
-        uint32 tree_id = 1;
-        uint32 tree_account_id = 2;
-        uint32 position_id = 3;
-        bool is_booking = 4;
-      }
-      repeated Item items = 1;
-    }
+    Id branch_select_strategy_id = 1;
   }
   message Config {
-    message Reinvest {
-      uint32 position_id = 1;
-      bool reinvest_enabled = 2;
-    }
+    string bonus_binary_percent = 1;
+    string bonus_matching_percent = 2;
+    uint32 tree_entities_quantity = 3;
   }
-  repeated Group groups = 1;
-  repeated Tree trees = 2;
-  repeated TreeAccount tree_accounts = 3;
+  message Position {
+    message Branch {
+      uint32 team_quantity = 1;
+      string balance_value = 2;
+      string turnover_value = 3;
+    }
+    uint32 position_id = 1; // Position identifier
+    uint32 position_ref_id = 2; // Superior position identifier
+    uint32 position_ref_branch = 3; // Upstream branch identifier
+    uint32 position_width = 4; // Number of available branches
+    uint32 account_id = 5; // Account identifier
+    uint32 tree_chain_id = 6; // Main chain (tree_chain_id==0) or in a separate substructure (tree_chain_id>0)
+    uint32 tree_entity_id = 7; // Sequence number in the "tree"
+    uint32 tree_account_entity_id = 8; // Sequence number in the ("tree" + "account") combination
+    uint32 partners_quantity = 9;
+    uint32 team_quantity = 10;
+    string earned_value = 11;
+    uint32 branch_select_strategy = 12;
+    Branch branch_left = 13;
+    Branch branch_right = 14;
+  }
+  message View {
+    uint32 tree_id = 1;
+    Config config = 2;
+    uint32 self_position_id = 3;
+    uint32 self_tree_ids_bit_mask = 4;
+    uint32 view_position_id = 5;
+    uint32 view_tree_ids_bit_mask = 6;
+    repeated Position positions = 7;
+    repeated mlmbox.types.Account.Info accounts = 8;
+    repeated mlmbox.types.TreeAccount.Entity view_tree_account_entities = 9;
+  }
+  message Info {
+    message Item {
+      mlmbox.types.TreeAccount tree_account = 1;
+      Config config = 2;
+    }
+    repeated Item items = 1;
+  }
 }

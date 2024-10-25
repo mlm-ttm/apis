@@ -16,10 +16,10 @@ export class Account extends jspb.Message {
   hasGoogleAuthenticator(): boolean;
   clearGoogleAuthenticator(): Account;
 
-  getMatrixTreeAccountsList(): Array<Matrix.TreeAccount>;
-  setMatrixTreeAccountsList(value: Array<Matrix.TreeAccount>): Account;
+  getMatrixTreeAccountsList(): Array<TreeAccount>;
+  setMatrixTreeAccountsList(value: Array<TreeAccount>): Account;
   clearMatrixTreeAccountsList(): Account;
-  addMatrixTreeAccounts(value?: Matrix.TreeAccount, index?: number): Matrix.TreeAccount;
+  addMatrixTreeAccounts(value?: TreeAccount, index?: number): TreeAccount;
 
   getLocale(): string;
   setLocale(value: string): Account;
@@ -39,7 +39,7 @@ export namespace Account {
   export type AsObject = {
     info?: Account.Info.AsObject,
     googleAuthenticator?: mlmbox_types_google_authenticator_pb.GoogleAuthenticator.AsObject,
-    matrixTreeAccountsList: Array<Matrix.TreeAccount.AsObject>,
+    matrixTreeAccountsList: Array<TreeAccount.AsObject>,
     locale: string,
     isAdmin: boolean,
   }
@@ -400,35 +400,57 @@ export namespace Account {
 
 }
 
-export class Matrix extends jspb.Message {
-  getGroupsList(): Array<Matrix.Group>;
-  setGroupsList(value: Array<Matrix.Group>): Matrix;
-  clearGroupsList(): Matrix;
-  addGroups(value?: Matrix.Group, index?: number): Matrix.Group;
+export class Tree extends jspb.Message {
+  getId(): number;
+  setId(value: number): Tree;
 
-  getTreesList(): Array<Matrix.Tree>;
-  setTreesList(value: Array<Matrix.Tree>): Matrix;
-  clearTreesList(): Matrix;
-  addTrees(value?: Matrix.Tree, index?: number): Matrix.Tree;
+  getTitle(): string;
+  setTitle(value: string): Tree;
 
-  getTreeAccountsList(): Array<Matrix.TreeAccount>;
-  setTreeAccountsList(value: Array<Matrix.TreeAccount>): Matrix;
-  clearTreeAccountsList(): Matrix;
-  addTreeAccounts(value?: Matrix.TreeAccount, index?: number): Matrix.TreeAccount;
+  getGroupId(): number;
+  setGroupId(value: number): Tree;
+
+  getPositionsQuantity(): number;
+  setPositionsQuantity(value: number): Tree;
+
+  getDefaultPositionWidth(): number;
+  setDefaultPositionWidth(value: number): Tree;
+
+  getAmount(): mlmbox_types_asset_pb.Asset.Amount | undefined;
+  setAmount(value?: mlmbox_types_asset_pb.Asset.Amount): Tree;
+  hasAmount(): boolean;
+  clearAmount(): Tree;
+
+  getBookingEnabled(): boolean;
+  setBookingEnabled(value: boolean): Tree;
+
+  getTreeModeId(): Tree.Mode;
+  setTreeModeId(value: Tree.Mode): Tree;
+
+  getRequireTreeIdsList(): Array<number>;
+  setRequireTreeIdsList(value: Array<number>): Tree;
+  clearRequireTreeIdsList(): Tree;
+  addRequireTreeIds(value: number, index?: number): Tree;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Matrix.AsObject;
-  static toObject(includeInstance: boolean, msg: Matrix): Matrix.AsObject;
-  static serializeBinaryToWriter(message: Matrix, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Matrix;
-  static deserializeBinaryFromReader(message: Matrix, reader: jspb.BinaryReader): Matrix;
+  toObject(includeInstance?: boolean): Tree.AsObject;
+  static toObject(includeInstance: boolean, msg: Tree): Tree.AsObject;
+  static serializeBinaryToWriter(message: Tree, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Tree;
+  static deserializeBinaryFromReader(message: Tree, reader: jspb.BinaryReader): Tree;
 }
 
-export namespace Matrix {
+export namespace Tree {
   export type AsObject = {
-    groupsList: Array<Matrix.Group.AsObject>,
-    treesList: Array<Matrix.Tree.AsObject>,
-    treeAccountsList: Array<Matrix.TreeAccount.AsObject>,
+    id: number,
+    title: string,
+    groupId: number,
+    positionsQuantity: number,
+    defaultPositionWidth: number,
+    amount?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
+    bookingEnabled: boolean,
+    treeModeId: Tree.Mode,
+    requireTreeIdsList: Array<number>,
   }
 
   export class Group extends jspb.Message {
@@ -454,64 +476,307 @@ export namespace Matrix {
   }
 
 
-  export class Tree extends jspb.Message {
-    getId(): number;
-    setId(value: number): Tree;
+  export enum Mode { 
+    UNKNOWN = 0,
+    MATRIX = 1,
+    BINARY = 2,
+  }
+}
 
-    getTitle(): string;
-    setTitle(value: string): Tree;
+export class TreeAccount extends jspb.Message {
+  getTreeId(): number;
+  setTreeId(value: number): TreeAccount;
 
-    getGroupId(): number;
-    setGroupId(value: number): Tree;
+  getQuantity(): number;
+  setQuantity(value: number): TreeAccount;
 
-    getPositionsQuantity(): number;
-    setPositionsQuantity(value: number): Tree;
+  getActivatedQuantity(): number;
+  setActivatedQuantity(value: number): TreeAccount;
 
-    getDefaultPositionWidth(): number;
-    setDefaultPositionWidth(value: number): Tree;
+  getActivatedCapacity(): number;
+  setActivatedCapacity(value: number): TreeAccount;
 
-    getAmount(): mlmbox_types_asset_pb.Asset.Amount | undefined;
-    setAmount(value?: mlmbox_types_asset_pb.Asset.Amount): Tree;
-    hasAmount(): boolean;
-    clearAmount(): Tree;
+  getPoolValue(): string;
+  setPoolValue(value: string): TreeAccount;
 
-    getBookingEnabled(): boolean;
-    setBookingEnabled(value: boolean): Tree;
+  getBookingQuantity(): number;
+  setBookingQuantity(value: number): TreeAccount;
 
-    getTreeModeId(): Matrix.Tree.Mode;
-    setTreeModeId(value: Matrix.Tree.Mode): Tree;
+  getEntitiesList(): Array<TreeAccount.Entity>;
+  setEntitiesList(value: Array<TreeAccount.Entity>): TreeAccount;
+  clearEntitiesList(): TreeAccount;
+  addEntities(value?: TreeAccount.Entity, index?: number): TreeAccount.Entity;
 
-    getRequireTreeIdsList(): Array<number>;
-    setRequireTreeIdsList(value: Array<number>): Tree;
-    clearRequireTreeIdsList(): Tree;
-    addRequireTreeIds(value: number, index?: number): Tree;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TreeAccount.AsObject;
+  static toObject(includeInstance: boolean, msg: TreeAccount): TreeAccount.AsObject;
+  static serializeBinaryToWriter(message: TreeAccount, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TreeAccount;
+  static deserializeBinaryFromReader(message: TreeAccount, reader: jspb.BinaryReader): TreeAccount;
+}
 
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Tree.AsObject;
-    static toObject(includeInstance: boolean, msg: Tree): Tree.AsObject;
-    static serializeBinaryToWriter(message: Tree, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Tree;
-    static deserializeBinaryFromReader(message: Tree, reader: jspb.BinaryReader): Tree;
+export namespace TreeAccount {
+  export type AsObject = {
+    treeId: number,
+    quantity: number,
+    activatedQuantity: number,
+    activatedCapacity: number,
+    poolValue: string,
+    bookingQuantity: number,
+    entitiesList: Array<TreeAccount.Entity.AsObject>,
   }
 
-  export namespace Tree {
+  export class Id extends jspb.Message {
+    getTreeId(): number;
+    setTreeId(value: number): Id;
+
+    getAccountId(): number;
+    setAccountId(value: number): Id;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Id.AsObject;
+    static toObject(includeInstance: boolean, msg: Id): Id.AsObject;
+    static serializeBinaryToWriter(message: Id, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Id;
+    static deserializeBinaryFromReader(message: Id, reader: jspb.BinaryReader): Id;
+  }
+
+  export namespace Id {
     export type AsObject = {
-      id: number,
-      title: string,
-      groupId: number,
-      positionsQuantity: number,
-      defaultPositionWidth: number,
-      amount?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
-      bookingEnabled: boolean,
-      treeModeId: Matrix.Tree.Mode,
-      requireTreeIdsList: Array<number>,
+      treeId: number,
+      accountId: number,
+    }
+  }
+
+
+  export class List extends jspb.Message {
+    getItemsList(): Array<TreeAccount>;
+    setItemsList(value: Array<TreeAccount>): List;
+    clearItemsList(): List;
+    addItems(value?: TreeAccount, index?: number): TreeAccount;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): List.AsObject;
+    static toObject(includeInstance: boolean, msg: List): List.AsObject;
+    static serializeBinaryToWriter(message: List, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): List;
+    static deserializeBinaryFromReader(message: List, reader: jspb.BinaryReader): List;
+  }
+
+  export namespace List {
+    export type AsObject = {
+      itemsList: Array<TreeAccount.AsObject>,
+    }
+  }
+
+
+  export class Entity extends jspb.Message {
+    getPositionId(): number;
+    setPositionId(value: number): Entity;
+
+    getTreeChainId(): number;
+    setTreeChainId(value: number): Entity;
+
+    getTreeEntityId(): number;
+    setTreeEntityId(value: number): Entity;
+
+    getTreeAccountEntityId(): number;
+    setTreeAccountEntityId(value: number): Entity;
+
+    getFilled2w2lBitMask(): number;
+    setFilled2w2lBitMask(value: number): Entity;
+
+    getFilled(): boolean;
+    setFilled(value: boolean): Entity;
+
+    getViewAccess(): boolean;
+    setViewAccess(value: boolean): Entity;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Entity.AsObject;
+    static toObject(includeInstance: boolean, msg: Entity): Entity.AsObject;
+    static serializeBinaryToWriter(message: Entity, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Entity;
+    static deserializeBinaryFromReader(message: Entity, reader: jspb.BinaryReader): Entity;
+  }
+
+  export namespace Entity {
+    export type AsObject = {
+      positionId: number,
+      treeChainId: number,
+      treeEntityId: number,
+      treeAccountEntityId: number,
+      filled2w2lBitMask: number,
+      filled: boolean,
+      viewAccess: boolean,
+    }
+  }
+
+
+  export class Set extends jspb.Message {
+    getTreeId(): number;
+    setTreeId(value: number): Set;
+
+    getQuantity(): number;
+    setQuantity(value: number): Set;
+
+    getActivatedQuantity(): number;
+    setActivatedQuantity(value: number): Set;
+
+    getActivatedCapacity(): number;
+    setActivatedCapacity(value: number): Set;
+
+    getPoolValue(): string;
+    setPoolValue(value: string): Set;
+
+    getBookingQuantity(): number;
+    setBookingQuantity(value: number): Set;
+
+    getEntity(): TreeAccount.Entity | undefined;
+    setEntity(value?: TreeAccount.Entity): Set;
+    hasEntity(): boolean;
+    clearEntity(): Set;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Set.AsObject;
+    static toObject(includeInstance: boolean, msg: Set): Set.AsObject;
+    static serializeBinaryToWriter(message: Set, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Set;
+    static deserializeBinaryFromReader(message: Set, reader: jspb.BinaryReader): Set;
+  }
+
+  export namespace Set {
+    export type AsObject = {
+      treeId: number,
+      quantity: number,
+      activatedQuantity: number,
+      activatedCapacity: number,
+      poolValue: string,
+      bookingQuantity: number,
+      entity?: TreeAccount.Entity.AsObject,
+    }
+  }
+
+}
+
+export class PositionView extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PositionView.AsObject;
+  static toObject(includeInstance: boolean, msg: PositionView): PositionView.AsObject;
+  static serializeBinaryToWriter(message: PositionView, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PositionView;
+  static deserializeBinaryFromReader(message: PositionView, reader: jspb.BinaryReader): PositionView;
+}
+
+export namespace PositionView {
+  export type AsObject = {
+  }
+
+  export class Id extends jspb.Message {
+    getViewPositionId(): number;
+    setViewPositionId(value: number): Id;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Id.AsObject;
+    static toObject(includeInstance: boolean, msg: Id): Id.AsObject;
+    static serializeBinaryToWriter(message: Id, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Id;
+    static deserializeBinaryFromReader(message: Id, reader: jspb.BinaryReader): Id;
+  }
+
+  export namespace Id {
+    export type AsObject = {
+      viewPositionId: number,
+    }
+  }
+
+
+  export class Team extends jspb.Message {
+    getViewLevel(): number;
+    setViewLevel(value: number): Team;
+
+    getViewPositionId(): number;
+    setViewPositionId(value: number): Team;
+
+    getTreeAccountId(): TreeAccount.Id | undefined;
+    setTreeAccountId(value?: TreeAccount.Id): Team;
+    hasTreeAccountId(): boolean;
+    clearTreeAccountId(): Team;
+
+    getQueryCase(): Team.QueryCase;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Team.AsObject;
+    static toObject(includeInstance: boolean, msg: Team): Team.AsObject;
+    static serializeBinaryToWriter(message: Team, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Team;
+    static deserializeBinaryFromReader(message: Team, reader: jspb.BinaryReader): Team;
+  }
+
+  export namespace Team {
+    export type AsObject = {
+      viewLevel: number,
+      viewPositionId: number,
+      treeAccountId?: TreeAccount.Id.AsObject,
     }
 
-    export enum Mode { 
-      UNKNOWN = 0,
-      MATRIX = 1,
-      BINARY = 2,
+    export enum QueryCase { 
+      QUERY_NOT_SET = 0,
+      VIEW_POSITION_ID = 2,
+      TREE_ACCOUNT_ID = 3,
     }
+  }
+
+}
+
+export class Matrix extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Matrix.AsObject;
+  static toObject(includeInstance: boolean, msg: Matrix): Matrix.AsObject;
+  static serializeBinaryToWriter(message: Matrix, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Matrix;
+  static deserializeBinaryFromReader(message: Matrix, reader: jspb.BinaryReader): Matrix;
+}
+
+export namespace Matrix {
+  export type AsObject = {
+  }
+
+  export class Reinvest extends jspb.Message {
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Reinvest.AsObject;
+    static toObject(includeInstance: boolean, msg: Reinvest): Reinvest.AsObject;
+    static serializeBinaryToWriter(message: Reinvest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Reinvest;
+    static deserializeBinaryFromReader(message: Reinvest, reader: jspb.BinaryReader): Reinvest;
+  }
+
+  export namespace Reinvest {
+    export type AsObject = {
+    }
+
+    export class Request extends jspb.Message {
+      getPositionId(): number;
+      setPositionId(value: number): Request;
+
+      getReinvestEnabled(): boolean;
+      setReinvestEnabled(value: boolean): Request;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Request.AsObject;
+      static toObject(includeInstance: boolean, msg: Request): Request.AsObject;
+      static serializeBinaryToWriter(message: Request, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Request;
+      static deserializeBinaryFromReader(message: Request, reader: jspb.BinaryReader): Request;
+    }
+
+    export namespace Request {
+      export type AsObject = {
+        positionId: number,
+        reinvestEnabled: boolean,
+      }
+    }
+
   }
 
 
@@ -555,147 +820,6 @@ export namespace Matrix {
       treeAccountId: number,
       reinvestEnabled: boolean,
     }
-
-    export class Id extends jspb.Message {
-      getViewPositionId(): number;
-      setViewPositionId(value: number): Id;
-
-      serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): Id.AsObject;
-      static toObject(includeInstance: boolean, msg: Id): Id.AsObject;
-      static serializeBinaryToWriter(message: Id, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): Id;
-      static deserializeBinaryFromReader(message: Id, reader: jspb.BinaryReader): Id;
-    }
-
-    export namespace Id {
-      export type AsObject = {
-        viewPositionId: number,
-      }
-    }
-
-  }
-
-
-  export class TreeAccount extends jspb.Message {
-    getTreeId(): number;
-    setTreeId(value: number): TreeAccount;
-
-    getCapacity(): number;
-    setCapacity(value: number): TreeAccount;
-
-    getPoolValue(): string;
-    setPoolValue(value: string): TreeAccount;
-
-    getBookingQuantity(): number;
-    setBookingQuantity(value: number): TreeAccount;
-
-    getEntitiesList(): Array<Matrix.TreeAccount.Entity>;
-    setEntitiesList(value: Array<Matrix.TreeAccount.Entity>): TreeAccount;
-    clearEntitiesList(): TreeAccount;
-    addEntities(value?: Matrix.TreeAccount.Entity, index?: number): Matrix.TreeAccount.Entity;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): TreeAccount.AsObject;
-    static toObject(includeInstance: boolean, msg: TreeAccount): TreeAccount.AsObject;
-    static serializeBinaryToWriter(message: TreeAccount, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): TreeAccount;
-    static deserializeBinaryFromReader(message: TreeAccount, reader: jspb.BinaryReader): TreeAccount;
-  }
-
-  export namespace TreeAccount {
-    export type AsObject = {
-      treeId: number,
-      capacity: number,
-      poolValue: string,
-      bookingQuantity: number,
-      entitiesList: Array<Matrix.TreeAccount.Entity.AsObject>,
-    }
-
-    export class List extends jspb.Message {
-      getItemsList(): Array<Matrix.TreeAccount>;
-      setItemsList(value: Array<Matrix.TreeAccount>): List;
-      clearItemsList(): List;
-      addItems(value?: Matrix.TreeAccount, index?: number): Matrix.TreeAccount;
-
-      serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): List.AsObject;
-      static toObject(includeInstance: boolean, msg: List): List.AsObject;
-      static serializeBinaryToWriter(message: List, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): List;
-      static deserializeBinaryFromReader(message: List, reader: jspb.BinaryReader): List;
-    }
-
-    export namespace List {
-      export type AsObject = {
-        itemsList: Array<Matrix.TreeAccount.AsObject>,
-      }
-    }
-
-
-    export class Entity extends jspb.Message {
-      getTreeAccountId(): number;
-      setTreeAccountId(value: number): Entity;
-
-      getPositionId(): number;
-      setPositionId(value: number): Entity;
-
-      getFilled(): boolean;
-      setFilled(value: boolean): Entity;
-
-      getViewAccess(): boolean;
-      setViewAccess(value: boolean): Entity;
-
-      serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): Entity.AsObject;
-      static toObject(includeInstance: boolean, msg: Entity): Entity.AsObject;
-      static serializeBinaryToWriter(message: Entity, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): Entity;
-      static deserializeBinaryFromReader(message: Entity, reader: jspb.BinaryReader): Entity;
-    }
-
-    export namespace Entity {
-      export type AsObject = {
-        treeAccountId: number,
-        positionId: number,
-        filled: boolean,
-        viewAccess: boolean,
-      }
-    }
-
-
-    export class Set extends jspb.Message {
-      getTreeId(): number;
-      setTreeId(value: number): Set;
-
-      getEntity(): Matrix.TreeAccount.Entity | undefined;
-      setEntity(value?: Matrix.TreeAccount.Entity): Set;
-      hasEntity(): boolean;
-      clearEntity(): Set;
-
-      getFilled2w2lBitMask(): number;
-      setFilled2w2lBitMask(value: number): Set;
-
-      getBookingQuantity(): number;
-      setBookingQuantity(value: number): Set;
-
-      serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): Set.AsObject;
-      static toObject(includeInstance: boolean, msg: Set): Set.AsObject;
-      static serializeBinaryToWriter(message: Set, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): Set;
-      static deserializeBinaryFromReader(message: Set, reader: jspb.BinaryReader): Set;
-    }
-
-    export namespace Set {
-      export type AsObject = {
-        treeId: number,
-        entity?: Matrix.TreeAccount.Entity.AsObject,
-        filled2w2lBitMask: number,
-        bookingQuantity: number,
-      }
-    }
-
   }
 
 
@@ -706,8 +830,14 @@ export namespace Matrix {
     getSelfPositionId(): number;
     setSelfPositionId(value: number): View;
 
+    getSelfTreeIdsBitMask(): number;
+    setSelfTreeIdsBitMask(value: number): View;
+
     getViewPositionId(): number;
     setViewPositionId(value: number): View;
+
+    getViewTreeIdsBitMask(): number;
+    setViewTreeIdsBitMask(value: number): View;
 
     getPositionsList(): Array<Matrix.Position>;
     setPositionsList(value: Array<Matrix.Position>): View;
@@ -719,16 +849,10 @@ export namespace Matrix {
     clearAccountsList(): View;
     addAccounts(value?: Account.Info, index?: number): Account.Info;
 
-    getViewTreeAccountEntitiesList(): Array<Matrix.TreeAccount.Entity>;
-    setViewTreeAccountEntitiesList(value: Array<Matrix.TreeAccount.Entity>): View;
+    getViewTreeAccountEntitiesList(): Array<TreeAccount.Entity>;
+    setViewTreeAccountEntitiesList(value: Array<TreeAccount.Entity>): View;
     clearViewTreeAccountEntitiesList(): View;
-    addViewTreeAccountEntities(value?: Matrix.TreeAccount.Entity, index?: number): Matrix.TreeAccount.Entity;
-
-    getSelfMatrixTreeIdsBitMask(): number;
-    setSelfMatrixTreeIdsBitMask(value: number): View;
-
-    getViewMatrixTreeIdsBitMask(): number;
-    setViewMatrixTreeIdsBitMask(value: number): View;
+    addViewTreeAccountEntities(value?: TreeAccount.Entity, index?: number): TreeAccount.Entity;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): View.AsObject;
@@ -742,94 +866,74 @@ export namespace Matrix {
     export type AsObject = {
       treeId: number,
       selfPositionId: number,
+      selfTreeIdsBitMask: number,
       viewPositionId: number,
+      viewTreeIdsBitMask: number,
       positionsList: Array<Matrix.Position.AsObject>,
       accountsList: Array<Account.Info.AsObject>,
-      viewTreeAccountEntitiesList: Array<Matrix.TreeAccount.Entity.AsObject>,
-      selfMatrixTreeIdsBitMask: number,
-      viewMatrixTreeIdsBitMask: number,
+      viewTreeAccountEntitiesList: Array<TreeAccount.Entity.AsObject>,
     }
-
-    export class Request extends jspb.Message {
-      getViewLevel(): number;
-      setViewLevel(value: number): Request;
-
-      getViewPositionId(): number;
-      setViewPositionId(value: number): Request;
-
-      getTreeAccountId(): Matrix.View.Request.ByTreeAccount | undefined;
-      setTreeAccountId(value?: Matrix.View.Request.ByTreeAccount): Request;
-      hasTreeAccountId(): boolean;
-      clearTreeAccountId(): Request;
-
-      getQueryCase(): Request.QueryCase;
-
-      serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): Request.AsObject;
-      static toObject(includeInstance: boolean, msg: Request): Request.AsObject;
-      static serializeBinaryToWriter(message: Request, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): Request;
-      static deserializeBinaryFromReader(message: Request, reader: jspb.BinaryReader): Request;
-    }
-
-    export namespace Request {
-      export type AsObject = {
-        viewLevel: number,
-        viewPositionId: number,
-        treeAccountId?: Matrix.View.Request.ByTreeAccount.AsObject,
-      }
-
-      export class ByTreeAccount extends jspb.Message {
-        getTreeId(): number;
-        setTreeId(value: number): ByTreeAccount;
-
-        getAccountId(): number;
-        setAccountId(value: number): ByTreeAccount;
-
-        serializeBinary(): Uint8Array;
-        toObject(includeInstance?: boolean): ByTreeAccount.AsObject;
-        static toObject(includeInstance: boolean, msg: ByTreeAccount): ByTreeAccount.AsObject;
-        static serializeBinaryToWriter(message: ByTreeAccount, writer: jspb.BinaryWriter): void;
-        static deserializeBinary(bytes: Uint8Array): ByTreeAccount;
-        static deserializeBinaryFromReader(message: ByTreeAccount, reader: jspb.BinaryReader): ByTreeAccount;
-      }
-
-      export namespace ByTreeAccount {
-        export type AsObject = {
-          treeId: number,
-          accountId: number,
-        }
-      }
-
-
-      export enum QueryCase { 
-        QUERY_NOT_SET = 0,
-        VIEW_POSITION_ID = 2,
-        TREE_ACCOUNT_ID = 3,
-      }
-    }
-
   }
 
 
-  export class Invoice extends jspb.Message {
+  export class Info extends jspb.Message {
+    getItemsList(): Array<TreeAccount>;
+    setItemsList(value: Array<TreeAccount>): Info;
+    clearItemsList(): Info;
+    addItems(value?: TreeAccount, index?: number): TreeAccount;
+
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Invoice.AsObject;
-    static toObject(includeInstance: boolean, msg: Invoice): Invoice.AsObject;
-    static serializeBinaryToWriter(message: Invoice, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Invoice;
-    static deserializeBinaryFromReader(message: Invoice, reader: jspb.BinaryReader): Invoice;
+    toObject(includeInstance?: boolean): Info.AsObject;
+    static toObject(includeInstance: boolean, msg: Info): Info.AsObject;
+    static serializeBinaryToWriter(message: Info, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Info;
+    static deserializeBinaryFromReader(message: Info, reader: jspb.BinaryReader): Info;
   }
 
-  export namespace Invoice {
+  export namespace Info {
     export type AsObject = {
+      itemsList: Array<TreeAccount.AsObject>,
+    }
+  }
+
+}
+
+export class Binary extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Binary.AsObject;
+  static toObject(includeInstance: boolean, msg: Binary): Binary.AsObject;
+  static serializeBinaryToWriter(message: Binary, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Binary;
+  static deserializeBinaryFromReader(message: Binary, reader: jspb.BinaryReader): Binary;
+}
+
+export namespace Binary {
+  export type AsObject = {
+  }
+
+  export class BranchSelectStrategy extends jspb.Message {
+    getBranchSelectStrategyId(): Binary.BranchSelectStrategy.Id;
+    setBranchSelectStrategyId(value: Binary.BranchSelectStrategy.Id): BranchSelectStrategy;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): BranchSelectStrategy.AsObject;
+    static toObject(includeInstance: boolean, msg: BranchSelectStrategy): BranchSelectStrategy.AsObject;
+    static serializeBinaryToWriter(message: BranchSelectStrategy, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BranchSelectStrategy;
+    static deserializeBinaryFromReader(message: BranchSelectStrategy, reader: jspb.BinaryReader): BranchSelectStrategy;
+  }
+
+  export namespace BranchSelectStrategy {
+    export type AsObject = {
+      branchSelectStrategyId: Binary.BranchSelectStrategy.Id,
     }
 
     export class Request extends jspb.Message {
-      getEntitiesList(): Array<Matrix.Invoice.Request.Entity>;
-      setEntitiesList(value: Array<Matrix.Invoice.Request.Entity>): Request;
-      clearEntitiesList(): Request;
-      addEntities(value?: Matrix.Invoice.Request.Entity, index?: number): Matrix.Invoice.Request.Entity;
+      getPositionId(): number;
+      setPositionId(value: number): Request;
+
+      getBranchSelectStrategyId(): Binary.BranchSelectStrategy.Id;
+      setBranchSelectStrategyId(value: Binary.BranchSelectStrategy.Id): Request;
 
       serializeBinary(): Uint8Array;
       toObject(includeInstance?: boolean): Request.AsObject;
@@ -841,155 +945,31 @@ export namespace Matrix {
 
     export namespace Request {
       export type AsObject = {
-        entitiesList: Array<Matrix.Invoice.Request.Entity.AsObject>,
+        positionId: number,
+        branchSelectStrategyId: Binary.BranchSelectStrategy.Id,
       }
-
-      export class Entity extends jspb.Message {
-        getTreeId(): number;
-        setTreeId(value: number): Entity;
-
-        getQuantity(): number;
-        setQuantity(value: number): Entity;
-
-        serializeBinary(): Uint8Array;
-        toObject(includeInstance?: boolean): Entity.AsObject;
-        static toObject(includeInstance: boolean, msg: Entity): Entity.AsObject;
-        static serializeBinaryToWriter(message: Entity, writer: jspb.BinaryWriter): void;
-        static deserializeBinary(bytes: Uint8Array): Entity;
-        static deserializeBinaryFromReader(message: Entity, reader: jspb.BinaryReader): Entity;
-      }
-
-      export namespace Entity {
-        export type AsObject = {
-          treeId: number,
-          quantity: number,
-        }
-      }
-
     }
 
 
-    export class PreviewResponse extends jspb.Message {
-      getItemsList(): Array<Matrix.Invoice.PreviewResponse.Item>;
-      setItemsList(value: Array<Matrix.Invoice.PreviewResponse.Item>): PreviewResponse;
-      clearItemsList(): PreviewResponse;
-      addItems(value?: Matrix.Invoice.PreviewResponse.Item, index?: number): Matrix.Invoice.PreviewResponse.Item;
-
-      getBillAmountsList(): Array<mlmbox_types_asset_pb.Asset.Amount>;
-      setBillAmountsList(value: Array<mlmbox_types_asset_pb.Asset.Amount>): PreviewResponse;
-      clearBillAmountsList(): PreviewResponse;
-      addBillAmounts(value?: mlmbox_types_asset_pb.Asset.Amount, index?: number): mlmbox_types_asset_pb.Asset.Amount;
-
-      serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): PreviewResponse.AsObject;
-      static toObject(includeInstance: boolean, msg: PreviewResponse): PreviewResponse.AsObject;
-      static serializeBinaryToWriter(message: PreviewResponse, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): PreviewResponse;
-      static deserializeBinaryFromReader(message: PreviewResponse, reader: jspb.BinaryReader): PreviewResponse;
+    export enum Id { 
+      UNKNOWN = 0,
+      LEFT = 1,
+      RIGHT = 2,
+      EVENLY = 3,
     }
-
-    export namespace PreviewResponse {
-      export type AsObject = {
-        itemsList: Array<Matrix.Invoice.PreviewResponse.Item.AsObject>,
-        billAmountsList: Array<mlmbox_types_asset_pb.Asset.Amount.AsObject>,
-      }
-
-      export class Item extends jspb.Message {
-        getTreeId(): number;
-        setTreeId(value: number): Item;
-
-        getAssetId(): number;
-        setAssetId(value: number): Item;
-
-        getPriceValue(): string;
-        setPriceValue(value: string): Item;
-
-        getUnlockValue(): string;
-        setUnlockValue(value: string): Item;
-
-        getAmountValue(): string;
-        setAmountValue(value: string): Item;
-
-        getQuantity(): number;
-        setQuantity(value: number): Item;
-
-        serializeBinary(): Uint8Array;
-        toObject(includeInstance?: boolean): Item.AsObject;
-        static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-        static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-        static deserializeBinary(bytes: Uint8Array): Item;
-        static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-      }
-
-      export namespace Item {
-        export type AsObject = {
-          treeId: number,
-          assetId: number,
-          priceValue: string,
-          unlockValue: string,
-          amountValue: string,
-          quantity: number,
-        }
-      }
-
-    }
-
-
-    export class VerifiedResponse extends jspb.Message {
-      getItemsList(): Array<Matrix.Invoice.VerifiedResponse.Item>;
-      setItemsList(value: Array<Matrix.Invoice.VerifiedResponse.Item>): VerifiedResponse;
-      clearItemsList(): VerifiedResponse;
-      addItems(value?: Matrix.Invoice.VerifiedResponse.Item, index?: number): Matrix.Invoice.VerifiedResponse.Item;
-
-      serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): VerifiedResponse.AsObject;
-      static toObject(includeInstance: boolean, msg: VerifiedResponse): VerifiedResponse.AsObject;
-      static serializeBinaryToWriter(message: VerifiedResponse, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): VerifiedResponse;
-      static deserializeBinaryFromReader(message: VerifiedResponse, reader: jspb.BinaryReader): VerifiedResponse;
-    }
-
-    export namespace VerifiedResponse {
-      export type AsObject = {
-        itemsList: Array<Matrix.Invoice.VerifiedResponse.Item.AsObject>,
-      }
-
-      export class Item extends jspb.Message {
-        getTreeId(): number;
-        setTreeId(value: number): Item;
-
-        getTreeAccountId(): number;
-        setTreeAccountId(value: number): Item;
-
-        getPositionId(): number;
-        setPositionId(value: number): Item;
-
-        getIsBooking(): boolean;
-        setIsBooking(value: boolean): Item;
-
-        serializeBinary(): Uint8Array;
-        toObject(includeInstance?: boolean): Item.AsObject;
-        static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-        static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-        static deserializeBinary(bytes: Uint8Array): Item;
-        static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-      }
-
-      export namespace Item {
-        export type AsObject = {
-          treeId: number,
-          treeAccountId: number,
-          positionId: number,
-          isBooking: boolean,
-        }
-      }
-
-    }
-
   }
 
 
   export class Config extends jspb.Message {
+    getBonusBinaryPercent(): string;
+    setBonusBinaryPercent(value: string): Config;
+
+    getBonusMatchingPercent(): string;
+    setBonusMatchingPercent(value: string): Config;
+
+    getTreeEntitiesQuantity(): number;
+    setTreeEntitiesQuantity(value: number): Config;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Config.AsObject;
     static toObject(includeInstance: boolean, msg: Config): Config.AsObject;
@@ -1000,27 +980,216 @@ export namespace Matrix {
 
   export namespace Config {
     export type AsObject = {
+      bonusBinaryPercent: string,
+      bonusMatchingPercent: string,
+      treeEntitiesQuantity: number,
+    }
+  }
+
+
+  export class Position extends jspb.Message {
+    getPositionId(): number;
+    setPositionId(value: number): Position;
+
+    getPositionRefId(): number;
+    setPositionRefId(value: number): Position;
+
+    getPositionRefBranch(): number;
+    setPositionRefBranch(value: number): Position;
+
+    getPositionWidth(): number;
+    setPositionWidth(value: number): Position;
+
+    getAccountId(): number;
+    setAccountId(value: number): Position;
+
+    getTreeChainId(): number;
+    setTreeChainId(value: number): Position;
+
+    getTreeEntityId(): number;
+    setTreeEntityId(value: number): Position;
+
+    getTreeAccountEntityId(): number;
+    setTreeAccountEntityId(value: number): Position;
+
+    getPartnersQuantity(): number;
+    setPartnersQuantity(value: number): Position;
+
+    getTeamQuantity(): number;
+    setTeamQuantity(value: number): Position;
+
+    getEarnedValue(): string;
+    setEarnedValue(value: string): Position;
+
+    getBranchSelectStrategy(): number;
+    setBranchSelectStrategy(value: number): Position;
+
+    getBranchLeft(): Binary.Position.Branch | undefined;
+    setBranchLeft(value?: Binary.Position.Branch): Position;
+    hasBranchLeft(): boolean;
+    clearBranchLeft(): Position;
+
+    getBranchRight(): Binary.Position.Branch | undefined;
+    setBranchRight(value?: Binary.Position.Branch): Position;
+    hasBranchRight(): boolean;
+    clearBranchRight(): Position;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Position.AsObject;
+    static toObject(includeInstance: boolean, msg: Position): Position.AsObject;
+    static serializeBinaryToWriter(message: Position, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Position;
+    static deserializeBinaryFromReader(message: Position, reader: jspb.BinaryReader): Position;
+  }
+
+  export namespace Position {
+    export type AsObject = {
+      positionId: number,
+      positionRefId: number,
+      positionRefBranch: number,
+      positionWidth: number,
+      accountId: number,
+      treeChainId: number,
+      treeEntityId: number,
+      treeAccountEntityId: number,
+      partnersQuantity: number,
+      teamQuantity: number,
+      earnedValue: string,
+      branchSelectStrategy: number,
+      branchLeft?: Binary.Position.Branch.AsObject,
+      branchRight?: Binary.Position.Branch.AsObject,
     }
 
-    export class Reinvest extends jspb.Message {
-      getPositionId(): number;
-      setPositionId(value: number): Reinvest;
+    export class Branch extends jspb.Message {
+      getTeamQuantity(): number;
+      setTeamQuantity(value: number): Branch;
 
-      getReinvestEnabled(): boolean;
-      setReinvestEnabled(value: boolean): Reinvest;
+      getBalanceValue(): string;
+      setBalanceValue(value: string): Branch;
+
+      getTurnoverValue(): string;
+      setTurnoverValue(value: string): Branch;
 
       serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): Reinvest.AsObject;
-      static toObject(includeInstance: boolean, msg: Reinvest): Reinvest.AsObject;
-      static serializeBinaryToWriter(message: Reinvest, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): Reinvest;
-      static deserializeBinaryFromReader(message: Reinvest, reader: jspb.BinaryReader): Reinvest;
+      toObject(includeInstance?: boolean): Branch.AsObject;
+      static toObject(includeInstance: boolean, msg: Branch): Branch.AsObject;
+      static serializeBinaryToWriter(message: Branch, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Branch;
+      static deserializeBinaryFromReader(message: Branch, reader: jspb.BinaryReader): Branch;
     }
 
-    export namespace Reinvest {
+    export namespace Branch {
       export type AsObject = {
-        positionId: number,
-        reinvestEnabled: boolean,
+        teamQuantity: number,
+        balanceValue: string,
+        turnoverValue: string,
+      }
+    }
+
+  }
+
+
+  export class View extends jspb.Message {
+    getTreeId(): number;
+    setTreeId(value: number): View;
+
+    getConfig(): Binary.Config | undefined;
+    setConfig(value?: Binary.Config): View;
+    hasConfig(): boolean;
+    clearConfig(): View;
+
+    getSelfPositionId(): number;
+    setSelfPositionId(value: number): View;
+
+    getSelfTreeIdsBitMask(): number;
+    setSelfTreeIdsBitMask(value: number): View;
+
+    getViewPositionId(): number;
+    setViewPositionId(value: number): View;
+
+    getViewTreeIdsBitMask(): number;
+    setViewTreeIdsBitMask(value: number): View;
+
+    getPositionsList(): Array<Binary.Position>;
+    setPositionsList(value: Array<Binary.Position>): View;
+    clearPositionsList(): View;
+    addPositions(value?: Binary.Position, index?: number): Binary.Position;
+
+    getAccountsList(): Array<Account.Info>;
+    setAccountsList(value: Array<Account.Info>): View;
+    clearAccountsList(): View;
+    addAccounts(value?: Account.Info, index?: number): Account.Info;
+
+    getViewTreeAccountEntitiesList(): Array<TreeAccount.Entity>;
+    setViewTreeAccountEntitiesList(value: Array<TreeAccount.Entity>): View;
+    clearViewTreeAccountEntitiesList(): View;
+    addViewTreeAccountEntities(value?: TreeAccount.Entity, index?: number): TreeAccount.Entity;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): View.AsObject;
+    static toObject(includeInstance: boolean, msg: View): View.AsObject;
+    static serializeBinaryToWriter(message: View, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): View;
+    static deserializeBinaryFromReader(message: View, reader: jspb.BinaryReader): View;
+  }
+
+  export namespace View {
+    export type AsObject = {
+      treeId: number,
+      config?: Binary.Config.AsObject,
+      selfPositionId: number,
+      selfTreeIdsBitMask: number,
+      viewPositionId: number,
+      viewTreeIdsBitMask: number,
+      positionsList: Array<Binary.Position.AsObject>,
+      accountsList: Array<Account.Info.AsObject>,
+      viewTreeAccountEntitiesList: Array<TreeAccount.Entity.AsObject>,
+    }
+  }
+
+
+  export class Info extends jspb.Message {
+    getItemsList(): Array<Binary.Info.Item>;
+    setItemsList(value: Array<Binary.Info.Item>): Info;
+    clearItemsList(): Info;
+    addItems(value?: Binary.Info.Item, index?: number): Binary.Info.Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Info.AsObject;
+    static toObject(includeInstance: boolean, msg: Info): Info.AsObject;
+    static serializeBinaryToWriter(message: Info, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Info;
+    static deserializeBinaryFromReader(message: Info, reader: jspb.BinaryReader): Info;
+  }
+
+  export namespace Info {
+    export type AsObject = {
+      itemsList: Array<Binary.Info.Item.AsObject>,
+    }
+
+    export class Item extends jspb.Message {
+      getTreeAccount(): TreeAccount | undefined;
+      setTreeAccount(value?: TreeAccount): Item;
+      hasTreeAccount(): boolean;
+      clearTreeAccount(): Item;
+
+      getConfig(): Binary.Config | undefined;
+      setConfig(value?: Binary.Config): Item;
+      hasConfig(): boolean;
+      clearConfig(): Item;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Item.AsObject;
+      static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+      static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Item;
+      static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+    }
+
+    export namespace Item {
+      export type AsObject = {
+        treeAccount?: TreeAccount.AsObject,
+        config?: Binary.Config.AsObject,
       }
     }
 

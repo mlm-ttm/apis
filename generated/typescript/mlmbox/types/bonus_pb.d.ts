@@ -39,6 +39,8 @@ export namespace Bonus {
       BONUS_MATRIX = 3,
       BONUS_CARD_PARTNER_DAO = 4,
       BONUS_CARD_BONUS_HUNTER = 5,
+      BONUS_BINARY = 6,
+      BONUS_BINARY_MATCHING = 7,
     }
   }
 

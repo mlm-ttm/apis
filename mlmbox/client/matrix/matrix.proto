@@ -6,9 +6,7 @@ import "google/protobuf/empty.proto";
 import "mlmbox/types/account.proto";
 
 service Matrix {
-  rpc Info (google.protobuf.Empty) returns (mlmbox.types.Matrix.TreeAccount.List) {}
-  rpc View (mlmbox.types.Matrix.View.Request) returns (mlmbox.types.Matrix.View) {}
-  rpc PreviewPurchase (mlmbox.types.Matrix.Invoice.Request) returns (mlmbox.types.Matrix.Invoice.PreviewResponse) {} // Preview of purchase of positions in the matrix
-  rpc VerifiedPurchase (mlmbox.types.Matrix.Invoice.Request) returns (mlmbox.types.Matrix.Invoice.VerifiedResponse) {} // Confirmed process of purchasing positions in the matrix
-  rpc SetReinvestConfig (mlmbox.types.Matrix.Config.Reinvest) returns (mlmbox.types.Matrix.Config.Reinvest) {} // Set reinvestment settings for the selected position
+  rpc Info (google.protobuf.Empty) returns (mlmbox.types.Matrix.Info) {}
+  rpc View (mlmbox.types.PositionView.Team) returns (mlmbox.types.Matrix.View) {}
+  rpc SetReinvestConfig (mlmbox.types.Matrix.Reinvest.Request) returns (mlmbox.types.Matrix.Position) {} // Set reinvestment settings for the selected position
 }

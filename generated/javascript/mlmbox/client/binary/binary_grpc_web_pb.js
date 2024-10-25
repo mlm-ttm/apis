@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for mlmbox.client.matrix
+ * @fileoverview gRPC-Web generated client stub for mlmbox.client.binary
  * @enhanceable
  * @public
  */
@@ -8,7 +8,7 @@
 // versions:
 // 	protoc-gen-grpc-web v1.5.0
 // 	protoc              v5.28.2
-// source: mlmbox/client/matrix/matrix.proto
+// source: mlmbox/client/binary/binary.proto
 
 
 /* eslint-disable */
@@ -26,7 +26,7 @@ var mlmbox_types_account_pb = require('../../../mlmbox/types/account_pb.js')
 const proto = {};
 proto.mlmbox = {};
 proto.mlmbox.client = {};
-proto.mlmbox.client.matrix = require('./matrix_pb.js');
+proto.mlmbox.client.binary = require('./binary_pb.js');
 
 /**
  * @param {string} hostname
@@ -36,7 +36,7 @@ proto.mlmbox.client.matrix = require('./matrix_pb.js');
  * @struct
  * @final
  */
-proto.mlmbox.client.matrix.MatrixClient =
+proto.mlmbox.client.binary.BinaryClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -62,7 +62,7 @@ proto.mlmbox.client.matrix.MatrixClient =
  * @struct
  * @final
  */
-proto.mlmbox.client.matrix.MatrixPromiseClient =
+proto.mlmbox.client.binary.BinaryPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -84,13 +84,13 @@ proto.mlmbox.client.matrix.MatrixPromiseClient =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.google.protobuf.Empty,
- *   !proto.mlmbox.types.Matrix.Info>}
+ *   !proto.mlmbox.types.Binary.Info>}
  */
-const methodDescriptor_Matrix_Info = new grpc.web.MethodDescriptor(
-  '/mlmbox.client.matrix.Matrix/Info',
+const methodDescriptor_Binary_Info = new grpc.web.MethodDescriptor(
+  '/mlmbox.client.binary.Binary/Info',
   grpc.web.MethodType.UNARY,
   google_protobuf_empty_pb.Empty,
-  mlmbox_types_account_pb.Matrix.Info,
+  mlmbox_types_account_pb.Binary.Info,
   /**
    * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
@@ -98,7 +98,7 @@ const methodDescriptor_Matrix_Info = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  mlmbox_types_account_pb.Matrix.Info.deserializeBinary
+  mlmbox_types_account_pb.Binary.Info.deserializeBinary
 );
 
 
@@ -107,18 +107,18 @@ const methodDescriptor_Matrix_Info = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Matrix.Info)}
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Binary.Info)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Matrix.Info>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Binary.Info>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.mlmbox.client.matrix.MatrixClient.prototype.info =
+proto.mlmbox.client.binary.BinaryClient.prototype.info =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/Info',
+      '/mlmbox.client.binary.Binary/Info',
       request,
       metadata || {},
-      methodDescriptor_Matrix_Info,
+      methodDescriptor_Binary_Info,
       callback);
 };
 
@@ -128,16 +128,16 @@ proto.mlmbox.client.matrix.MatrixClient.prototype.info =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.mlmbox.types.Matrix.Info>}
+ * @return {!Promise<!proto.mlmbox.types.Binary.Info>}
  *     Promise that resolves to the response
  */
-proto.mlmbox.client.matrix.MatrixPromiseClient.prototype.info =
+proto.mlmbox.client.binary.BinaryPromiseClient.prototype.info =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/Info',
+      '/mlmbox.client.binary.Binary/Info',
       request,
       metadata || {},
-      methodDescriptor_Matrix_Info);
+      methodDescriptor_Binary_Info);
 };
 
 
@@ -145,13 +145,13 @@ proto.mlmbox.client.matrix.MatrixPromiseClient.prototype.info =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.mlmbox.types.PositionView.Team,
- *   !proto.mlmbox.types.Matrix.View>}
+ *   !proto.mlmbox.types.Binary.View>}
  */
-const methodDescriptor_Matrix_View = new grpc.web.MethodDescriptor(
-  '/mlmbox.client.matrix.Matrix/View',
+const methodDescriptor_Binary_View = new grpc.web.MethodDescriptor(
+  '/mlmbox.client.binary.Binary/View',
   grpc.web.MethodType.UNARY,
   mlmbox_types_account_pb.PositionView.Team,
-  mlmbox_types_account_pb.Matrix.View,
+  mlmbox_types_account_pb.Binary.View,
   /**
    * @param {!proto.mlmbox.types.PositionView.Team} request
    * @return {!Uint8Array}
@@ -159,7 +159,7 @@ const methodDescriptor_Matrix_View = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  mlmbox_types_account_pb.Matrix.View.deserializeBinary
+  mlmbox_types_account_pb.Binary.View.deserializeBinary
 );
 
 
@@ -168,18 +168,18 @@ const methodDescriptor_Matrix_View = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Matrix.View)}
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Binary.View)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Matrix.View>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Binary.View>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.mlmbox.client.matrix.MatrixClient.prototype.view =
+proto.mlmbox.client.binary.BinaryClient.prototype.view =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/View',
+      '/mlmbox.client.binary.Binary/View',
       request,
       metadata || {},
-      methodDescriptor_Matrix_View,
+      methodDescriptor_Binary_View,
       callback);
 };
 
@@ -189,79 +189,79 @@ proto.mlmbox.client.matrix.MatrixClient.prototype.view =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.mlmbox.types.Matrix.View>}
+ * @return {!Promise<!proto.mlmbox.types.Binary.View>}
  *     Promise that resolves to the response
  */
-proto.mlmbox.client.matrix.MatrixPromiseClient.prototype.view =
+proto.mlmbox.client.binary.BinaryPromiseClient.prototype.view =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/View',
+      '/mlmbox.client.binary.Binary/View',
       request,
       metadata || {},
-      methodDescriptor_Matrix_View);
+      methodDescriptor_Binary_View);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.mlmbox.types.Matrix.Reinvest.Request,
- *   !proto.mlmbox.types.Matrix.Position>}
+ *   !proto.mlmbox.types.Binary.BranchSelectStrategy.Request,
+ *   !proto.mlmbox.types.Binary.Position>}
  */
-const methodDescriptor_Matrix_SetReinvestConfig = new grpc.web.MethodDescriptor(
-  '/mlmbox.client.matrix.Matrix/SetReinvestConfig',
+const methodDescriptor_Binary_SetPositionBranchSelectStrategy = new grpc.web.MethodDescriptor(
+  '/mlmbox.client.binary.Binary/SetPositionBranchSelectStrategy',
   grpc.web.MethodType.UNARY,
-  mlmbox_types_account_pb.Matrix.Reinvest.Request,
-  mlmbox_types_account_pb.Matrix.Position,
+  mlmbox_types_account_pb.Binary.BranchSelectStrategy.Request,
+  mlmbox_types_account_pb.Binary.Position,
   /**
-   * @param {!proto.mlmbox.types.Matrix.Reinvest.Request} request
+   * @param {!proto.mlmbox.types.Binary.BranchSelectStrategy.Request} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  mlmbox_types_account_pb.Matrix.Position.deserializeBinary
+  mlmbox_types_account_pb.Binary.Position.deserializeBinary
 );
 
 
 /**
- * @param {!proto.mlmbox.types.Matrix.Reinvest.Request} request The
+ * @param {!proto.mlmbox.types.Binary.BranchSelectStrategy.Request} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Matrix.Position)}
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Binary.Position)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Matrix.Position>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Binary.Position>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.mlmbox.client.matrix.MatrixClient.prototype.setReinvestConfig =
+proto.mlmbox.client.binary.BinaryClient.prototype.setPositionBranchSelectStrategy =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/SetReinvestConfig',
+      '/mlmbox.client.binary.Binary/SetPositionBranchSelectStrategy',
       request,
       metadata || {},
-      methodDescriptor_Matrix_SetReinvestConfig,
+      methodDescriptor_Binary_SetPositionBranchSelectStrategy,
       callback);
 };
 
 
 /**
- * @param {!proto.mlmbox.types.Matrix.Reinvest.Request} request The
+ * @param {!proto.mlmbox.types.Binary.BranchSelectStrategy.Request} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.mlmbox.types.Matrix.Position>}
+ * @return {!Promise<!proto.mlmbox.types.Binary.Position>}
  *     Promise that resolves to the response
  */
-proto.mlmbox.client.matrix.MatrixPromiseClient.prototype.setReinvestConfig =
+proto.mlmbox.client.binary.BinaryPromiseClient.prototype.setPositionBranchSelectStrategy =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/SetReinvestConfig',
+      '/mlmbox.client.binary.Binary/SetPositionBranchSelectStrategy',
       request,
       metadata || {},
-      methodDescriptor_Matrix_SetReinvestConfig);
+      methodDescriptor_Binary_SetPositionBranchSelectStrategy);
 };
 
 
-module.exports = proto.mlmbox.client.matrix;
+module.exports = proto.mlmbox.client.binary;
 

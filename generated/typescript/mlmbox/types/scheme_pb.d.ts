@@ -34,15 +34,15 @@ export class Scheme extends jspb.Message {
   clearWalletProcessingsList(): Scheme;
   addWalletProcessings(value?: mlmbox_types_wallet_pb.Wallet.Processing, index?: number): mlmbox_types_wallet_pb.Wallet.Processing;
 
-  getMatrixGroupsList(): Array<mlmbox_types_account_pb.Matrix.Group>;
-  setMatrixGroupsList(value: Array<mlmbox_types_account_pb.Matrix.Group>): Scheme;
-  clearMatrixGroupsList(): Scheme;
-  addMatrixGroups(value?: mlmbox_types_account_pb.Matrix.Group, index?: number): mlmbox_types_account_pb.Matrix.Group;
+  getTreeGroupsList(): Array<mlmbox_types_account_pb.Tree.Group>;
+  setTreeGroupsList(value: Array<mlmbox_types_account_pb.Tree.Group>): Scheme;
+  clearTreeGroupsList(): Scheme;
+  addTreeGroups(value?: mlmbox_types_account_pb.Tree.Group, index?: number): mlmbox_types_account_pb.Tree.Group;
 
-  getMatrixTreesList(): Array<mlmbox_types_account_pb.Matrix.Tree>;
-  setMatrixTreesList(value: Array<mlmbox_types_account_pb.Matrix.Tree>): Scheme;
-  clearMatrixTreesList(): Scheme;
-  addMatrixTrees(value?: mlmbox_types_account_pb.Matrix.Tree, index?: number): mlmbox_types_account_pb.Matrix.Tree;
+  getTreesList(): Array<mlmbox_types_account_pb.Tree>;
+  setTreesList(value: Array<mlmbox_types_account_pb.Tree>): Scheme;
+  clearTreesList(): Scheme;
+  addTrees(value?: mlmbox_types_account_pb.Tree, index?: number): mlmbox_types_account_pb.Tree;
 
   getPoolHunter(): mlmbox_types_pool_pb.Pool.Hunter | undefined;
   setPoolHunter(value?: mlmbox_types_pool_pb.Pool.Hunter): Scheme;
@@ -64,8 +64,8 @@ export namespace Scheme {
     localesList: Array<mlmbox_types_locale_pb.Locale.AsObject>,
     walletAssetsList: Array<mlmbox_types_wallet_pb.Wallet.Asset.AsObject>,
     walletProcessingsList: Array<mlmbox_types_wallet_pb.Wallet.Processing.AsObject>,
-    matrixGroupsList: Array<mlmbox_types_account_pb.Matrix.Group.AsObject>,
-    matrixTreesList: Array<mlmbox_types_account_pb.Matrix.Tree.AsObject>,
+    treeGroupsList: Array<mlmbox_types_account_pb.Tree.Group.AsObject>,
+    treesList: Array<mlmbox_types_account_pb.Tree.AsObject>,
     poolHunter?: mlmbox_types_pool_pb.Pool.Hunter.AsObject,
   }
 }

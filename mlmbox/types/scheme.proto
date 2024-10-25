@@ -14,7 +14,7 @@ message Scheme {
   repeated mlmbox.types.Locale locales = 3;
   repeated mlmbox.types.Wallet.Asset wallet_assets = 4;
   repeated mlmbox.types.Wallet.Processing wallet_processings = 5;
-  repeated mlmbox.types.Matrix.Group matrix_groups = 6;
-  repeated mlmbox.types.Matrix.Tree matrix_trees = 7;
+  repeated mlmbox.types.Tree.Group tree_groups = 6;
+  repeated mlmbox.types.Tree trees = 7;
   mlmbox.types.Pool.Hunter pool_hunter = 8;
 }

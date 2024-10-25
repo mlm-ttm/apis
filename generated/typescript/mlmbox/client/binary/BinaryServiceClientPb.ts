@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for mlmbox.client.matrix
+ * @fileoverview gRPC-Web generated client stub for mlmbox.client.binary
  * @enhanceable
  * @public
  */
@@ -8,7 +8,7 @@
 // versions:
 // 	protoc-gen-grpc-web v1.5.0
 // 	protoc              v5.28.2
-// source: mlmbox/client/matrix/matrix.proto
+// source: mlmbox/client/binary/binary.proto
 
 
 /* eslint-disable */
@@ -21,7 +21,7 @@ import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty
 import * as mlmbox_types_account_pb from '../../../mlmbox/types/account_pb'; // proto import: "mlmbox/types/account.proto"
 
 
-export class MatrixClient {
+export class BinaryClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -41,35 +41,35 @@ export class MatrixClient {
   }
 
   methodDescriptorInfo = new grpcWeb.MethodDescriptor(
-    '/mlmbox.client.matrix.Matrix/Info',
+    '/mlmbox.client.binary.Binary/Info',
     grpcWeb.MethodType.UNARY,
     google_protobuf_empty_pb.Empty,
-    mlmbox_types_account_pb.Matrix.Info,
+    mlmbox_types_account_pb.Binary.Info,
     (request: google_protobuf_empty_pb.Empty) => {
       return request.serializeBinary();
     },
-    mlmbox_types_account_pb.Matrix.Info.deserializeBinary
+    mlmbox_types_account_pb.Binary.Info.deserializeBinary
   );
 
   info(
     request: google_protobuf_empty_pb.Empty,
-    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Matrix.Info>;
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Binary.Info>;
 
   info(
     request: google_protobuf_empty_pb.Empty,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Matrix.Info) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Matrix.Info>;
+               response: mlmbox_types_account_pb.Binary.Info) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Binary.Info>;
 
   info(
     request: google_protobuf_empty_pb.Empty,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Matrix.Info) => void) {
+               response: mlmbox_types_account_pb.Binary.Info) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/mlmbox.client.matrix.Matrix/Info',
+          '/mlmbox.client.binary.Binary/Info',
         request,
         metadata || {},
         this.methodDescriptorInfo,
@@ -77,42 +77,42 @@ export class MatrixClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/Info',
+      '/mlmbox.client.binary.Binary/Info',
     request,
     metadata || {},
     this.methodDescriptorInfo);
   }
 
   methodDescriptorView = new grpcWeb.MethodDescriptor(
-    '/mlmbox.client.matrix.Matrix/View',
+    '/mlmbox.client.binary.Binary/View',
     grpcWeb.MethodType.UNARY,
     mlmbox_types_account_pb.PositionView.Team,
-    mlmbox_types_account_pb.Matrix.View,
+    mlmbox_types_account_pb.Binary.View,
     (request: mlmbox_types_account_pb.PositionView.Team) => {
       return request.serializeBinary();
     },
-    mlmbox_types_account_pb.Matrix.View.deserializeBinary
+    mlmbox_types_account_pb.Binary.View.deserializeBinary
   );
 
   view(
     request: mlmbox_types_account_pb.PositionView.Team,
-    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Matrix.View>;
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Binary.View>;
 
   view(
     request: mlmbox_types_account_pb.PositionView.Team,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Matrix.View) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Matrix.View>;
+               response: mlmbox_types_account_pb.Binary.View) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Binary.View>;
 
   view(
     request: mlmbox_types_account_pb.PositionView.Team,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Matrix.View) => void) {
+               response: mlmbox_types_account_pb.Binary.View) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/mlmbox.client.matrix.Matrix/View',
+          '/mlmbox.client.binary.Binary/View',
         request,
         metadata || {},
         this.methodDescriptorView,
@@ -120,53 +120,53 @@ export class MatrixClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/View',
+      '/mlmbox.client.binary.Binary/View',
     request,
     metadata || {},
     this.methodDescriptorView);
   }
 
-  methodDescriptorSetReinvestConfig = new grpcWeb.MethodDescriptor(
-    '/mlmbox.client.matrix.Matrix/SetReinvestConfig',
+  methodDescriptorSetPositionBranchSelectStrategy = new grpcWeb.MethodDescriptor(
+    '/mlmbox.client.binary.Binary/SetPositionBranchSelectStrategy',
     grpcWeb.MethodType.UNARY,
-    mlmbox_types_account_pb.Matrix.Reinvest.Request,
-    mlmbox_types_account_pb.Matrix.Position,
-    (request: mlmbox_types_account_pb.Matrix.Reinvest.Request) => {
+    mlmbox_types_account_pb.Binary.BranchSelectStrategy.Request,
+    mlmbox_types_account_pb.Binary.Position,
+    (request: mlmbox_types_account_pb.Binary.BranchSelectStrategy.Request) => {
       return request.serializeBinary();
     },
-    mlmbox_types_account_pb.Matrix.Position.deserializeBinary
+    mlmbox_types_account_pb.Binary.Position.deserializeBinary
   );
 
-  setReinvestConfig(
-    request: mlmbox_types_account_pb.Matrix.Reinvest.Request,
-    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Matrix.Position>;
+  setPositionBranchSelectStrategy(
+    request: mlmbox_types_account_pb.Binary.BranchSelectStrategy.Request,
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Binary.Position>;
 
-  setReinvestConfig(
-    request: mlmbox_types_account_pb.Matrix.Reinvest.Request,
+  setPositionBranchSelectStrategy(
+    request: mlmbox_types_account_pb.Binary.BranchSelectStrategy.Request,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Matrix.Position) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Matrix.Position>;
+               response: mlmbox_types_account_pb.Binary.Position) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Binary.Position>;
 
-  setReinvestConfig(
-    request: mlmbox_types_account_pb.Matrix.Reinvest.Request,
+  setPositionBranchSelectStrategy(
+    request: mlmbox_types_account_pb.Binary.BranchSelectStrategy.Request,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Matrix.Position) => void) {
+               response: mlmbox_types_account_pb.Binary.Position) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/mlmbox.client.matrix.Matrix/SetReinvestConfig',
+          '/mlmbox.client.binary.Binary/SetPositionBranchSelectStrategy',
         request,
         metadata || {},
-        this.methodDescriptorSetReinvestConfig,
+        this.methodDescriptorSetPositionBranchSelectStrategy,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/mlmbox.client.matrix.Matrix/SetReinvestConfig',
+      '/mlmbox.client.binary.Binary/SetPositionBranchSelectStrategy',
     request,
     metadata || {},
-    this.methodDescriptorSetReinvestConfig);
+    this.methodDescriptorSetPositionBranchSelectStrategy);
   }
 
 }

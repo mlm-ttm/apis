@@ -104,10 +104,10 @@ proto.mlmbox.types.Scheme.toObject = function(includeInstance, msg) {
     mlmbox_types_wallet_pb.Wallet.Asset.toObject, includeInstance),
     walletProcessingsList: jspb.Message.toObjectList(msg.getWalletProcessingsList(),
     mlmbox_types_wallet_pb.Wallet.Processing.toObject, includeInstance),
-    matrixGroupsList: jspb.Message.toObjectList(msg.getMatrixGroupsList(),
-    mlmbox_types_account_pb.Matrix.Group.toObject, includeInstance),
-    matrixTreesList: jspb.Message.toObjectList(msg.getMatrixTreesList(),
-    mlmbox_types_account_pb.Matrix.Tree.toObject, includeInstance),
+    treeGroupsList: jspb.Message.toObjectList(msg.getTreeGroupsList(),
+    mlmbox_types_account_pb.Tree.Group.toObject, includeInstance),
+    treesList: jspb.Message.toObjectList(msg.getTreesList(),
+    mlmbox_types_account_pb.Tree.toObject, includeInstance),
     poolHunter: (f = msg.getPoolHunter()) && mlmbox_types_pool_pb.Pool.Hunter.toObject(includeInstance, f)
   };
 
@@ -171,14 +171,14 @@ proto.mlmbox.types.Scheme.deserializeBinaryFromReader = function(msg, reader) {
       msg.addWalletProcessings(value);
       break;
     case 6:
-      var value = new mlmbox_types_account_pb.Matrix.Group;
-      reader.readMessage(value,mlmbox_types_account_pb.Matrix.Group.deserializeBinaryFromReader);
-      msg.addMatrixGroups(value);
+      var value = new mlmbox_types_account_pb.Tree.Group;
+      reader.readMessage(value,mlmbox_types_account_pb.Tree.Group.deserializeBinaryFromReader);
+      msg.addTreeGroups(value);
       break;
     case 7:
-      var value = new mlmbox_types_account_pb.Matrix.Tree;
-      reader.readMessage(value,mlmbox_types_account_pb.Matrix.Tree.deserializeBinaryFromReader);
-      msg.addMatrixTrees(value);
+      var value = new mlmbox_types_account_pb.Tree;
+      reader.readMessage(value,mlmbox_types_account_pb.Tree.deserializeBinaryFromReader);
+      msg.addTrees(value);
       break;
     case 8:
       var value = new mlmbox_types_pool_pb.Pool.Hunter;
@@ -254,20 +254,20 @@ proto.mlmbox.types.Scheme.serializeBinaryToWriter = function(message, writer) {
       mlmbox_types_wallet_pb.Wallet.Processing.serializeBinaryToWriter
     );
   }
-  f = message.getMatrixGroupsList();
+  f = message.getTreeGroupsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       6,
       f,
-      mlmbox_types_account_pb.Matrix.Group.serializeBinaryToWriter
+      mlmbox_types_account_pb.Tree.Group.serializeBinaryToWriter
     );
   }
-  f = message.getMatrixTreesList();
+  f = message.getTreesList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       7,
       f,
-      mlmbox_types_account_pb.Matrix.Tree.serializeBinaryToWriter
+      mlmbox_types_account_pb.Tree.serializeBinaryToWriter
     );
   }
   f = message.getPoolHunter();
@@ -472,31 +472,31 @@ proto.mlmbox.types.Scheme.prototype.clearWalletProcessingsList = function() {
 
 
 /**
- * repeated Matrix.Group matrix_groups = 6;
- * @return {!Array<!proto.mlmbox.types.Matrix.Group>}
+ * repeated Tree.Group tree_groups = 6;
+ * @return {!Array<!proto.mlmbox.types.Tree.Group>}
  */
-proto.mlmbox.types.Scheme.prototype.getMatrixGroupsList = function() {
-  return /** @type{!Array<!proto.mlmbox.types.Matrix.Group>} */ (
-    jspb.Message.getRepeatedWrapperField(this, mlmbox_types_account_pb.Matrix.Group, 6));
+proto.mlmbox.types.Scheme.prototype.getTreeGroupsList = function() {
+  return /** @type{!Array<!proto.mlmbox.types.Tree.Group>} */ (
+    jspb.Message.getRepeatedWrapperField(this, mlmbox_types_account_pb.Tree.Group, 6));
 };
 
 
 /**
- * @param {!Array<!proto.mlmbox.types.Matrix.Group>} value
+ * @param {!Array<!proto.mlmbox.types.Tree.Group>} value
  * @return {!proto.mlmbox.types.Scheme} returns this
 */
-proto.mlmbox.types.Scheme.prototype.setMatrixGroupsList = function(value) {
+proto.mlmbox.types.Scheme.prototype.setTreeGroupsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 6, value);
 };
 
 
 /**
- * @param {!proto.mlmbox.types.Matrix.Group=} opt_value
+ * @param {!proto.mlmbox.types.Tree.Group=} opt_value
  * @param {number=} opt_index
- * @return {!proto.mlmbox.types.Matrix.Group}
+ * @return {!proto.mlmbox.types.Tree.Group}
  */
-proto.mlmbox.types.Scheme.prototype.addMatrixGroups = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.mlmbox.types.Matrix.Group, opt_index);
+proto.mlmbox.types.Scheme.prototype.addTreeGroups = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.mlmbox.types.Tree.Group, opt_index);
 };
 
 
@@ -504,37 +504,37 @@ proto.mlmbox.types.Scheme.prototype.addMatrixGroups = function(opt_value, opt_in
  * Clears the list making it empty but non-null.
  * @return {!proto.mlmbox.types.Scheme} returns this
  */
-proto.mlmbox.types.Scheme.prototype.clearMatrixGroupsList = function() {
-  return this.setMatrixGroupsList([]);
+proto.mlmbox.types.Scheme.prototype.clearTreeGroupsList = function() {
+  return this.setTreeGroupsList([]);
 };
 
 
 /**
- * repeated Matrix.Tree matrix_trees = 7;
- * @return {!Array<!proto.mlmbox.types.Matrix.Tree>}
+ * repeated Tree trees = 7;
+ * @return {!Array<!proto.mlmbox.types.Tree>}
  */
-proto.mlmbox.types.Scheme.prototype.getMatrixTreesList = function() {
-  return /** @type{!Array<!proto.mlmbox.types.Matrix.Tree>} */ (
-    jspb.Message.getRepeatedWrapperField(this, mlmbox_types_account_pb.Matrix.Tree, 7));
+proto.mlmbox.types.Scheme.prototype.getTreesList = function() {
+  return /** @type{!Array<!proto.mlmbox.types.Tree>} */ (
+    jspb.Message.getRepeatedWrapperField(this, mlmbox_types_account_pb.Tree, 7));
 };
 
 
 /**
- * @param {!Array<!proto.mlmbox.types.Matrix.Tree>} value
+ * @param {!Array<!proto.mlmbox.types.Tree>} value
  * @return {!proto.mlmbox.types.Scheme} returns this
 */
-proto.mlmbox.types.Scheme.prototype.setMatrixTreesList = function(value) {
+proto.mlmbox.types.Scheme.prototype.setTreesList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 7, value);
 };
 
 
 /**
- * @param {!proto.mlmbox.types.Matrix.Tree=} opt_value
+ * @param {!proto.mlmbox.types.Tree=} opt_value
  * @param {number=} opt_index
- * @return {!proto.mlmbox.types.Matrix.Tree}
+ * @return {!proto.mlmbox.types.Tree}
  */
-proto.mlmbox.types.Scheme.prototype.addMatrixTrees = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 7, opt_value, proto.mlmbox.types.Matrix.Tree, opt_index);
+proto.mlmbox.types.Scheme.prototype.addTrees = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 7, opt_value, proto.mlmbox.types.Tree, opt_index);
 };
 
 
@@ -542,8 +542,8 @@ proto.mlmbox.types.Scheme.prototype.addMatrixTrees = function(opt_value, opt_ind
  * Clears the list making it empty but non-null.
  * @return {!proto.mlmbox.types.Scheme} returns this
  */
-proto.mlmbox.types.Scheme.prototype.clearMatrixTreesList = function() {
-  return this.setMatrixTreesList([]);
+proto.mlmbox.types.Scheme.prototype.clearTreesList = function() {
+  return this.setTreesList([]);
 };
 
 

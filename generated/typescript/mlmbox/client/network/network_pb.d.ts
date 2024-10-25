@@ -84,10 +84,10 @@ export class TeamResponse extends jspb.Message {
   clearReferralsList(): TeamResponse;
   addReferrals(value?: mlmbox_types_account_pb.Account.Info, index?: number): mlmbox_types_account_pb.Account.Info;
 
-  getAccountMatrixTreeAccountsList(): Array<mlmbox_types_account_pb.Matrix.TreeAccount.Set>;
-  setAccountMatrixTreeAccountsList(value: Array<mlmbox_types_account_pb.Matrix.TreeAccount.Set>): TeamResponse;
-  clearAccountMatrixTreeAccountsList(): TeamResponse;
-  addAccountMatrixTreeAccounts(value?: mlmbox_types_account_pb.Matrix.TreeAccount.Set, index?: number): mlmbox_types_account_pb.Matrix.TreeAccount.Set;
+  getAccountTreeAccountsList(): Array<mlmbox_types_account_pb.TreeAccount.Set>;
+  setAccountTreeAccountsList(value: Array<mlmbox_types_account_pb.TreeAccount.Set>): TeamResponse;
+  clearAccountTreeAccountsList(): TeamResponse;
+  addAccountTreeAccounts(value?: mlmbox_types_account_pb.TreeAccount.Set, index?: number): mlmbox_types_account_pb.TreeAccount.Set;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TeamResponse.AsObject;
@@ -102,7 +102,7 @@ export namespace TeamResponse {
     account?: mlmbox_types_account_pb.Account.Info.AsObject,
     partnersList: Array<mlmbox_types_account_pb.Account.Info.AsObject>,
     referralsList: Array<mlmbox_types_account_pb.Account.Info.AsObject>,
-    accountMatrixTreeAccountsList: Array<mlmbox_types_account_pb.Matrix.TreeAccount.Set.AsObject>,
+    accountTreeAccountsList: Array<mlmbox_types_account_pb.TreeAccount.Set.AsObject>,
   }
 }
 

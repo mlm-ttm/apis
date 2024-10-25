@@ -665,8 +665,8 @@ proto.mlmbox.client.network.TeamResponse.toObject = function(includeInstance, ms
     mlmbox_types_account_pb.Account.Info.toObject, includeInstance),
     referralsList: jspb.Message.toObjectList(msg.getReferralsList(),
     mlmbox_types_account_pb.Account.Info.toObject, includeInstance),
-    accountMatrixTreeAccountsList: jspb.Message.toObjectList(msg.getAccountMatrixTreeAccountsList(),
-    mlmbox_types_account_pb.Matrix.TreeAccount.Set.toObject, includeInstance)
+    accountTreeAccountsList: jspb.Message.toObjectList(msg.getAccountTreeAccountsList(),
+    mlmbox_types_account_pb.TreeAccount.Set.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -719,9 +719,9 @@ proto.mlmbox.client.network.TeamResponse.deserializeBinaryFromReader = function(
       msg.addReferrals(value);
       break;
     case 4:
-      var value = new mlmbox_types_account_pb.Matrix.TreeAccount.Set;
-      reader.readMessage(value,mlmbox_types_account_pb.Matrix.TreeAccount.Set.deserializeBinaryFromReader);
-      msg.addAccountMatrixTreeAccounts(value);
+      var value = new mlmbox_types_account_pb.TreeAccount.Set;
+      reader.readMessage(value,mlmbox_types_account_pb.TreeAccount.Set.deserializeBinaryFromReader);
+      msg.addAccountTreeAccounts(value);
       break;
     default:
       reader.skipField();
@@ -776,12 +776,12 @@ proto.mlmbox.client.network.TeamResponse.serializeBinaryToWriter = function(mess
       mlmbox_types_account_pb.Account.Info.serializeBinaryToWriter
     );
   }
-  f = message.getAccountMatrixTreeAccountsList();
+  f = message.getAccountTreeAccountsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       4,
       f,
-      mlmbox_types_account_pb.Matrix.TreeAccount.Set.serializeBinaryToWriter
+      mlmbox_types_account_pb.TreeAccount.Set.serializeBinaryToWriter
     );
   }
 };
@@ -901,31 +901,31 @@ proto.mlmbox.client.network.TeamResponse.prototype.clearReferralsList = function
 
 
 /**
- * repeated mlmbox.types.Matrix.TreeAccount.Set account_matrix_tree_accounts = 4;
- * @return {!Array<!proto.mlmbox.types.Matrix.TreeAccount.Set>}
+ * repeated mlmbox.types.TreeAccount.Set account_tree_accounts = 4;
+ * @return {!Array<!proto.mlmbox.types.TreeAccount.Set>}
  */
-proto.mlmbox.client.network.TeamResponse.prototype.getAccountMatrixTreeAccountsList = function() {
-  return /** @type{!Array<!proto.mlmbox.types.Matrix.TreeAccount.Set>} */ (
-    jspb.Message.getRepeatedWrapperField(this, mlmbox_types_account_pb.Matrix.TreeAccount.Set, 4));
+proto.mlmbox.client.network.TeamResponse.prototype.getAccountTreeAccountsList = function() {
+  return /** @type{!Array<!proto.mlmbox.types.TreeAccount.Set>} */ (
+    jspb.Message.getRepeatedWrapperField(this, mlmbox_types_account_pb.TreeAccount.Set, 4));
 };
 
 
 /**
- * @param {!Array<!proto.mlmbox.types.Matrix.TreeAccount.Set>} value
+ * @param {!Array<!proto.mlmbox.types.TreeAccount.Set>} value
  * @return {!proto.mlmbox.client.network.TeamResponse} returns this
 */
-proto.mlmbox.client.network.TeamResponse.prototype.setAccountMatrixTreeAccountsList = function(value) {
+proto.mlmbox.client.network.TeamResponse.prototype.setAccountTreeAccountsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
 /**
- * @param {!proto.mlmbox.types.Matrix.TreeAccount.Set=} opt_value
+ * @param {!proto.mlmbox.types.TreeAccount.Set=} opt_value
  * @param {number=} opt_index
- * @return {!proto.mlmbox.types.Matrix.TreeAccount.Set}
+ * @return {!proto.mlmbox.types.TreeAccount.Set}
  */
-proto.mlmbox.client.network.TeamResponse.prototype.addAccountMatrixTreeAccounts = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.mlmbox.types.Matrix.TreeAccount.Set, opt_index);
+proto.mlmbox.client.network.TeamResponse.prototype.addAccountTreeAccounts = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.mlmbox.types.TreeAccount.Set, opt_index);
 };
 
 
@@ -933,8 +933,8 @@ proto.mlmbox.client.network.TeamResponse.prototype.addAccountMatrixTreeAccounts 
  * Clears the list making it empty but non-null.
  * @return {!proto.mlmbox.client.network.TeamResponse} returns this
  */
-proto.mlmbox.client.network.TeamResponse.prototype.clearAccountMatrixTreeAccountsList = function() {
-  return this.setAccountMatrixTreeAccountsList([]);
+proto.mlmbox.client.network.TeamResponse.prototype.clearAccountTreeAccountsList = function() {
+  return this.setAccountTreeAccountsList([]);
 };
 
 
