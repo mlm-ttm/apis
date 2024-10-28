@@ -43,8 +43,8 @@ export class TeamRequest extends jspb.Message {
   hasPartnersSort(): boolean;
   clearPartnersSort(): TeamRequest;
 
-  getFilterMatrixTreeIdsBitMask(): number;
-  setFilterMatrixTreeIdsBitMask(value: number): TeamRequest;
+  getFilterTreeIdsBitMask(): number;
+  setFilterTreeIdsBitMask(value: number): TeamRequest;
 
   getFilterChannelsList(): Array<number>;
   setFilterChannelsList(value: Array<number>): TeamRequest;
@@ -63,7 +63,7 @@ export namespace TeamRequest {
   export type AsObject = {
     viewPartner?: mlmbox_types_account_pb.Account.Id.AsObject,
     partnersSort?: mlmbox_types_sort_pb.Sort.AsObject,
-    filterMatrixTreeIdsBitMask: number,
+    filterTreeIdsBitMask: number,
     filterChannelsList: Array<number>,
   }
 }

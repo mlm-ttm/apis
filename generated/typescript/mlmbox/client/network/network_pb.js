@@ -372,7 +372,7 @@ proto.mlmbox.client.network.TeamRequest.toObject = function(includeInstance, msg
   var f, obj = {
     viewPartner: (f = msg.getViewPartner()) && mlmbox_types_account_pb.Account.Id.toObject(includeInstance, f),
     partnersSort: (f = msg.getPartnersSort()) && mlmbox_types_sort_pb.Sort.toObject(includeInstance, f),
-    filterMatrixTreeIdsBitMask: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    filterTreeIdsBitMask: jspb.Message.getFieldWithDefault(msg, 3, 0),
     filterChannelsList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f
   };
 
@@ -422,7 +422,7 @@ proto.mlmbox.client.network.TeamRequest.deserializeBinaryFromReader = function(m
       break;
     case 3:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setFilterMatrixTreeIdsBitMask(value);
+      msg.setFilterTreeIdsBitMask(value);
       break;
     case 4:
       var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
@@ -475,7 +475,7 @@ proto.mlmbox.client.network.TeamRequest.serializeBinaryToWriter = function(messa
       mlmbox_types_sort_pb.Sort.serializeBinaryToWriter
     );
   }
-  f = message.getFilterMatrixTreeIdsBitMask();
+  f = message.getFilterTreeIdsBitMask();
   if (f !== 0) {
     writer.writeInt32(
       3,
@@ -567,10 +567,10 @@ proto.mlmbox.client.network.TeamRequest.prototype.hasPartnersSort = function() {
 
 
 /**
- * optional int32 filter_matrix_tree_ids_bit_mask = 3;
+ * optional int32 filter_tree_ids_bit_mask = 3;
  * @return {number}
  */
-proto.mlmbox.client.network.TeamRequest.prototype.getFilterMatrixTreeIdsBitMask = function() {
+proto.mlmbox.client.network.TeamRequest.prototype.getFilterTreeIdsBitMask = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
@@ -579,7 +579,7 @@ proto.mlmbox.client.network.TeamRequest.prototype.getFilterMatrixTreeIdsBitMask 
  * @param {number} value
  * @return {!proto.mlmbox.client.network.TeamRequest} returns this
  */
-proto.mlmbox.client.network.TeamRequest.prototype.setFilterMatrixTreeIdsBitMask = function(value) {
+proto.mlmbox.client.network.TeamRequest.prototype.setFilterTreeIdsBitMask = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
 };
 

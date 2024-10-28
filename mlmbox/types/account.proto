@@ -51,8 +51,8 @@ message Account {
   message Statistics {
     uint32 partners_quantity = 1;
     uint32 team_quantity = 2;
-    uint32 matrix_partners_quantity = 3;
-    uint32 matrix_team_quantity = 4;
+    uint32 marketing_partners_quantity = 3;
+    uint32 marketing_team_quantity = 4;
   }
   message Info {
     message List {
@@ -63,8 +63,8 @@ message Account {
     Username referral = 3;
     mlmbox.types.Relationship relationship = 4;
     uint32 registration_at = 5;
-    uint32 matrix_started_at = 6;
-    int32 matrix_tree_ids_bit_mask = 7;
+    uint32 marketing_started_at = 6;
+    int32 tree_ids_bit_mask = 7;
     uint32 referral_branch = 8;
     Statistics statistics = 9;
     repeated uint32 channels = 10; // List of channel IDs in which the user participates
@@ -152,15 +152,20 @@ message Matrix {
       bool reinvest_enabled = 2;
     }
   }
-
   message Position {
     uint32 position_id = 1; // Position identifier
     uint32 position_ref_id = 2; // Superior position identifier
-    uint32 position_ref_line = 3; // Upstream branch identifier
+    uint32 position_ref_branch = 3; // Upstream branch identifier
     uint32 position_width = 4; // Number of available branches
     uint32 account_id = 5; // Account identifier
-    uint32 tree_account_id = 6; // Sequence number in the (tree + account) combination
-    bool reinvest_enabled = 7;
+    uint32 tree_chain_id = 6; // Main chain (tree_chain_id==0) or in a separate substructure (tree_chain_id>0)
+    uint32 tree_entity_id = 7; // Sequence number in the "tree"
+    uint32 tree_account_entity_id = 8; // Sequence number in the ("tree" + "account") combination
+    uint32 partners_quantity = 9;
+    uint32 team_quantity = 10;
+    string pool_value = 11;
+    bool reinvest_enabled = 12;
+    bool filled = 13;
   }
   message View {
     uint32 tree_id = 1;
@@ -213,7 +218,7 @@ message Binary {
     uint32 partners_quantity = 9;
     uint32 team_quantity = 10;
     string earned_value = 11;
-    uint32 branch_select_strategy = 12;
+    BranchSelectStrategy.Id branch_select_strategy = 12;
     Branch branch_left = 13;
     Branch branch_right = 14;
   }

@@ -2788,8 +2788,8 @@ proto.mlmbox.types.Account.Statistics.toObject = function(includeInstance, msg) 
   var f, obj = {
     partnersQuantity: jspb.Message.getFieldWithDefault(msg, 1, 0),
     teamQuantity: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    matrixPartnersQuantity: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    matrixTeamQuantity: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    marketingPartnersQuantity: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    marketingTeamQuantity: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -2836,11 +2836,11 @@ proto.mlmbox.types.Account.Statistics.deserializeBinaryFromReader = function(msg
       break;
     case 3:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setMatrixPartnersQuantity(value);
+      msg.setMarketingPartnersQuantity(value);
       break;
     case 4:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setMatrixTeamQuantity(value);
+      msg.setMarketingTeamQuantity(value);
       break;
     default:
       reader.skipField();
@@ -2885,14 +2885,14 @@ proto.mlmbox.types.Account.Statistics.serializeBinaryToWriter = function(message
       f
     );
   }
-  f = message.getMatrixPartnersQuantity();
+  f = message.getMarketingPartnersQuantity();
   if (f !== 0) {
     writer.writeUint32(
       3,
       f
     );
   }
-  f = message.getMatrixTeamQuantity();
+  f = message.getMarketingTeamQuantity();
   if (f !== 0) {
     writer.writeUint32(
       4,
@@ -2939,10 +2939,10 @@ proto.mlmbox.types.Account.Statistics.prototype.setTeamQuantity = function(value
 
 
 /**
- * optional uint32 matrix_partners_quantity = 3;
+ * optional uint32 marketing_partners_quantity = 3;
  * @return {number}
  */
-proto.mlmbox.types.Account.Statistics.prototype.getMatrixPartnersQuantity = function() {
+proto.mlmbox.types.Account.Statistics.prototype.getMarketingPartnersQuantity = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
@@ -2951,16 +2951,16 @@ proto.mlmbox.types.Account.Statistics.prototype.getMatrixPartnersQuantity = func
  * @param {number} value
  * @return {!proto.mlmbox.types.Account.Statistics} returns this
  */
-proto.mlmbox.types.Account.Statistics.prototype.setMatrixPartnersQuantity = function(value) {
+proto.mlmbox.types.Account.Statistics.prototype.setMarketingPartnersQuantity = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
 /**
- * optional uint32 matrix_team_quantity = 4;
+ * optional uint32 marketing_team_quantity = 4;
  * @return {number}
  */
-proto.mlmbox.types.Account.Statistics.prototype.getMatrixTeamQuantity = function() {
+proto.mlmbox.types.Account.Statistics.prototype.getMarketingTeamQuantity = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
@@ -2969,7 +2969,7 @@ proto.mlmbox.types.Account.Statistics.prototype.getMatrixTeamQuantity = function
  * @param {number} value
  * @return {!proto.mlmbox.types.Account.Statistics} returns this
  */
-proto.mlmbox.types.Account.Statistics.prototype.setMatrixTeamQuantity = function(value) {
+proto.mlmbox.types.Account.Statistics.prototype.setMarketingTeamQuantity = function(value) {
   return jspb.Message.setProto3IntField(this, 4, value);
 };
 
@@ -3018,8 +3018,8 @@ proto.mlmbox.types.Account.Info.toObject = function(includeInstance, msg) {
     referral: (f = msg.getReferral()) && proto.mlmbox.types.Account.Username.toObject(includeInstance, f),
     relationship: (f = msg.getRelationship()) && mlmbox_types_relationship_pb.Relationship.toObject(includeInstance, f),
     registrationAt: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    matrixStartedAt: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    matrixTreeIdsBitMask: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    marketingStartedAt: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    treeIdsBitMask: jspb.Message.getFieldWithDefault(msg, 7, 0),
     referralBranch: jspb.Message.getFieldWithDefault(msg, 8, 0),
     statistics: (f = msg.getStatistics()) && proto.mlmbox.types.Account.Statistics.toObject(includeInstance, f),
     channelsList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f
@@ -3085,11 +3085,11 @@ proto.mlmbox.types.Account.Info.deserializeBinaryFromReader = function(msg, read
       break;
     case 6:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setMatrixStartedAt(value);
+      msg.setMarketingStartedAt(value);
       break;
     case 7:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setMatrixTreeIdsBitMask(value);
+      msg.setTreeIdsBitMask(value);
       break;
     case 8:
       var value = /** @type {number} */ (reader.readUint32());
@@ -3174,14 +3174,14 @@ proto.mlmbox.types.Account.Info.serializeBinaryToWriter = function(message, writ
       f
     );
   }
-  f = message.getMatrixStartedAt();
+  f = message.getMarketingStartedAt();
   if (f !== 0) {
     writer.writeUint32(
       6,
       f
     );
   }
-  f = message.getMatrixTreeIdsBitMask();
+  f = message.getTreeIdsBitMask();
   if (f !== 0) {
     writer.writeInt32(
       7,
@@ -3540,10 +3540,10 @@ proto.mlmbox.types.Account.Info.prototype.setRegistrationAt = function(value) {
 
 
 /**
- * optional uint32 matrix_started_at = 6;
+ * optional uint32 marketing_started_at = 6;
  * @return {number}
  */
-proto.mlmbox.types.Account.Info.prototype.getMatrixStartedAt = function() {
+proto.mlmbox.types.Account.Info.prototype.getMarketingStartedAt = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
@@ -3552,16 +3552,16 @@ proto.mlmbox.types.Account.Info.prototype.getMatrixStartedAt = function() {
  * @param {number} value
  * @return {!proto.mlmbox.types.Account.Info} returns this
  */
-proto.mlmbox.types.Account.Info.prototype.setMatrixStartedAt = function(value) {
+proto.mlmbox.types.Account.Info.prototype.setMarketingStartedAt = function(value) {
   return jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
 /**
- * optional int32 matrix_tree_ids_bit_mask = 7;
+ * optional int32 tree_ids_bit_mask = 7;
  * @return {number}
  */
-proto.mlmbox.types.Account.Info.prototype.getMatrixTreeIdsBitMask = function() {
+proto.mlmbox.types.Account.Info.prototype.getTreeIdsBitMask = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
 };
 
@@ -3570,7 +3570,7 @@ proto.mlmbox.types.Account.Info.prototype.getMatrixTreeIdsBitMask = function() {
  * @param {number} value
  * @return {!proto.mlmbox.types.Account.Info} returns this
  */
-proto.mlmbox.types.Account.Info.prototype.setMatrixTreeIdsBitMask = function(value) {
+proto.mlmbox.types.Account.Info.prototype.setTreeIdsBitMask = function(value) {
   return jspb.Message.setProto3IntField(this, 7, value);
 };
 
@@ -6586,11 +6586,17 @@ proto.mlmbox.types.Matrix.Position.toObject = function(includeInstance, msg) {
   var f, obj = {
     positionId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     positionRefId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    positionRefLine: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    positionRefBranch: jspb.Message.getFieldWithDefault(msg, 3, 0),
     positionWidth: jspb.Message.getFieldWithDefault(msg, 4, 0),
     accountId: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    treeAccountId: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    reinvestEnabled: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
+    treeChainId: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    treeEntityId: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    treeAccountEntityId: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    partnersQuantity: jspb.Message.getFieldWithDefault(msg, 9, 0),
+    teamQuantity: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    poolValue: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    reinvestEnabled: jspb.Message.getBooleanFieldWithDefault(msg, 12, false),
+    filled: jspb.Message.getBooleanFieldWithDefault(msg, 13, false)
   };
 
   if (includeInstance) {
@@ -6637,7 +6643,7 @@ proto.mlmbox.types.Matrix.Position.deserializeBinaryFromReader = function(msg, r
       break;
     case 3:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setPositionRefLine(value);
+      msg.setPositionRefBranch(value);
       break;
     case 4:
       var value = /** @type {number} */ (reader.readUint32());
@@ -6649,11 +6655,35 @@ proto.mlmbox.types.Matrix.Position.deserializeBinaryFromReader = function(msg, r
       break;
     case 6:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setTreeAccountId(value);
+      msg.setTreeChainId(value);
       break;
     case 7:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTreeEntityId(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTreeAccountEntityId(value);
+      break;
+    case 9:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setPartnersQuantity(value);
+      break;
+    case 10:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTeamQuantity(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolValue(value);
+      break;
+    case 12:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setReinvestEnabled(value);
+      break;
+    case 13:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setFilled(value);
       break;
     default:
       reader.skipField();
@@ -6698,7 +6728,7 @@ proto.mlmbox.types.Matrix.Position.serializeBinaryToWriter = function(message, w
       f
     );
   }
-  f = message.getPositionRefLine();
+  f = message.getPositionRefBranch();
   if (f !== 0) {
     writer.writeUint32(
       3,
@@ -6719,17 +6749,59 @@ proto.mlmbox.types.Matrix.Position.serializeBinaryToWriter = function(message, w
       f
     );
   }
-  f = message.getTreeAccountId();
+  f = message.getTreeChainId();
   if (f !== 0) {
     writer.writeUint32(
       6,
       f
     );
   }
+  f = message.getTreeEntityId();
+  if (f !== 0) {
+    writer.writeUint32(
+      7,
+      f
+    );
+  }
+  f = message.getTreeAccountEntityId();
+  if (f !== 0) {
+    writer.writeUint32(
+      8,
+      f
+    );
+  }
+  f = message.getPartnersQuantity();
+  if (f !== 0) {
+    writer.writeUint32(
+      9,
+      f
+    );
+  }
+  f = message.getTeamQuantity();
+  if (f !== 0) {
+    writer.writeUint32(
+      10,
+      f
+    );
+  }
+  f = message.getPoolValue();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
+      f
+    );
+  }
   f = message.getReinvestEnabled();
   if (f) {
     writer.writeBool(
-      7,
+      12,
+      f
+    );
+  }
+  f = message.getFilled();
+  if (f) {
+    writer.writeBool(
+      13,
       f
     );
   }
@@ -6773,10 +6845,10 @@ proto.mlmbox.types.Matrix.Position.prototype.setPositionRefId = function(value) 
 
 
 /**
- * optional uint32 position_ref_line = 3;
+ * optional uint32 position_ref_branch = 3;
  * @return {number}
  */
-proto.mlmbox.types.Matrix.Position.prototype.getPositionRefLine = function() {
+proto.mlmbox.types.Matrix.Position.prototype.getPositionRefBranch = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
@@ -6785,7 +6857,7 @@ proto.mlmbox.types.Matrix.Position.prototype.getPositionRefLine = function() {
  * @param {number} value
  * @return {!proto.mlmbox.types.Matrix.Position} returns this
  */
-proto.mlmbox.types.Matrix.Position.prototype.setPositionRefLine = function(value) {
+proto.mlmbox.types.Matrix.Position.prototype.setPositionRefBranch = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
 };
 
@@ -6827,10 +6899,10 @@ proto.mlmbox.types.Matrix.Position.prototype.setAccountId = function(value) {
 
 
 /**
- * optional uint32 tree_account_id = 6;
+ * optional uint32 tree_chain_id = 6;
  * @return {number}
  */
-proto.mlmbox.types.Matrix.Position.prototype.getTreeAccountId = function() {
+proto.mlmbox.types.Matrix.Position.prototype.getTreeChainId = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
@@ -6839,17 +6911,107 @@ proto.mlmbox.types.Matrix.Position.prototype.getTreeAccountId = function() {
  * @param {number} value
  * @return {!proto.mlmbox.types.Matrix.Position} returns this
  */
-proto.mlmbox.types.Matrix.Position.prototype.setTreeAccountId = function(value) {
+proto.mlmbox.types.Matrix.Position.prototype.setTreeChainId = function(value) {
   return jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
 /**
- * optional bool reinvest_enabled = 7;
+ * optional uint32 tree_entity_id = 7;
+ * @return {number}
+ */
+proto.mlmbox.types.Matrix.Position.prototype.getTreeEntityId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.mlmbox.types.Matrix.Position} returns this
+ */
+proto.mlmbox.types.Matrix.Position.prototype.setTreeEntityId = function(value) {
+  return jspb.Message.setProto3IntField(this, 7, value);
+};
+
+
+/**
+ * optional uint32 tree_account_entity_id = 8;
+ * @return {number}
+ */
+proto.mlmbox.types.Matrix.Position.prototype.getTreeAccountEntityId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.mlmbox.types.Matrix.Position} returns this
+ */
+proto.mlmbox.types.Matrix.Position.prototype.setTreeAccountEntityId = function(value) {
+  return jspb.Message.setProto3IntField(this, 8, value);
+};
+
+
+/**
+ * optional uint32 partners_quantity = 9;
+ * @return {number}
+ */
+proto.mlmbox.types.Matrix.Position.prototype.getPartnersQuantity = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.mlmbox.types.Matrix.Position} returns this
+ */
+proto.mlmbox.types.Matrix.Position.prototype.setPartnersQuantity = function(value) {
+  return jspb.Message.setProto3IntField(this, 9, value);
+};
+
+
+/**
+ * optional uint32 team_quantity = 10;
+ * @return {number}
+ */
+proto.mlmbox.types.Matrix.Position.prototype.getTeamQuantity = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.mlmbox.types.Matrix.Position} returns this
+ */
+proto.mlmbox.types.Matrix.Position.prototype.setTeamQuantity = function(value) {
+  return jspb.Message.setProto3IntField(this, 10, value);
+};
+
+
+/**
+ * optional string pool_value = 11;
+ * @return {string}
+ */
+proto.mlmbox.types.Matrix.Position.prototype.getPoolValue = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.mlmbox.types.Matrix.Position} returns this
+ */
+proto.mlmbox.types.Matrix.Position.prototype.setPoolValue = function(value) {
+  return jspb.Message.setProto3StringField(this, 11, value);
+};
+
+
+/**
+ * optional bool reinvest_enabled = 12;
  * @return {boolean}
  */
 proto.mlmbox.types.Matrix.Position.prototype.getReinvestEnabled = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 7, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 12, false));
 };
 
 
@@ -6858,7 +7020,25 @@ proto.mlmbox.types.Matrix.Position.prototype.getReinvestEnabled = function() {
  * @return {!proto.mlmbox.types.Matrix.Position} returns this
  */
 proto.mlmbox.types.Matrix.Position.prototype.setReinvestEnabled = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 7, value);
+  return jspb.Message.setProto3BooleanField(this, 12, value);
+};
+
+
+/**
+ * optional bool filled = 13;
+ * @return {boolean}
+ */
+proto.mlmbox.types.Matrix.Position.prototype.getFilled = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 13, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.mlmbox.types.Matrix.Position} returns this
+ */
+proto.mlmbox.types.Matrix.Position.prototype.setFilled = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 13, value);
 };
 
 
@@ -8156,7 +8336,7 @@ proto.mlmbox.types.Binary.Position.deserializeBinaryFromReader = function(msg, r
       msg.setEarnedValue(value);
       break;
     case 12:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {!proto.mlmbox.types.Binary.BranchSelectStrategy.Id} */ (reader.readEnum());
       msg.setBranchSelectStrategy(value);
       break;
     case 13:
@@ -8276,8 +8456,8 @@ proto.mlmbox.types.Binary.Position.serializeBinaryToWriter = function(message, w
     );
   }
   f = message.getBranchSelectStrategy();
-  if (f !== 0) {
-    writer.writeUint32(
+  if (f !== 0.0) {
+    writer.writeEnum(
       12,
       f
     );
@@ -8690,20 +8870,20 @@ proto.mlmbox.types.Binary.Position.prototype.setEarnedValue = function(value) {
 
 
 /**
- * optional uint32 branch_select_strategy = 12;
- * @return {number}
+ * optional BranchSelectStrategy.Id branch_select_strategy = 12;
+ * @return {!proto.mlmbox.types.Binary.BranchSelectStrategy.Id}
  */
 proto.mlmbox.types.Binary.Position.prototype.getBranchSelectStrategy = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
+  return /** @type {!proto.mlmbox.types.Binary.BranchSelectStrategy.Id} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
 };
 
 
 /**
- * @param {number} value
+ * @param {!proto.mlmbox.types.Binary.BranchSelectStrategy.Id} value
  * @return {!proto.mlmbox.types.Binary.Position} returns this
  */
 proto.mlmbox.types.Binary.Position.prototype.setBranchSelectStrategy = function(value) {
-  return jspb.Message.setProto3IntField(this, 12, value);
+  return jspb.Message.setProto3EnumField(this, 12, value);
 };
 
 

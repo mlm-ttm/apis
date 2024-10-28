@@ -287,11 +287,11 @@ export namespace Account {
     getTeamQuantity(): number;
     setTeamQuantity(value: number): Statistics;
 
-    getMatrixPartnersQuantity(): number;
-    setMatrixPartnersQuantity(value: number): Statistics;
+    getMarketingPartnersQuantity(): number;
+    setMarketingPartnersQuantity(value: number): Statistics;
 
-    getMatrixTeamQuantity(): number;
-    setMatrixTeamQuantity(value: number): Statistics;
+    getMarketingTeamQuantity(): number;
+    setMarketingTeamQuantity(value: number): Statistics;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Statistics.AsObject;
@@ -305,8 +305,8 @@ export namespace Account {
     export type AsObject = {
       partnersQuantity: number,
       teamQuantity: number,
-      matrixPartnersQuantity: number,
-      matrixTeamQuantity: number,
+      marketingPartnersQuantity: number,
+      marketingTeamQuantity: number,
     }
   }
 
@@ -335,11 +335,11 @@ export namespace Account {
     getRegistrationAt(): number;
     setRegistrationAt(value: number): Info;
 
-    getMatrixStartedAt(): number;
-    setMatrixStartedAt(value: number): Info;
+    getMarketingStartedAt(): number;
+    setMarketingStartedAt(value: number): Info;
 
-    getMatrixTreeIdsBitMask(): number;
-    setMatrixTreeIdsBitMask(value: number): Info;
+    getTreeIdsBitMask(): number;
+    setTreeIdsBitMask(value: number): Info;
 
     getReferralBranch(): number;
     setReferralBranch(value: number): Info;
@@ -369,8 +369,8 @@ export namespace Account {
       referral?: Account.Username.AsObject,
       relationship?: mlmbox_types_relationship_pb.Relationship.AsObject,
       registrationAt: number,
-      matrixStartedAt: number,
-      matrixTreeIdsBitMask: number,
+      marketingStartedAt: number,
+      treeIdsBitMask: number,
       referralBranch: number,
       statistics?: Account.Statistics.AsObject,
       channelsList: Array<number>,
@@ -787,8 +787,8 @@ export namespace Matrix {
     getPositionRefId(): number;
     setPositionRefId(value: number): Position;
 
-    getPositionRefLine(): number;
-    setPositionRefLine(value: number): Position;
+    getPositionRefBranch(): number;
+    setPositionRefBranch(value: number): Position;
 
     getPositionWidth(): number;
     setPositionWidth(value: number): Position;
@@ -796,11 +796,29 @@ export namespace Matrix {
     getAccountId(): number;
     setAccountId(value: number): Position;
 
-    getTreeAccountId(): number;
-    setTreeAccountId(value: number): Position;
+    getTreeChainId(): number;
+    setTreeChainId(value: number): Position;
+
+    getTreeEntityId(): number;
+    setTreeEntityId(value: number): Position;
+
+    getTreeAccountEntityId(): number;
+    setTreeAccountEntityId(value: number): Position;
+
+    getPartnersQuantity(): number;
+    setPartnersQuantity(value: number): Position;
+
+    getTeamQuantity(): number;
+    setTeamQuantity(value: number): Position;
+
+    getPoolValue(): string;
+    setPoolValue(value: string): Position;
 
     getReinvestEnabled(): boolean;
     setReinvestEnabled(value: boolean): Position;
+
+    getFilled(): boolean;
+    setFilled(value: boolean): Position;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Position.AsObject;
@@ -814,11 +832,17 @@ export namespace Matrix {
     export type AsObject = {
       positionId: number,
       positionRefId: number,
-      positionRefLine: number,
+      positionRefBranch: number,
       positionWidth: number,
       accountId: number,
-      treeAccountId: number,
+      treeChainId: number,
+      treeEntityId: number,
+      treeAccountEntityId: number,
+      partnersQuantity: number,
+      teamQuantity: number,
+      poolValue: string,
       reinvestEnabled: boolean,
+      filled: boolean,
     }
   }
 
@@ -1021,8 +1045,8 @@ export namespace Binary {
     getEarnedValue(): string;
     setEarnedValue(value: string): Position;
 
-    getBranchSelectStrategy(): number;
-    setBranchSelectStrategy(value: number): Position;
+    getBranchSelectStrategy(): Binary.BranchSelectStrategy.Id;
+    setBranchSelectStrategy(value: Binary.BranchSelectStrategy.Id): Position;
 
     getBranchLeft(): Binary.Position.Branch | undefined;
     setBranchLeft(value?: Binary.Position.Branch): Position;
@@ -1055,7 +1079,7 @@ export namespace Binary {
       partnersQuantity: number,
       teamQuantity: number,
       earnedValue: string,
-      branchSelectStrategy: number,
+      branchSelectStrategy: Binary.BranchSelectStrategy.Id,
       branchLeft?: Binary.Position.Branch.AsObject,
       branchRight?: Binary.Position.Branch.AsObject,
     }

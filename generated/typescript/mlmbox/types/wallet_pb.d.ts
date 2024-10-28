@@ -212,13 +212,13 @@ export namespace Wallet {
         hasWithdrawal(): boolean;
         clearWithdrawal(): Metadata;
 
-        getMatrixKeeperInitialTreeId(): number;
-        setMatrixKeeperInitialTreeId(value: number): Metadata;
+        getKeeperInitialTreeId(): number;
+        setKeeperInitialTreeId(value: number): Metadata;
 
-        getMatrixKeeperReinvest(): Wallet.Asset.Transaction.Metadata.MatrixHeader | undefined;
-        setMatrixKeeperReinvest(value?: Wallet.Asset.Transaction.Metadata.MatrixHeader): Metadata;
-        hasMatrixKeeperReinvest(): boolean;
-        clearMatrixKeeperReinvest(): Metadata;
+        getKeeperReinvest(): Wallet.Asset.Transaction.Metadata.PositionHeader | undefined;
+        setKeeperReinvest(value?: Wallet.Asset.Transaction.Metadata.PositionHeader): Metadata;
+        hasKeeperReinvest(): boolean;
+        clearKeeperReinvest(): Metadata;
 
         getBonus(): Wallet.Asset.Transaction.Metadata.Bonus | undefined;
         setBonus(value?: Wallet.Asset.Transaction.Metadata.Bonus): Metadata;
@@ -228,18 +228,18 @@ export namespace Wallet {
         getAccountId(): number;
         setAccountId(value: number): Metadata;
 
-        getMatrixPositionCreated(): Wallet.Asset.Transaction.Metadata.MatrixHeader | undefined;
-        setMatrixPositionCreated(value?: Wallet.Asset.Transaction.Metadata.MatrixHeader): Metadata;
-        hasMatrixPositionCreated(): boolean;
-        clearMatrixPositionCreated(): Metadata;
+        getPositionCreated(): Wallet.Asset.Transaction.Metadata.PositionHeader | undefined;
+        setPositionCreated(value?: Wallet.Asset.Transaction.Metadata.PositionHeader): Metadata;
+        hasPositionCreated(): boolean;
+        clearPositionCreated(): Metadata;
 
         getAmount(): mlmbox_types_asset_pb.Asset.Amount | undefined;
         setAmount(value?: mlmbox_types_asset_pb.Asset.Amount): Metadata;
         hasAmount(): boolean;
         clearAmount(): Metadata;
 
-        getMatrixKeeperBookingTreeId(): number;
-        setMatrixKeeperBookingTreeId(value: number): Metadata;
+        getKeeperBookingTreeId(): number;
+        setKeeperBookingTreeId(value: number): Metadata;
 
         getDeposit(): Wallet.Asset.Transaction.Metadata.Deposit | undefined;
         setDeposit(value?: Wallet.Asset.Transaction.Metadata.Deposit): Metadata;
@@ -260,13 +260,13 @@ export namespace Wallet {
         export type AsObject = {
           description: string,
           withdrawal?: Wallet.Asset.Transaction.Metadata.Withdrawal.AsObject,
-          matrixKeeperInitialTreeId: number,
-          matrixKeeperReinvest?: Wallet.Asset.Transaction.Metadata.MatrixHeader.AsObject,
+          keeperInitialTreeId: number,
+          keeperReinvest?: Wallet.Asset.Transaction.Metadata.PositionHeader.AsObject,
           bonus?: Wallet.Asset.Transaction.Metadata.Bonus.AsObject,
           accountId: number,
-          matrixPositionCreated?: Wallet.Asset.Transaction.Metadata.MatrixHeader.AsObject,
+          positionCreated?: Wallet.Asset.Transaction.Metadata.PositionHeader.AsObject,
           amount?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
-          matrixKeeperBookingTreeId: number,
+          keeperBookingTreeId: number,
           deposit?: Wallet.Asset.Transaction.Metadata.Deposit.AsObject,
         }
 
@@ -324,28 +324,28 @@ export namespace Wallet {
         }
 
 
-        export class MatrixHeader extends jspb.Message {
+        export class PositionHeader extends jspb.Message {
           getTreeId(): number;
-          setTreeId(value: number): MatrixHeader;
+          setTreeId(value: number): PositionHeader;
 
-          getTreeAccountId(): number;
-          setTreeAccountId(value: number): MatrixHeader;
+          getTreeAccountEntityId(): number;
+          setTreeAccountEntityId(value: number): PositionHeader;
 
           getPositionId(): number;
-          setPositionId(value: number): MatrixHeader;
+          setPositionId(value: number): PositionHeader;
 
           serializeBinary(): Uint8Array;
-          toObject(includeInstance?: boolean): MatrixHeader.AsObject;
-          static toObject(includeInstance: boolean, msg: MatrixHeader): MatrixHeader.AsObject;
-          static serializeBinaryToWriter(message: MatrixHeader, writer: jspb.BinaryWriter): void;
-          static deserializeBinary(bytes: Uint8Array): MatrixHeader;
-          static deserializeBinaryFromReader(message: MatrixHeader, reader: jspb.BinaryReader): MatrixHeader;
+          toObject(includeInstance?: boolean): PositionHeader.AsObject;
+          static toObject(includeInstance: boolean, msg: PositionHeader): PositionHeader.AsObject;
+          static serializeBinaryToWriter(message: PositionHeader, writer: jspb.BinaryWriter): void;
+          static deserializeBinary(bytes: Uint8Array): PositionHeader;
+          static deserializeBinaryFromReader(message: PositionHeader, reader: jspb.BinaryReader): PositionHeader;
         }
 
-        export namespace MatrixHeader {
+        export namespace PositionHeader {
           export type AsObject = {
             treeId: number,
-            treeAccountId: number,
+            treeAccountEntityId: number,
             positionId: number,
           }
         }
@@ -393,13 +393,13 @@ export namespace Wallet {
           }
 
           export class SourceMatrix extends jspb.Message {
-            getTarget(): Wallet.Asset.Transaction.Metadata.MatrixHeader | undefined;
-            setTarget(value?: Wallet.Asset.Transaction.Metadata.MatrixHeader): SourceMatrix;
+            getTarget(): Wallet.Asset.Transaction.Metadata.PositionHeader | undefined;
+            setTarget(value?: Wallet.Asset.Transaction.Metadata.PositionHeader): SourceMatrix;
             hasTarget(): boolean;
             clearTarget(): SourceMatrix;
 
-            getSource(): Wallet.Asset.Transaction.Metadata.MatrixHeader | undefined;
-            setSource(value?: Wallet.Asset.Transaction.Metadata.MatrixHeader): SourceMatrix;
+            getSource(): Wallet.Asset.Transaction.Metadata.PositionHeader | undefined;
+            setSource(value?: Wallet.Asset.Transaction.Metadata.PositionHeader): SourceMatrix;
             hasSource(): boolean;
             clearSource(): SourceMatrix;
 
@@ -416,8 +416,8 @@ export namespace Wallet {
 
           export namespace SourceMatrix {
             export type AsObject = {
-              target?: Wallet.Asset.Transaction.Metadata.MatrixHeader.AsObject,
-              source?: Wallet.Asset.Transaction.Metadata.MatrixHeader.AsObject,
+              target?: Wallet.Asset.Transaction.Metadata.PositionHeader.AsObject,
+              source?: Wallet.Asset.Transaction.Metadata.PositionHeader.AsObject,
               level: number,
             }
           }
@@ -460,13 +460,13 @@ export namespace Wallet {
           UNIQUE_FIELD_NOT_SET = 0,
           DESCRIPTION = 1,
           WITHDRAWAL = 2,
-          MATRIX_KEEPER_INITIAL_TREE_ID = 3,
-          MATRIX_KEEPER_REINVEST = 4,
+          KEEPER_INITIAL_TREE_ID = 3,
+          KEEPER_REINVEST = 4,
           BONUS = 5,
           ACCOUNT_ID = 6,
-          MATRIX_POSITION_CREATED = 7,
+          POSITION_CREATED = 7,
           AMOUNT = 8,
-          MATRIX_KEEPER_BOOKING_TREE_ID = 9,
+          KEEPER_BOOKING_TREE_ID = 9,
           DEPOSIT = 10,
         }
       }

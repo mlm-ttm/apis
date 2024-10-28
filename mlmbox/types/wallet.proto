@@ -45,15 +45,15 @@ message Wallet {
           bool used_verified_code = 3;
           string hash = 4;
         }
-        message MatrixHeader {
+        message PositionHeader {
           uint32 tree_id = 1;
-          uint32 tree_account_id = 2;
+          uint32 tree_account_entity_id = 2;
           uint32 position_id = 3;
         }
         message Bonus {
           message SourceMatrix {
-            MatrixHeader target = 1;
-            MatrixHeader source = 2;
+            PositionHeader target = 1;
+            PositionHeader source = 2;
             uint32 level = 3;
           }
           message CardPool {
@@ -71,13 +71,13 @@ message Wallet {
         oneof unique_field {
           string description = 1;
           Withdrawal withdrawal = 2;
-          uint32 matrix_keeper_initial_tree_id = 3;
-          MatrixHeader matrix_keeper_reinvest = 4;
+          uint32 keeper_initial_tree_id = 3;
+          PositionHeader keeper_reinvest = 4;
           Bonus bonus = 5;
           uint32 account_id = 6;
-          MatrixHeader matrix_position_created = 7;
+          PositionHeader position_created = 7;
           mlmbox.types.Asset.Amount amount = 8;
-          uint32 matrix_keeper_booking_tree_id = 9;
+          uint32 keeper_booking_tree_id = 9;
           Deposit deposit = 10;
         }
       }
