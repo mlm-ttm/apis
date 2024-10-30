@@ -57,6 +57,14 @@ message Wallet {
             PositionHeader source = 2;
             uint32 level = 3;
           }
+          message SourceBinary {
+            uint32 tree_id = 1;
+          }
+          message SourceBinaryMatching {
+            uint32 tree_id = 1;
+            uint32 source_account_id = 2;
+            uint32 source_position_id = 3;
+          }
           message CardPool {
             uint32 card_id = 1;
             uint32 pool_part_id = 2;
@@ -67,6 +75,8 @@ message Wallet {
             CardPool card_partner_dao = 3;
             CardPool card_bonus_hunter = 4;
             string description = 5;
+            SourceBinary binary = 6;
+            SourceBinaryMatching binary_matching = 7;
           }
         }
         oneof unique_field {

@@ -380,6 +380,16 @@ export namespace Wallet {
           getDescription(): string;
           setDescription(value: string): Bonus;
 
+          getBinary(): Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary | undefined;
+          setBinary(value?: Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary): Bonus;
+          hasBinary(): boolean;
+          clearBinary(): Bonus;
+
+          getBinaryMatching(): Wallet.Asset.Transaction.Metadata.Bonus.SourceBinaryMatching | undefined;
+          setBinaryMatching(value?: Wallet.Asset.Transaction.Metadata.Bonus.SourceBinaryMatching): Bonus;
+          hasBinaryMatching(): boolean;
+          clearBinaryMatching(): Bonus;
+
           getSourceCase(): Bonus.SourceCase;
 
           serializeBinary(): Uint8Array;
@@ -397,6 +407,8 @@ export namespace Wallet {
             cardPartnerDao?: Wallet.Asset.Transaction.Metadata.Bonus.CardPool.AsObject,
             cardBonusHunter?: Wallet.Asset.Transaction.Metadata.Bonus.CardPool.AsObject,
             description: string,
+            binary?: Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.AsObject,
+            binaryMatching?: Wallet.Asset.Transaction.Metadata.Bonus.SourceBinaryMatching.AsObject,
           }
 
           export class SourceMatrix extends jspb.Message {
@@ -430,6 +442,52 @@ export namespace Wallet {
           }
 
 
+          export class SourceBinary extends jspb.Message {
+            getTreeId(): number;
+            setTreeId(value: number): SourceBinary;
+
+            serializeBinary(): Uint8Array;
+            toObject(includeInstance?: boolean): SourceBinary.AsObject;
+            static toObject(includeInstance: boolean, msg: SourceBinary): SourceBinary.AsObject;
+            static serializeBinaryToWriter(message: SourceBinary, writer: jspb.BinaryWriter): void;
+            static deserializeBinary(bytes: Uint8Array): SourceBinary;
+            static deserializeBinaryFromReader(message: SourceBinary, reader: jspb.BinaryReader): SourceBinary;
+          }
+
+          export namespace SourceBinary {
+            export type AsObject = {
+              treeId: number,
+            }
+          }
+
+
+          export class SourceBinaryMatching extends jspb.Message {
+            getTreeId(): number;
+            setTreeId(value: number): SourceBinaryMatching;
+
+            getSourceAccountId(): number;
+            setSourceAccountId(value: number): SourceBinaryMatching;
+
+            getSourcePositionId(): number;
+            setSourcePositionId(value: number): SourceBinaryMatching;
+
+            serializeBinary(): Uint8Array;
+            toObject(includeInstance?: boolean): SourceBinaryMatching.AsObject;
+            static toObject(includeInstance: boolean, msg: SourceBinaryMatching): SourceBinaryMatching.AsObject;
+            static serializeBinaryToWriter(message: SourceBinaryMatching, writer: jspb.BinaryWriter): void;
+            static deserializeBinary(bytes: Uint8Array): SourceBinaryMatching;
+            static deserializeBinaryFromReader(message: SourceBinaryMatching, reader: jspb.BinaryReader): SourceBinaryMatching;
+          }
+
+          export namespace SourceBinaryMatching {
+            export type AsObject = {
+              treeId: number,
+              sourceAccountId: number,
+              sourcePositionId: number,
+            }
+          }
+
+
           export class CardPool extends jspb.Message {
             getCardId(): number;
             setCardId(value: number): CardPool;
@@ -459,6 +517,8 @@ export namespace Wallet {
             CARD_PARTNER_DAO = 3,
             CARD_BONUS_HUNTER = 4,
             DESCRIPTION = 5,
+            BINARY = 6,
+            BINARY_MATCHING = 7,
           }
         }
 
