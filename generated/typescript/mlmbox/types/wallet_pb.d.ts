@@ -1,6 +1,7 @@
 import * as jspb from 'google-protobuf'
 
 import * as mlmbox_types_asset_pb from '../../mlmbox/types/asset_pb'; // proto import: "mlmbox/types/asset.proto"
+import * as mlmbox_types_account_pb from '../../mlmbox/types/account_pb'; // proto import: "mlmbox/types/account.proto"
 import * as mlmbox_types_bonus_pb from '../../mlmbox/types/bonus_pb'; // proto import: "mlmbox/types/bonus.proto"
 import * as mlmbox_types_status_pb from '../../mlmbox/types/status_pb'; // proto import: "mlmbox/types/status.proto"
 
@@ -246,6 +247,11 @@ export namespace Wallet {
         hasDeposit(): boolean;
         clearDeposit(): Metadata;
 
+        getAccount(): mlmbox_types_account_pb.Account.Info | undefined;
+        setAccount(value?: mlmbox_types_account_pb.Account.Info): Metadata;
+        hasAccount(): boolean;
+        clearAccount(): Metadata;
+
         getUniqueFieldCase(): Metadata.UniqueFieldCase;
 
         serializeBinary(): Uint8Array;
@@ -268,6 +274,7 @@ export namespace Wallet {
           amount?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
           keeperBookingTreeId: number,
           deposit?: Wallet.Asset.Transaction.Metadata.Deposit.AsObject,
+          account?: mlmbox_types_account_pb.Account.Info.AsObject,
         }
 
         export class Deposit extends jspb.Message {
@@ -468,6 +475,7 @@ export namespace Wallet {
           AMOUNT = 8,
           KEEPER_BOOKING_TREE_ID = 9,
           DEPOSIT = 10,
+          ACCOUNT = 11,
         }
       }
 

@@ -3,6 +3,7 @@ syntax = "proto3";
 package mlmbox.types;
 
 import "mlmbox/types/asset.proto";
+import "mlmbox/types/account.proto";
 import "mlmbox/types/bonus.proto";
 import "mlmbox/types/status.proto";
 
@@ -79,6 +80,7 @@ message Wallet {
           mlmbox.types.Asset.Amount amount = 8;
           uint32 keeper_booking_tree_id = 9;
           Deposit deposit = 10;
+          mlmbox.types.Account.Info account = 11;
         }
       }
       uint32 transaction_id = 1;

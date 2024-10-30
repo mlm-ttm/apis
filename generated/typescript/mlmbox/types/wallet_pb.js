@@ -23,6 +23,8 @@ var global =
 
 var mlmbox_types_asset_pb = require('../../mlmbox/types/asset_pb.js');
 goog.object.extend(proto, mlmbox_types_asset_pb);
+var mlmbox_types_account_pb = require('../../mlmbox/types/account_pb.js');
+goog.object.extend(proto, mlmbox_types_account_pb);
 var mlmbox_types_bonus_pb = require('../../mlmbox/types/bonus_pb.js');
 goog.object.extend(proto, mlmbox_types_bonus_pb);
 var mlmbox_types_status_pb = require('../../mlmbox/types/status_pb.js');
@@ -1525,7 +1527,7 @@ proto.mlmbox.types.Wallet.Asset.Transaction.List.prototype.clearItemsList = func
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.oneofGroups_ = [[1,2,3,4,5,6,7,8,9,10]];
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.oneofGroups_ = [[1,2,3,4,5,6,7,8,9,10,11]];
 
 /**
  * @enum {number}
@@ -1541,7 +1543,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.UniqueFieldCase = {
   POSITION_CREATED: 7,
   AMOUNT: 8,
   KEEPER_BOOKING_TREE_ID: 9,
-  DEPOSIT: 10
+  DEPOSIT: 10,
+  ACCOUNT: 11
 };
 
 /**
@@ -1591,7 +1594,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.toObject = function(include
     positionCreated: (f = msg.getPositionCreated()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader.toObject(includeInstance, f),
     amount: (f = msg.getAmount()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f),
     keeperBookingTreeId: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    deposit: (f = msg.getDeposit()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Deposit.toObject(includeInstance, f)
+    deposit: (f = msg.getDeposit()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Deposit.toObject(includeInstance, f),
+    account: (f = msg.getAccount()) && mlmbox_types_account_pb.Account.Info.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1673,6 +1677,11 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.deserializeBinaryFromReader
       var value = new proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Deposit;
       reader.readMessage(value,proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Deposit.deserializeBinaryFromReader);
       msg.setDeposit(value);
+      break;
+    case 11:
+      var value = new mlmbox_types_account_pb.Account.Info;
+      reader.readMessage(value,mlmbox_types_account_pb.Account.Info.deserializeBinaryFromReader);
+      msg.setAccount(value);
       break;
     default:
       reader.skipField();
@@ -1777,6 +1786,14 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.serializeBinaryToWriter = f
       10,
       f,
       proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Deposit.serializeBinaryToWriter
+    );
+  }
+  f = message.getAccount();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      mlmbox_types_account_pb.Account.Info.serializeBinaryToWriter
     );
   }
 };
@@ -3466,6 +3483,43 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.clearDeposit = fu
  */
 proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.hasDeposit = function() {
   return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * optional Account.Info account = 11;
+ * @return {?proto.mlmbox.types.Account.Info}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.getAccount = function() {
+  return /** @type{?proto.mlmbox.types.Account.Info} */ (
+    jspb.Message.getWrapperField(this, mlmbox_types_account_pb.Account.Info, 11));
+};
+
+
+/**
+ * @param {?proto.mlmbox.types.Account.Info|undefined} value
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata} returns this
+*/
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.setAccount = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 11, proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata} returns this
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.clearAccount = function() {
+  return this.setAccount(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.prototype.hasAccount = function() {
+  return jspb.Message.getField(this, 11) != null;
 };
 
 
