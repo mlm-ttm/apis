@@ -2901,7 +2901,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.prototyp
  */
 proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.toObject = function(includeInstance, msg) {
   var f, obj = {
-    treeId: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    treeId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    positionId: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -2942,6 +2943,10 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.deserial
       var value = /** @type {number} */ (reader.readUint32());
       msg.setTreeId(value);
       break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setPositionId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2978,6 +2983,13 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.serializ
       f
     );
   }
+  f = message.getPositionId();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -2996,6 +3008,24 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.prototyp
  */
 proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.prototype.setTreeId = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 position_id = 2;
+ * @return {number}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.prototype.getPositionId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary} returns this
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.prototype.setPositionId = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 

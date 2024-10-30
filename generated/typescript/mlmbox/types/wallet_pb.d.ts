@@ -446,6 +446,9 @@ export namespace Wallet {
             getTreeId(): number;
             setTreeId(value: number): SourceBinary;
 
+            getPositionId(): number;
+            setPositionId(value: number): SourceBinary;
+
             serializeBinary(): Uint8Array;
             toObject(includeInstance?: boolean): SourceBinary.AsObject;
             static toObject(includeInstance: boolean, msg: SourceBinary): SourceBinary.AsObject;
@@ -457,6 +460,7 @@ export namespace Wallet {
           export namespace SourceBinary {
             export type AsObject = {
               treeId: number,
+              positionId: number,
             }
           }
 

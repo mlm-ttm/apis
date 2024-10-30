@@ -59,6 +59,7 @@ message Wallet {
           }
           message SourceBinary {
             uint32 tree_id = 1;
+            uint32 position_id = 2;
           }
           message SourceBinaryMatching {
             uint32 tree_id = 1;
