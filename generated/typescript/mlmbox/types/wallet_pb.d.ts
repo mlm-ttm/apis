@@ -252,6 +252,9 @@ export namespace Wallet {
         hasAccount(): boolean;
         clearAccount(): Metadata;
 
+        getTransactionId(): number;
+        setTransactionId(value: number): Metadata;
+
         getUniqueFieldCase(): Metadata.UniqueFieldCase;
 
         serializeBinary(): Uint8Array;
@@ -275,6 +278,7 @@ export namespace Wallet {
           keeperBookingTreeId: number,
           deposit?: Wallet.Asset.Transaction.Metadata.Deposit.AsObject,
           account?: mlmbox_types_account_pb.Account.Info.AsObject,
+          transactionId: number,
         }
 
         export class Deposit extends jspb.Message {
@@ -540,6 +544,7 @@ export namespace Wallet {
           KEEPER_BOOKING_TREE_ID = 9,
           DEPOSIT = 10,
           ACCOUNT = 11,
+          TRANSACTION_ID = 12,
         }
       }
 

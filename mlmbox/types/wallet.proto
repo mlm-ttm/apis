@@ -92,6 +92,7 @@ message Wallet {
           uint32 keeper_booking_tree_id = 9;
           Deposit deposit = 10;
           mlmbox.types.Account.Info account = 11;
+          uint32 transaction_id = 12;
         }
       }
       uint32 transaction_id = 1;

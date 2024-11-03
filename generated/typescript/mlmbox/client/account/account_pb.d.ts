@@ -30,11 +30,6 @@ export class SetProfileRequest extends jspb.Message {
   getLastName(): string;
   setLastName(value: string): SetProfileRequest;
 
-  getAva(): mlmbox_types_account_pb.Account.Profile.Ava | undefined;
-  setAva(value?: mlmbox_types_account_pb.Account.Profile.Ava): SetProfileRequest;
-  hasAva(): boolean;
-  clearAva(): SetProfileRequest;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SetProfileRequest.AsObject;
   static toObject(includeInstance: boolean, msg: SetProfileRequest): SetProfileRequest.AsObject;
@@ -47,7 +42,6 @@ export namespace SetProfileRequest {
   export type AsObject = {
     firstName: string,
     lastName: string,
-    ava?: mlmbox_types_account_pb.Account.Profile.Ava.AsObject,
   }
 }
 

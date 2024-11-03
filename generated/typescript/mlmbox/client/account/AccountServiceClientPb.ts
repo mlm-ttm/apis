@@ -171,6 +171,49 @@ export class AccountClient {
     this.methodDescriptorSetLocale);
   }
 
+  methodDescriptorSetAva = new grpcWeb.MethodDescriptor(
+    '/mlmbox.client.account.Account/SetAva',
+    grpcWeb.MethodType.UNARY,
+    mlmbox_types_account_pb.Account.Profile.Ava,
+    mlmbox_types_account_pb.Account.Profile.Ava,
+    (request: mlmbox_types_account_pb.Account.Profile.Ava) => {
+      return request.serializeBinary();
+    },
+    mlmbox_types_account_pb.Account.Profile.Ava.deserializeBinary
+  );
+
+  setAva(
+    request: mlmbox_types_account_pb.Account.Profile.Ava,
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.Profile.Ava>;
+
+  setAva(
+    request: mlmbox_types_account_pb.Account.Profile.Ava,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: mlmbox_types_account_pb.Account.Profile.Ava) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.Profile.Ava>;
+
+  setAva(
+    request: mlmbox_types_account_pb.Account.Profile.Ava,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: mlmbox_types_account_pb.Account.Profile.Ava) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/mlmbox.client.account.Account/SetAva',
+        request,
+        metadata || {},
+        this.methodDescriptorSetAva,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/mlmbox.client.account.Account/SetAva',
+    request,
+    metadata || {},
+    this.methodDescriptorSetAva);
+  }
+
   methodDescriptorSetProfile = new grpcWeb.MethodDescriptor(
     '/mlmbox.client.account.Account/SetProfile',
     grpcWeb.MethodType.UNARY,

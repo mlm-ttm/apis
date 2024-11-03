@@ -19,6 +19,7 @@ import * as grpcWeb from 'grpc-web';
 
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
 import * as mlmbox_client_auth_auth_pb from '../../../mlmbox/client/auth/auth_pb'; // proto import: "mlmbox/client/auth/auth.proto"
+import * as mlmbox_types_account_pb from '../../../mlmbox/types/account_pb'; // proto import: "mlmbox/types/account.proto"
 
 
 export class AuthClient {
@@ -124,6 +125,49 @@ export class AuthClient {
     request,
     metadata || {},
     this.methodDescriptorTokenValidate);
+  }
+
+  methodDescriptorTokenGenerate = new grpcWeb.MethodDescriptor(
+    '/mlmbox.client.auth.Auth/TokenGenerate',
+    grpcWeb.MethodType.UNARY,
+    mlmbox_types_account_pb.Account.Id,
+    mlmbox_client_auth_auth_pb.TokenGenerateResponse,
+    (request: mlmbox_types_account_pb.Account.Id) => {
+      return request.serializeBinary();
+    },
+    mlmbox_client_auth_auth_pb.TokenGenerateResponse.deserializeBinary
+  );
+
+  tokenGenerate(
+    request: mlmbox_types_account_pb.Account.Id,
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_client_auth_auth_pb.TokenGenerateResponse>;
+
+  tokenGenerate(
+    request: mlmbox_types_account_pb.Account.Id,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: mlmbox_client_auth_auth_pb.TokenGenerateResponse) => void): grpcWeb.ClientReadableStream<mlmbox_client_auth_auth_pb.TokenGenerateResponse>;
+
+  tokenGenerate(
+    request: mlmbox_types_account_pb.Account.Id,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: mlmbox_client_auth_auth_pb.TokenGenerateResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/mlmbox.client.auth.Auth/TokenGenerate',
+        request,
+        metadata || {},
+        this.methodDescriptorTokenGenerate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/mlmbox.client.auth.Auth/TokenGenerate',
+    request,
+    metadata || {},
+    this.methodDescriptorTokenGenerate);
   }
 
 }

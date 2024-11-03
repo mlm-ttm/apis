@@ -234,8 +234,7 @@ proto.mlmbox.client.account.SetProfileRequest.prototype.toObject = function(opt_
 proto.mlmbox.client.account.SetProfileRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     firstName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    lastName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    ava: (f = msg.getAva()) && mlmbox_types_account_pb.Account.Profile.Ava.toObject(includeInstance, f)
+    lastName: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -280,11 +279,6 @@ proto.mlmbox.client.account.SetProfileRequest.deserializeBinaryFromReader = func
       var value = /** @type {string} */ (reader.readString());
       msg.setLastName(value);
       break;
-    case 3:
-      var value = new mlmbox_types_account_pb.Account.Profile.Ava;
-      reader.readMessage(value,mlmbox_types_account_pb.Account.Profile.Ava.deserializeBinaryFromReader);
-      msg.setAva(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -328,14 +322,6 @@ proto.mlmbox.client.account.SetProfileRequest.serializeBinaryToWriter = function
       f
     );
   }
-  f = message.getAva();
-  if (f != null) {
-    writer.writeMessage(
-      3,
-      f,
-      mlmbox_types_account_pb.Account.Profile.Ava.serializeBinaryToWriter
-    );
-  }
 };
 
 
@@ -372,43 +358,6 @@ proto.mlmbox.client.account.SetProfileRequest.prototype.getLastName = function()
  */
 proto.mlmbox.client.account.SetProfileRequest.prototype.setLastName = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional mlmbox.types.Account.Profile.Ava ava = 3;
- * @return {?proto.mlmbox.types.Account.Profile.Ava}
- */
-proto.mlmbox.client.account.SetProfileRequest.prototype.getAva = function() {
-  return /** @type{?proto.mlmbox.types.Account.Profile.Ava} */ (
-    jspb.Message.getWrapperField(this, mlmbox_types_account_pb.Account.Profile.Ava, 3));
-};
-
-
-/**
- * @param {?proto.mlmbox.types.Account.Profile.Ava|undefined} value
- * @return {!proto.mlmbox.client.account.SetProfileRequest} returns this
-*/
-proto.mlmbox.client.account.SetProfileRequest.prototype.setAva = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.mlmbox.client.account.SetProfileRequest} returns this
- */
-proto.mlmbox.client.account.SetProfileRequest.prototype.clearAva = function() {
-  return this.setAva(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.mlmbox.client.account.SetProfileRequest.prototype.hasAva = function() {
-  return jspb.Message.getField(this, 3) != null;
 };
 
 

@@ -268,6 +268,67 @@ proto.mlmbox.client.account.AccountPromiseClient.prototype.setLocale =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.mlmbox.types.Account.Profile.Ava,
+ *   !proto.mlmbox.types.Account.Profile.Ava>}
+ */
+const methodDescriptor_Account_SetAva = new grpc.web.MethodDescriptor(
+  '/mlmbox.client.account.Account/SetAva',
+  grpc.web.MethodType.UNARY,
+  mlmbox_types_account_pb.Account.Profile.Ava,
+  mlmbox_types_account_pb.Account.Profile.Ava,
+  /**
+   * @param {!proto.mlmbox.types.Account.Profile.Ava} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  mlmbox_types_account_pb.Account.Profile.Ava.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.mlmbox.types.Account.Profile.Ava} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.Profile.Ava)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.Profile.Ava>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.mlmbox.client.account.AccountClient.prototype.setAva =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/mlmbox.client.account.Account/SetAva',
+      request,
+      metadata || {},
+      methodDescriptor_Account_SetAva,
+      callback);
+};
+
+
+/**
+ * @param {!proto.mlmbox.types.Account.Profile.Ava} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.mlmbox.types.Account.Profile.Ava>}
+ *     Promise that resolves to the response
+ */
+proto.mlmbox.client.account.AccountPromiseClient.prototype.setAva =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/mlmbox.client.account.Account/SetAva',
+      request,
+      metadata || {},
+      methodDescriptor_Account_SetAva);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.mlmbox.client.account.SetProfileRequest,
  *   !proto.mlmbox.types.Account.Profile>}
  */

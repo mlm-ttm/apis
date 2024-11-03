@@ -2,12 +2,14 @@ syntax = "proto3";
 
 package mlmbox.client.auth;
 
+import "mlmbox/types/account.proto";
 import "mlmbox/types/status.proto";
 import "google/protobuf/empty.proto";
 
 service Auth {
   rpc TelegramBotSign (TelegramBotSignRequest) returns (AuthSignResponse) {} // authorization
   rpc TokenValidate (google.protobuf.Empty) returns (TokenValidateResponse) {} // token validity check
+  rpc TokenGenerate (mlmbox.types.Account.Id) returns (TokenGenerateResponse) {} // admin - method for generating a token
 }
 
 message TelegramBotSignRequest {
@@ -21,4 +23,7 @@ message AuthSignResponse {
 }
 message TokenValidateResponse {
   mlmbox.types.Status.TokenValidate status = 1;
+}
+message TokenGenerateResponse {
+  string access_token = 1;
 }

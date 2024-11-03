@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as mlmbox_types_account_pb from '../../../mlmbox/types/account_pb'; // proto import: "mlmbox/types/account.proto"
 import * as mlmbox_types_status_pb from '../../../mlmbox/types/status_pb'; // proto import: "mlmbox/types/status.proto"
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
 
@@ -67,6 +68,24 @@ export class TokenValidateResponse extends jspb.Message {
 export namespace TokenValidateResponse {
   export type AsObject = {
     status: mlmbox_types_status_pb.Status.TokenValidate,
+  }
+}
+
+export class TokenGenerateResponse extends jspb.Message {
+  getAccessToken(): string;
+  setAccessToken(value: string): TokenGenerateResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TokenGenerateResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: TokenGenerateResponse): TokenGenerateResponse.AsObject;
+  static serializeBinaryToWriter(message: TokenGenerateResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TokenGenerateResponse;
+  static deserializeBinaryFromReader(message: TokenGenerateResponse, reader: jspb.BinaryReader): TokenGenerateResponse;
+}
+
+export namespace TokenGenerateResponse {
+  export type AsObject = {
+    accessToken: string,
   }
 }
 
