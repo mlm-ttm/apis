@@ -175,28 +175,28 @@ export class AccountClient {
     '/mlmbox.client.account.Account/SetAva',
     grpcWeb.MethodType.UNARY,
     mlmbox_types_account_pb.Account.Profile.Ava,
-    mlmbox_types_account_pb.Account.Profile.Ava,
+    mlmbox_types_account_pb.Account.Profile,
     (request: mlmbox_types_account_pb.Account.Profile.Ava) => {
       return request.serializeBinary();
     },
-    mlmbox_types_account_pb.Account.Profile.Ava.deserializeBinary
+    mlmbox_types_account_pb.Account.Profile.deserializeBinary
   );
 
   setAva(
     request: mlmbox_types_account_pb.Account.Profile.Ava,
-    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.Profile.Ava>;
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_types_account_pb.Account.Profile>;
 
   setAva(
     request: mlmbox_types_account_pb.Account.Profile.Ava,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.Profile.Ava) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.Profile.Ava>;
+               response: mlmbox_types_account_pb.Account.Profile) => void): grpcWeb.ClientReadableStream<mlmbox_types_account_pb.Account.Profile>;
 
   setAva(
     request: mlmbox_types_account_pb.Account.Profile.Ava,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: mlmbox_types_account_pb.Account.Profile.Ava) => void) {
+               response: mlmbox_types_account_pb.Account.Profile) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +

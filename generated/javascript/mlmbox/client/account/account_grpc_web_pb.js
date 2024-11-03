@@ -269,13 +269,13 @@ proto.mlmbox.client.account.AccountPromiseClient.prototype.setLocale =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.mlmbox.types.Account.Profile.Ava,
- *   !proto.mlmbox.types.Account.Profile.Ava>}
+ *   !proto.mlmbox.types.Account.Profile>}
  */
 const methodDescriptor_Account_SetAva = new grpc.web.MethodDescriptor(
   '/mlmbox.client.account.Account/SetAva',
   grpc.web.MethodType.UNARY,
   mlmbox_types_account_pb.Account.Profile.Ava,
-  mlmbox_types_account_pb.Account.Profile.Ava,
+  mlmbox_types_account_pb.Account.Profile,
   /**
    * @param {!proto.mlmbox.types.Account.Profile.Ava} request
    * @return {!Uint8Array}
@@ -283,7 +283,7 @@ const methodDescriptor_Account_SetAva = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  mlmbox_types_account_pb.Account.Profile.Ava.deserializeBinary
+  mlmbox_types_account_pb.Account.Profile.deserializeBinary
 );
 
 
@@ -292,9 +292,9 @@ const methodDescriptor_Account_SetAva = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.Profile.Ava)}
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.types.Account.Profile)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.Profile.Ava>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.types.Account.Profile>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.mlmbox.client.account.AccountClient.prototype.setAva =
@@ -313,7 +313,7 @@ proto.mlmbox.client.account.AccountClient.prototype.setAva =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.mlmbox.types.Account.Profile.Ava>}
+ * @return {!Promise<!proto.mlmbox.types.Account.Profile>}
  *     Promise that resolves to the response
  */
 proto.mlmbox.client.account.AccountPromiseClient.prototype.setAva =
