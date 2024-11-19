@@ -265,5 +265,61 @@ proto.mlmbox.client.auth.AuthPromiseClient.prototype.tokenGenerate =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.google.protobuf.Empty,
+ *   !proto.mlmbox.client.auth.RemoteSignInEvent>}
+ */
+const methodDescriptor_Auth_RemoteSignIn = new grpc.web.MethodDescriptor(
+  '/mlmbox.client.auth.Auth/RemoteSignIn',
+  grpc.web.MethodType.SERVER_STREAMING,
+  google_protobuf_empty_pb.Empty,
+  proto.mlmbox.client.auth.RemoteSignInEvent,
+  /**
+   * @param {!proto.google.protobuf.Empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.mlmbox.client.auth.RemoteSignInEvent.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.google.protobuf.Empty} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.client.auth.RemoteSignInEvent>}
+ *     The XHR Node Readable Stream
+ */
+proto.mlmbox.client.auth.AuthClient.prototype.remoteSignIn =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/mlmbox.client.auth.Auth/RemoteSignIn',
+      request,
+      metadata || {},
+      methodDescriptor_Auth_RemoteSignIn);
+};
+
+
+/**
+ * @param {!proto.google.protobuf.Empty} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.client.auth.RemoteSignInEvent>}
+ *     The XHR Node Readable Stream
+ */
+proto.mlmbox.client.auth.AuthPromiseClient.prototype.remoteSignIn =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/mlmbox.client.auth.Auth/RemoteSignIn',
+      request,
+      metadata || {},
+      methodDescriptor_Auth_RemoteSignIn);
+};
+
+
 module.exports = proto.mlmbox.client.auth;
 

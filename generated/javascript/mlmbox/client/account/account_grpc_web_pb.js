@@ -509,5 +509,127 @@ proto.mlmbox.client.account.AccountPromiseClient.prototype.getAvaFiles =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.mlmbox.client.account.RemoteViewRequest,
+ *   !proto.mlmbox.client.account.RemoteViewResponse>}
+ */
+const methodDescriptor_Account_RemoteView = new grpc.web.MethodDescriptor(
+  '/mlmbox.client.account.Account/RemoteView',
+  grpc.web.MethodType.UNARY,
+  proto.mlmbox.client.account.RemoteViewRequest,
+  proto.mlmbox.client.account.RemoteViewResponse,
+  /**
+   * @param {!proto.mlmbox.client.account.RemoteViewRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.mlmbox.client.account.RemoteViewResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.mlmbox.client.account.RemoteViewRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.client.account.RemoteViewResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.client.account.RemoteViewResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.mlmbox.client.account.AccountClient.prototype.remoteView =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/mlmbox.client.account.Account/RemoteView',
+      request,
+      metadata || {},
+      methodDescriptor_Account_RemoteView,
+      callback);
+};
+
+
+/**
+ * @param {!proto.mlmbox.client.account.RemoteViewRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.mlmbox.client.account.RemoteViewResponse>}
+ *     Promise that resolves to the response
+ */
+proto.mlmbox.client.account.AccountPromiseClient.prototype.remoteView =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/mlmbox.client.account.Account/RemoteView',
+      request,
+      metadata || {},
+      methodDescriptor_Account_RemoteView);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.mlmbox.client.account.RemoteVerifyRequest,
+ *   !proto.mlmbox.client.account.RemoteVerifyResponse>}
+ */
+const methodDescriptor_Account_RemoteVerify = new grpc.web.MethodDescriptor(
+  '/mlmbox.client.account.Account/RemoteVerify',
+  grpc.web.MethodType.UNARY,
+  proto.mlmbox.client.account.RemoteVerifyRequest,
+  proto.mlmbox.client.account.RemoteVerifyResponse,
+  /**
+   * @param {!proto.mlmbox.client.account.RemoteVerifyRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.mlmbox.client.account.RemoteVerifyResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.mlmbox.client.account.RemoteVerifyRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.mlmbox.client.account.RemoteVerifyResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.mlmbox.client.account.RemoteVerifyResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.mlmbox.client.account.AccountClient.prototype.remoteVerify =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/mlmbox.client.account.Account/RemoteVerify',
+      request,
+      metadata || {},
+      methodDescriptor_Account_RemoteVerify,
+      callback);
+};
+
+
+/**
+ * @param {!proto.mlmbox.client.account.RemoteVerifyRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.mlmbox.client.account.RemoteVerifyResponse>}
+ *     Promise that resolves to the response
+ */
+proto.mlmbox.client.account.AccountPromiseClient.prototype.remoteVerify =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/mlmbox.client.account.Account/RemoteVerify',
+      request,
+      metadata || {},
+      methodDescriptor_Account_RemoteVerify);
+};
+
+
 module.exports = proto.mlmbox.client.account;
 

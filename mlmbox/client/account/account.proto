@@ -14,6 +14,8 @@ service Account {
   rpc SetProfile (SetProfileRequest) returns (mlmbox.types.Account.Profile) {} // Update profile details
   rpc SetReferral (mlmbox.types.Account.Id) returns (mlmbox.types.Account.Info) {} // Set referral (if the user has no referral)
   rpc GetAvaFiles (mlmbox.types.Account.Profile.Ava.List) returns (mlmbox.types.Account.Profile.Ava.File.List) {}
+  rpc RemoteView (RemoteViewRequest) returns (RemoteViewResponse) {}
+  rpc RemoteVerify (RemoteVerifyRequest) returns (RemoteVerifyResponse) {}
 }
 message SetLoginRequest {
   string login = 1;
@@ -21,4 +23,21 @@ message SetLoginRequest {
 message SetProfileRequest {
     string first_name = 1;
     string last_name = 2;
+}
+message RemoteViewRequest {
+  string secret_code = 1;
+}
+message RemoteVerifyRequest {
+  string secret_code = 1;
+  bool verified = 2;
+}
+message RemoteViewResponse {
+  string user_agent = 1;
+  string ip_address = 2;
+  uint32 expired_at = 3;
+}
+message RemoteVerifyResponse {
+  string user_agent = 1;
+  string ip_address = 2;
+  bool verified = 3;
 }

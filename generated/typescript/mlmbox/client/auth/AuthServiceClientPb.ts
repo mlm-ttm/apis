@@ -170,5 +170,27 @@ export class AuthClient {
     this.methodDescriptorTokenGenerate);
   }
 
+  methodDescriptorRemoteSignIn = new grpcWeb.MethodDescriptor(
+    '/mlmbox.client.auth.Auth/RemoteSignIn',
+    grpcWeb.MethodType.SERVER_STREAMING,
+    google_protobuf_empty_pb.Empty,
+    mlmbox_client_auth_auth_pb.RemoteSignInEvent,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    mlmbox_client_auth_auth_pb.RemoteSignInEvent.deserializeBinary
+  );
+
+  remoteSignIn(
+    request: google_protobuf_empty_pb.Empty,
+    metadata?: grpcWeb.Metadata): grpcWeb.ClientReadableStream<mlmbox_client_auth_auth_pb.RemoteSignInEvent> {
+    return this.client_.serverStreaming(
+      this.hostname_ +
+        '/mlmbox.client.auth.Auth/RemoteSignIn',
+      request,
+      metadata || {},
+      this.methodDescriptorRemoteSignIn);
+  }
+
 }
 

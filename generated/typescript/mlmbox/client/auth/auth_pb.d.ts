@@ -89,3 +89,114 @@ export namespace TokenGenerateResponse {
   }
 }
 
+export class RemoteSignInEvent extends jspb.Message {
+  getGuestAccessToken(): string;
+  setGuestAccessToken(value: string): RemoteSignInEvent;
+
+  getSecretCode(): RemoteSignInEvent.SecretCode | undefined;
+  setSecretCode(value?: RemoteSignInEvent.SecretCode): RemoteSignInEvent;
+  hasSecretCode(): boolean;
+  clearSecretCode(): RemoteSignInEvent;
+
+  getWaiting(): RemoteSignInEvent.Waiting | undefined;
+  setWaiting(value?: RemoteSignInEvent.Waiting): RemoteSignInEvent;
+  hasWaiting(): boolean;
+  clearWaiting(): RemoteSignInEvent;
+
+  getAccountAccessToken(): string;
+  setAccountAccessToken(value: string): RemoteSignInEvent;
+
+  getCanceled(): mlmbox_types_account_pb.Account.Info | undefined;
+  setCanceled(value?: mlmbox_types_account_pb.Account.Info): RemoteSignInEvent;
+  hasCanceled(): boolean;
+  clearCanceled(): RemoteSignInEvent;
+
+  getWaitingExpired(): mlmbox_types_account_pb.Account.Info | undefined;
+  setWaitingExpired(value?: mlmbox_types_account_pb.Account.Info): RemoteSignInEvent;
+  hasWaitingExpired(): boolean;
+  clearWaitingExpired(): RemoteSignInEvent;
+
+  getExpiredAt(): number;
+  setExpiredAt(value: number): RemoteSignInEvent;
+
+  getEventCase(): RemoteSignInEvent.EventCase;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RemoteSignInEvent.AsObject;
+  static toObject(includeInstance: boolean, msg: RemoteSignInEvent): RemoteSignInEvent.AsObject;
+  static serializeBinaryToWriter(message: RemoteSignInEvent, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RemoteSignInEvent;
+  static deserializeBinaryFromReader(message: RemoteSignInEvent, reader: jspb.BinaryReader): RemoteSignInEvent;
+}
+
+export namespace RemoteSignInEvent {
+  export type AsObject = {
+    guestAccessToken: string,
+    secretCode?: RemoteSignInEvent.SecretCode.AsObject,
+    waiting?: RemoteSignInEvent.Waiting.AsObject,
+    accountAccessToken: string,
+    canceled?: mlmbox_types_account_pb.Account.Info.AsObject,
+    waitingExpired?: mlmbox_types_account_pb.Account.Info.AsObject,
+    expiredAt: number,
+  }
+
+  export class SecretCode extends jspb.Message {
+    getValue(): string;
+    setValue(value: string): SecretCode;
+
+    getExpiredAt(): number;
+    setExpiredAt(value: number): SecretCode;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): SecretCode.AsObject;
+    static toObject(includeInstance: boolean, msg: SecretCode): SecretCode.AsObject;
+    static serializeBinaryToWriter(message: SecretCode, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): SecretCode;
+    static deserializeBinaryFromReader(message: SecretCode, reader: jspb.BinaryReader): SecretCode;
+  }
+
+  export namespace SecretCode {
+    export type AsObject = {
+      value: string,
+      expiredAt: number,
+    }
+  }
+
+
+  export class Waiting extends jspb.Message {
+    getAccount(): mlmbox_types_account_pb.Account.Info | undefined;
+    setAccount(value?: mlmbox_types_account_pb.Account.Info): Waiting;
+    hasAccount(): boolean;
+    clearAccount(): Waiting;
+
+    getExpiredAt(): number;
+    setExpiredAt(value: number): Waiting;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Waiting.AsObject;
+    static toObject(includeInstance: boolean, msg: Waiting): Waiting.AsObject;
+    static serializeBinaryToWriter(message: Waiting, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Waiting;
+    static deserializeBinaryFromReader(message: Waiting, reader: jspb.BinaryReader): Waiting;
+  }
+
+  export namespace Waiting {
+    export type AsObject = {
+      account?: mlmbox_types_account_pb.Account.Info.AsObject,
+      expiredAt: number,
+    }
+  }
+
+
+  export enum EventCase { 
+    EVENT_NOT_SET = 0,
+    GUEST_ACCESS_TOKEN = 1,
+    SECRET_CODE = 2,
+    WAITING = 3,
+    ACCOUNT_ACCESS_TOKEN = 4,
+    CANCELED = 5,
+    WAITING_EXPIRED = 6,
+    EXPIRED_AT = 7,
+  }
+}
+

@@ -10,6 +10,7 @@ service Auth {
   rpc TelegramBotSign (TelegramBotSignRequest) returns (AuthSignResponse) {} // authorization
   rpc TokenValidate (google.protobuf.Empty) returns (TokenValidateResponse) {} // token validity check
   rpc TokenGenerate (mlmbox.types.Account.Id) returns (TokenGenerateResponse) {} // admin - method for generating a token
+  rpc RemoteSignIn (google.protobuf.Empty) returns (stream RemoteSignInEvent) {}
 }
 
 message TelegramBotSignRequest {
@@ -26,4 +27,23 @@ message TokenValidateResponse {
 }
 message TokenGenerateResponse {
   string access_token = 1;
+}
+message RemoteSignInEvent {
+  message SecretCode {
+    string value = 1;
+    uint32 expired_at = 2;
+  }
+  message Waiting {
+    mlmbox.types.Account.Info account = 1;
+    uint32 expired_at = 2;
+  }
+  oneof event {
+    string guest_access_token = 1;
+    SecretCode secret_code = 2;
+    Waiting waiting = 3;
+    string account_access_token = 4;
+    mlmbox.types.Account.Info canceled = 5;
+    mlmbox.types.Account.Info waiting_expired = 6;
+    uint32 expired_at = 7;
+  }
 }

@@ -343,5 +343,91 @@ export class AccountClient {
     this.methodDescriptorGetAvaFiles);
   }
 
+  methodDescriptorRemoteView = new grpcWeb.MethodDescriptor(
+    '/mlmbox.client.account.Account/RemoteView',
+    grpcWeb.MethodType.UNARY,
+    mlmbox_client_account_account_pb.RemoteViewRequest,
+    mlmbox_client_account_account_pb.RemoteViewResponse,
+    (request: mlmbox_client_account_account_pb.RemoteViewRequest) => {
+      return request.serializeBinary();
+    },
+    mlmbox_client_account_account_pb.RemoteViewResponse.deserializeBinary
+  );
+
+  remoteView(
+    request: mlmbox_client_account_account_pb.RemoteViewRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_client_account_account_pb.RemoteViewResponse>;
+
+  remoteView(
+    request: mlmbox_client_account_account_pb.RemoteViewRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: mlmbox_client_account_account_pb.RemoteViewResponse) => void): grpcWeb.ClientReadableStream<mlmbox_client_account_account_pb.RemoteViewResponse>;
+
+  remoteView(
+    request: mlmbox_client_account_account_pb.RemoteViewRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: mlmbox_client_account_account_pb.RemoteViewResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/mlmbox.client.account.Account/RemoteView',
+        request,
+        metadata || {},
+        this.methodDescriptorRemoteView,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/mlmbox.client.account.Account/RemoteView',
+    request,
+    metadata || {},
+    this.methodDescriptorRemoteView);
+  }
+
+  methodDescriptorRemoteVerify = new grpcWeb.MethodDescriptor(
+    '/mlmbox.client.account.Account/RemoteVerify',
+    grpcWeb.MethodType.UNARY,
+    mlmbox_client_account_account_pb.RemoteVerifyRequest,
+    mlmbox_client_account_account_pb.RemoteVerifyResponse,
+    (request: mlmbox_client_account_account_pb.RemoteVerifyRequest) => {
+      return request.serializeBinary();
+    },
+    mlmbox_client_account_account_pb.RemoteVerifyResponse.deserializeBinary
+  );
+
+  remoteVerify(
+    request: mlmbox_client_account_account_pb.RemoteVerifyRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<mlmbox_client_account_account_pb.RemoteVerifyResponse>;
+
+  remoteVerify(
+    request: mlmbox_client_account_account_pb.RemoteVerifyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: mlmbox_client_account_account_pb.RemoteVerifyResponse) => void): grpcWeb.ClientReadableStream<mlmbox_client_account_account_pb.RemoteVerifyResponse>;
+
+  remoteVerify(
+    request: mlmbox_client_account_account_pb.RemoteVerifyRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: mlmbox_client_account_account_pb.RemoteVerifyResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/mlmbox.client.account.Account/RemoteVerify',
+        request,
+        metadata || {},
+        this.methodDescriptorRemoteVerify,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/mlmbox.client.account.Account/RemoteVerify',
+    request,
+    metadata || {},
+    this.methodDescriptorRemoteVerify);
+  }
+
 }
 
