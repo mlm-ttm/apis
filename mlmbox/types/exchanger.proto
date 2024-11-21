@@ -1,9 +1,13 @@
 syntax = "proto3";
 
 package mlmbox.types;
+import "mlmbox/types/asset.proto";
 import "mlmbox/types/asset_pair.proto";
 
 message Exchanger {
+  message List {
+    repeated mlmbox.types.Exchanger items = 1;
+  }
   message Rate {
     message List {
       repeated mlmbox.types.Exchanger.Rate items = 1;
@@ -13,4 +17,24 @@ message Exchanger {
     string rate_sell = 3;
     uint32 modified_at = 4;
   }
+  message Id {
+    uint32 source_asset_id = 1;
+    uint32 target_asset_id = 2;
+  }
+  message Request {
+    uint32 source_asset_id = 1;
+    uint32 target_asset_id = 2;
+    string source_amount = 3;
+  }
+  message Response {
+    mlmbox.types.Asset.Amount source = 1;
+    mlmbox.types.Asset.Amount target = 2;
+    mlmbox.types.Asset.Amount fee = 3;
+  }
+  uint32 source_asset_id = 1;
+  uint32 target_asset_id = 2;
+  uint32 fee_asset_id = 3;
+  string fee_percent = 4;
+  string rate = 5;
+  string limit_source_amount_min = 6;
 }
