@@ -11,12 +11,6 @@ export class Exchanger extends jspb.Message {
   getTargetAssetId(): number;
   setTargetAssetId(value: number): Exchanger;
 
-  getFeeAssetId(): number;
-  setFeeAssetId(value: number): Exchanger;
-
-  getFeePercent(): string;
-  setFeePercent(value: string): Exchanger;
-
   getRate(): string;
   setRate(value: string): Exchanger;
 
@@ -35,8 +29,6 @@ export namespace Exchanger {
   export type AsObject = {
     sourceAssetId: number,
     targetAssetId: number,
-    feeAssetId: number,
-    feePercent: string,
     rate: string,
     limitSourceAmountMin: string,
   }
@@ -177,11 +169,6 @@ export namespace Exchanger {
     hasTarget(): boolean;
     clearTarget(): Response;
 
-    getFee(): mlmbox_types_asset_pb.Asset.Amount | undefined;
-    setFee(value?: mlmbox_types_asset_pb.Asset.Amount): Response;
-    hasFee(): boolean;
-    clearFee(): Response;
-
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Response.AsObject;
     static toObject(includeInstance: boolean, msg: Response): Response.AsObject;
@@ -194,7 +181,6 @@ export namespace Exchanger {
     export type AsObject = {
       source?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
       target?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
-      fee?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
     }
   }
 

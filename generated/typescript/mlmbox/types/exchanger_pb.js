@@ -213,10 +213,8 @@ proto.mlmbox.types.Exchanger.toObject = function(includeInstance, msg) {
   var f, obj = {
     sourceAssetId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     targetAssetId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    feeAssetId: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    feePercent: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    rate: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    limitSourceAmountMin: jspb.Message.getFieldWithDefault(msg, 6, "")
+    rate: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    limitSourceAmountMin: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -262,18 +260,10 @@ proto.mlmbox.types.Exchanger.deserializeBinaryFromReader = function(msg, reader)
       msg.setTargetAssetId(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setFeeAssetId(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setFeePercent(value);
-      break;
-    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setRate(value);
       break;
-    case 6:
+    case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setLimitSourceAmountMin(value);
       break;
@@ -320,31 +310,17 @@ proto.mlmbox.types.Exchanger.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
-  f = message.getFeeAssetId();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
-  f = message.getFeePercent();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
   f = message.getRate();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      3,
       f
     );
   }
   f = message.getLimitSourceAmountMin();
   if (f.length > 0) {
     writer.writeString(
-      6,
+      4,
       f
     );
   }
@@ -1295,8 +1271,7 @@ proto.mlmbox.types.Exchanger.Response.prototype.toObject = function(opt_includeI
 proto.mlmbox.types.Exchanger.Response.toObject = function(includeInstance, msg) {
   var f, obj = {
     source: (f = msg.getSource()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f),
-    target: (f = msg.getTarget()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f),
-    fee: (f = msg.getFee()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f)
+    target: (f = msg.getTarget()) && mlmbox_types_asset_pb.Asset.Amount.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1343,11 +1318,6 @@ proto.mlmbox.types.Exchanger.Response.deserializeBinaryFromReader = function(msg
       reader.readMessage(value,mlmbox_types_asset_pb.Asset.Amount.deserializeBinaryFromReader);
       msg.setTarget(value);
       break;
-    case 3:
-      var value = new mlmbox_types_asset_pb.Asset.Amount;
-      reader.readMessage(value,mlmbox_types_asset_pb.Asset.Amount.deserializeBinaryFromReader);
-      msg.setFee(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -1389,14 +1359,6 @@ proto.mlmbox.types.Exchanger.Response.serializeBinaryToWriter = function(message
   if (f != null) {
     writer.writeMessage(
       2,
-      f,
-      mlmbox_types_asset_pb.Asset.Amount.serializeBinaryToWriter
-    );
-  }
-  f = message.getFee();
-  if (f != null) {
-    writer.writeMessage(
-      3,
       f,
       mlmbox_types_asset_pb.Asset.Amount.serializeBinaryToWriter
     );
@@ -1479,43 +1441,6 @@ proto.mlmbox.types.Exchanger.Response.prototype.hasTarget = function() {
 
 
 /**
- * optional Asset.Amount fee = 3;
- * @return {?proto.mlmbox.types.Asset.Amount}
- */
-proto.mlmbox.types.Exchanger.Response.prototype.getFee = function() {
-  return /** @type{?proto.mlmbox.types.Asset.Amount} */ (
-    jspb.Message.getWrapperField(this, mlmbox_types_asset_pb.Asset.Amount, 3));
-};
-
-
-/**
- * @param {?proto.mlmbox.types.Asset.Amount|undefined} value
- * @return {!proto.mlmbox.types.Exchanger.Response} returns this
-*/
-proto.mlmbox.types.Exchanger.Response.prototype.setFee = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.mlmbox.types.Exchanger.Response} returns this
- */
-proto.mlmbox.types.Exchanger.Response.prototype.clearFee = function() {
-  return this.setFee(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.mlmbox.types.Exchanger.Response.prototype.hasFee = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-/**
  * optional uint32 source_asset_id = 1;
  * @return {number}
  */
@@ -1552,47 +1477,11 @@ proto.mlmbox.types.Exchanger.prototype.setTargetAssetId = function(value) {
 
 
 /**
- * optional uint32 fee_asset_id = 3;
- * @return {number}
- */
-proto.mlmbox.types.Exchanger.prototype.getFeeAssetId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.mlmbox.types.Exchanger} returns this
- */
-proto.mlmbox.types.Exchanger.prototype.setFeeAssetId = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
-};
-
-
-/**
- * optional string fee_percent = 4;
- * @return {string}
- */
-proto.mlmbox.types.Exchanger.prototype.getFeePercent = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.mlmbox.types.Exchanger} returns this
- */
-proto.mlmbox.types.Exchanger.prototype.setFeePercent = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
-};
-
-
-/**
- * optional string rate = 5;
+ * optional string rate = 3;
  * @return {string}
  */
 proto.mlmbox.types.Exchanger.prototype.getRate = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
@@ -1601,16 +1490,16 @@ proto.mlmbox.types.Exchanger.prototype.getRate = function() {
  * @return {!proto.mlmbox.types.Exchanger} returns this
  */
 proto.mlmbox.types.Exchanger.prototype.setRate = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional string limit_source_amount_min = 6;
+ * optional string limit_source_amount_min = 4;
  * @return {string}
  */
 proto.mlmbox.types.Exchanger.prototype.getLimitSourceAmountMin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
@@ -1619,7 +1508,7 @@ proto.mlmbox.types.Exchanger.prototype.getLimitSourceAmountMin = function() {
  * @return {!proto.mlmbox.types.Exchanger} returns this
  */
 proto.mlmbox.types.Exchanger.prototype.setLimitSourceAmountMin = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

@@ -29,12 +29,9 @@ message Exchanger {
   message Response {
     mlmbox.types.Asset.Amount source = 1;
     mlmbox.types.Asset.Amount target = 2;
-    mlmbox.types.Asset.Amount fee = 3;
   }
   uint32 source_asset_id = 1;
   uint32 target_asset_id = 2;
-  uint32 fee_asset_id = 3;
-  string fee_percent = 4;
-  string rate = 5;
-  string limit_source_amount_min = 6;
+  string rate = 3;
+  string limit_source_amount_min = 4;
 }
