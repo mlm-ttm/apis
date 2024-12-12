@@ -13,6 +13,8 @@ message Bonus {
       BONUS_CARD_BONUS_HUNTER = 5;
       BONUS_BINARY = 6;
       BONUS_BINARY_MATCHING = 7;
+      BONUS_GAME_TOKEN_PERSONAL_PURCHASE = 8;
+      BONUS_GAME_TOKEN_PARTNERS_PURCHASE = 9;
     }
     Id kind_id = 1;
   }

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package mlmbox.types;
+import "mlmbox/types/account.proto";
+import "mlmbox/types/bonus.proto";
+
+message Distribution {
+  message State {
+    string web3_address = 1;
+    uint32 web3_address_attached_at = 2;
+    Holder.Balance holder_balance = 3;
+    string income_balance_frozen = 4;
+    mlmbox.types.Bonus.Summary income_bonuses_statistics = 5;
+    string points_balance_frozen = 6;
+    string points_balance_available = 7;
+  }
+  message Holder {
+    message Balance {
+      string web3 = 1;
+      string wallet = 2;
+      string exchange = 3;
+    }
+    message State {
+      string web3_address = 1;
+      uint32 web3_address_attached_at = 2;
+      Balance balance = 3;
+    }
+    message Partner {
+      mlmbox.types.Account.Info account = 1;
+      State state = 2;
+    }
+    State state = 1;
+    uint32 partners_quantity = 2;
+    Balance partners_hold_balance = 3;
+    repeated Partner top_partners = 4;
+  }
+}
