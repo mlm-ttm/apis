@@ -11,9 +11,6 @@ service Distribution {
   rpc Web3AddressAttachSigned (AttachSignedMessageRequest) returns (mlmbox.types.Distribution.State) {}
   rpc Web3AddressDetach (google.protobuf.Empty) returns (mlmbox.types.Distribution.State) {}
   rpc HolderInfo (google.protobuf.Empty) returns (mlmbox.types.Distribution.Holder) {}
-
-//  rpc GetGiftShop (google.protobuf.Empty) returns (GiftShopResponse) {}
-//  rpc ClaimGift (ClaimGiftRequest) returns (ClaimGiftResponse) {}
 }
 
 message SignatureMessageResponse {
@@ -24,26 +21,3 @@ message AttachSignedMessageRequest {
   string message = 1;
   string signature = 2;
 }
-
-//message MyHoldersResponse {
-//  repeated Holder holders = 1;
-//  string total_volume = 2;
-//  uint32 holders_count = 3;
-//}
-//message GiftShopResponse {
-//  repeated GiftItem items = 1;
-//  string available_points = 2;
-//  string frozen_points = 3;
-//}
-//message GiftItem {
-//  string id = 1;
-//  string name = 2;
-//  string cost_points = 3;
-//}
-//message ClaimGiftRequest {
-//  string gift_id = 1;
-//  string usdt_withdraw_address = 2;
-//}
-//message ClaimGiftResponse {
-//  bool success = 1;
-//}
