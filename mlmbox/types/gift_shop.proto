@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package mlmbox.types;
+import "mlmbox/types/wallet.proto";
+
+message GiftShop {
+  message Card {
+    message Id {
+      uint32 id = 1;
+    }
+    message Review {
+      string video_url = 1;
+      uint32 created_at = 2;
+      bool approved = 3;
+    }
+    uint32 id = 1;
+    string photo_url = 2;
+    string title = 3;
+    string description = 4;
+    string price_value = 5;
+    string points_needed = 6;
+    bool released = 7;
+    uint32 created_at = 8;
+    mlmbox.types.Wallet.Asset.Transaction transaction = 9;
+    Review review = 10;
+  }
+  message Info {
+    string points_balance_frozen = 1;
+    string points_balance_available = 2;
+    uint32 need_review_id = 3;
+    Card card = 4;
+  }
+  message State {
+    string points_balance_frozen = 1;
+    string points_balance_available = 2;
+    uint32 need_review_card_id = 3;
+    repeated Card cards = 4;
+  }
+}
