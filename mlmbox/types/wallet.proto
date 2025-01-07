@@ -58,6 +58,11 @@ message Wallet {
             uint32 level = 3;
           }
           message SourceBinary {
+            message Partner {
+              uint32 account_id = 1;
+              uint32 tree_id = 2;
+              uint32 position_id = 3;
+            }
             uint32 tree_id = 1;
             uint32 position_id = 2;
           }
@@ -70,6 +75,28 @@ message Wallet {
             uint32 card_id = 1;
             uint32 pool_part_id = 2;
           }
+          message GameToken {
+            message Web3Purchase {
+              message Personal {
+                string transaction_hash = 1;
+              }
+              message Partners {
+                uint32 account_id = 1;
+                string transaction_hash = 2;
+              }
+            }
+            message Exchange {
+              message Personal {
+                mlmbox.types.Asset.Amount source = 1;
+                mlmbox.types.Asset.Amount target = 2;
+              }
+              message Partners {
+                uint32 account_id = 1;
+                mlmbox.types.Asset.Amount source = 2;
+                mlmbox.types.Asset.Amount target = 3;
+              }
+            }
+          }
           mlmbox.types.Bonus.Kind.Id bonus_id = 1;
           oneof source {
             SourceMatrix matrix = 2;
@@ -78,6 +105,12 @@ message Wallet {
             string description = 5;
             SourceBinary binary = 6;
             SourceBinaryMatching binary_matching = 7;
+            GameToken.Web3Purchase.Personal game_token_web3_purchase_personal = 8;
+            GameToken.Web3Purchase.Partners game_token_web3_purchase_partners = 9;
+            GameToken.Exchange.Personal game_token_exchange_personal = 10;
+            GameToken.Exchange.Partners game_token_exchange_partners = 11;
+            PositionHeader game_token_promotion_top_matrix = 12;
+            SourceBinary.Partner game_token_promotion_binary = 13;
           }
         }
         oneof unique_field {

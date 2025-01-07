@@ -127,6 +127,49 @@ export class GiftShopClient {
     this.methodDescriptorGet);
   }
 
+  methodDescriptorRemove = new grpcWeb.MethodDescriptor(
+    '/mlmbox.client.gift_shop.GiftShop/Remove',
+    grpcWeb.MethodType.UNARY,
+    mlmbox_types_gift_shop_pb.GiftShop.Card.Id,
+    google_protobuf_empty_pb.Empty,
+    (request: mlmbox_types_gift_shop_pb.GiftShop.Card.Id) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  remove(
+    request: mlmbox_types_gift_shop_pb.GiftShop.Card.Id,
+    metadata?: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  remove(
+    request: mlmbox_types_gift_shop_pb.GiftShop.Card.Id,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  remove(
+    request: mlmbox_types_gift_shop_pb.GiftShop.Card.Id,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/mlmbox.client.gift_shop.GiftShop/Remove',
+        request,
+        metadata || {},
+        this.methodDescriptorRemove,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/mlmbox.client.gift_shop.GiftShop/Remove',
+    request,
+    metadata || {},
+    this.methodDescriptorRemove);
+  }
+
   methodDescriptorGetUploaderUrl = new grpcWeb.MethodDescriptor(
     '/mlmbox.client.gift_shop.GiftShop/GetUploaderUrl',
     grpcWeb.MethodType.UNARY,

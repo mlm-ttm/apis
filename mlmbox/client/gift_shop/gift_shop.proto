@@ -8,6 +8,7 @@ import "mlmbox/types/gift_shop.proto";
 service GiftShop {
   rpc Info (google.protobuf.Empty) returns (mlmbox.types.GiftShop.State) {}
   rpc Get (mlmbox.types.GiftShop.Card.Id) returns (mlmbox.types.GiftShop.Info) {}
+  rpc Remove (mlmbox.types.GiftShop.Card.Id) returns (google.protobuf.Empty) {}
   rpc GetUploaderUrl (mlmbox.types.GiftShop.Card.Id) returns (UrlResponse) {}
   rpc Create (CreateRequest) returns (mlmbox.types.GiftShop.Info) {}
   rpc CardUpdateInfo (CardUpdateInfoRequest) returns (mlmbox.types.GiftShop.Info) {}

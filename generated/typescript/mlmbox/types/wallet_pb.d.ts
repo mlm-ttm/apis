@@ -394,6 +394,36 @@ export namespace Wallet {
           hasBinaryMatching(): boolean;
           clearBinaryMatching(): Bonus;
 
+          getGameTokenWeb3PurchasePersonal(): Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Web3Purchase.Personal | undefined;
+          setGameTokenWeb3PurchasePersonal(value?: Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Web3Purchase.Personal): Bonus;
+          hasGameTokenWeb3PurchasePersonal(): boolean;
+          clearGameTokenWeb3PurchasePersonal(): Bonus;
+
+          getGameTokenWeb3PurchasePartners(): Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Web3Purchase.Partners | undefined;
+          setGameTokenWeb3PurchasePartners(value?: Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Web3Purchase.Partners): Bonus;
+          hasGameTokenWeb3PurchasePartners(): boolean;
+          clearGameTokenWeb3PurchasePartners(): Bonus;
+
+          getGameTokenExchangePersonal(): Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Exchange.Personal | undefined;
+          setGameTokenExchangePersonal(value?: Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Exchange.Personal): Bonus;
+          hasGameTokenExchangePersonal(): boolean;
+          clearGameTokenExchangePersonal(): Bonus;
+
+          getGameTokenExchangePartners(): Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Exchange.Partners | undefined;
+          setGameTokenExchangePartners(value?: Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Exchange.Partners): Bonus;
+          hasGameTokenExchangePartners(): boolean;
+          clearGameTokenExchangePartners(): Bonus;
+
+          getGameTokenPromotionTopMatrix(): Wallet.Asset.Transaction.Metadata.PositionHeader | undefined;
+          setGameTokenPromotionTopMatrix(value?: Wallet.Asset.Transaction.Metadata.PositionHeader): Bonus;
+          hasGameTokenPromotionTopMatrix(): boolean;
+          clearGameTokenPromotionTopMatrix(): Bonus;
+
+          getGameTokenPromotionBinary(): Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.Partner | undefined;
+          setGameTokenPromotionBinary(value?: Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.Partner): Bonus;
+          hasGameTokenPromotionBinary(): boolean;
+          clearGameTokenPromotionBinary(): Bonus;
+
           getSourceCase(): Bonus.SourceCase;
 
           serializeBinary(): Uint8Array;
@@ -413,6 +443,12 @@ export namespace Wallet {
             description: string,
             binary?: Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.AsObject,
             binaryMatching?: Wallet.Asset.Transaction.Metadata.Bonus.SourceBinaryMatching.AsObject,
+            gameTokenWeb3PurchasePersonal?: Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Web3Purchase.Personal.AsObject,
+            gameTokenWeb3PurchasePartners?: Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Web3Purchase.Partners.AsObject,
+            gameTokenExchangePersonal?: Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Exchange.Personal.AsObject,
+            gameTokenExchangePartners?: Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Exchange.Partners.AsObject,
+            gameTokenPromotionTopMatrix?: Wallet.Asset.Transaction.Metadata.PositionHeader.AsObject,
+            gameTokenPromotionBinary?: Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.Partner.AsObject,
           }
 
           export class SourceMatrix extends jspb.Message {
@@ -466,6 +502,33 @@ export namespace Wallet {
               treeId: number,
               positionId: number,
             }
+
+            export class Partner extends jspb.Message {
+              getAccountId(): number;
+              setAccountId(value: number): Partner;
+
+              getTreeId(): number;
+              setTreeId(value: number): Partner;
+
+              getPositionId(): number;
+              setPositionId(value: number): Partner;
+
+              serializeBinary(): Uint8Array;
+              toObject(includeInstance?: boolean): Partner.AsObject;
+              static toObject(includeInstance: boolean, msg: Partner): Partner.AsObject;
+              static serializeBinaryToWriter(message: Partner, writer: jspb.BinaryWriter): void;
+              static deserializeBinary(bytes: Uint8Array): Partner;
+              static deserializeBinaryFromReader(message: Partner, reader: jspb.BinaryReader): Partner;
+            }
+
+            export namespace Partner {
+              export type AsObject = {
+                accountId: number,
+                treeId: number,
+                positionId: number,
+              }
+            }
+
           }
 
 
@@ -519,6 +582,151 @@ export namespace Wallet {
           }
 
 
+          export class GameToken extends jspb.Message {
+            serializeBinary(): Uint8Array;
+            toObject(includeInstance?: boolean): GameToken.AsObject;
+            static toObject(includeInstance: boolean, msg: GameToken): GameToken.AsObject;
+            static serializeBinaryToWriter(message: GameToken, writer: jspb.BinaryWriter): void;
+            static deserializeBinary(bytes: Uint8Array): GameToken;
+            static deserializeBinaryFromReader(message: GameToken, reader: jspb.BinaryReader): GameToken;
+          }
+
+          export namespace GameToken {
+            export type AsObject = {
+            }
+
+            export class Web3Purchase extends jspb.Message {
+              serializeBinary(): Uint8Array;
+              toObject(includeInstance?: boolean): Web3Purchase.AsObject;
+              static toObject(includeInstance: boolean, msg: Web3Purchase): Web3Purchase.AsObject;
+              static serializeBinaryToWriter(message: Web3Purchase, writer: jspb.BinaryWriter): void;
+              static deserializeBinary(bytes: Uint8Array): Web3Purchase;
+              static deserializeBinaryFromReader(message: Web3Purchase, reader: jspb.BinaryReader): Web3Purchase;
+            }
+
+            export namespace Web3Purchase {
+              export type AsObject = {
+              }
+
+              export class Personal extends jspb.Message {
+                getTransactionHash(): string;
+                setTransactionHash(value: string): Personal;
+
+                serializeBinary(): Uint8Array;
+                toObject(includeInstance?: boolean): Personal.AsObject;
+                static toObject(includeInstance: boolean, msg: Personal): Personal.AsObject;
+                static serializeBinaryToWriter(message: Personal, writer: jspb.BinaryWriter): void;
+                static deserializeBinary(bytes: Uint8Array): Personal;
+                static deserializeBinaryFromReader(message: Personal, reader: jspb.BinaryReader): Personal;
+              }
+
+              export namespace Personal {
+                export type AsObject = {
+                  transactionHash: string,
+                }
+              }
+
+
+              export class Partners extends jspb.Message {
+                getAccountId(): number;
+                setAccountId(value: number): Partners;
+
+                getTransactionHash(): string;
+                setTransactionHash(value: string): Partners;
+
+                serializeBinary(): Uint8Array;
+                toObject(includeInstance?: boolean): Partners.AsObject;
+                static toObject(includeInstance: boolean, msg: Partners): Partners.AsObject;
+                static serializeBinaryToWriter(message: Partners, writer: jspb.BinaryWriter): void;
+                static deserializeBinary(bytes: Uint8Array): Partners;
+                static deserializeBinaryFromReader(message: Partners, reader: jspb.BinaryReader): Partners;
+              }
+
+              export namespace Partners {
+                export type AsObject = {
+                  accountId: number,
+                  transactionHash: string,
+                }
+              }
+
+            }
+
+
+            export class Exchange extends jspb.Message {
+              serializeBinary(): Uint8Array;
+              toObject(includeInstance?: boolean): Exchange.AsObject;
+              static toObject(includeInstance: boolean, msg: Exchange): Exchange.AsObject;
+              static serializeBinaryToWriter(message: Exchange, writer: jspb.BinaryWriter): void;
+              static deserializeBinary(bytes: Uint8Array): Exchange;
+              static deserializeBinaryFromReader(message: Exchange, reader: jspb.BinaryReader): Exchange;
+            }
+
+            export namespace Exchange {
+              export type AsObject = {
+              }
+
+              export class Personal extends jspb.Message {
+                getSource(): mlmbox_types_asset_pb.Asset.Amount | undefined;
+                setSource(value?: mlmbox_types_asset_pb.Asset.Amount): Personal;
+                hasSource(): boolean;
+                clearSource(): Personal;
+
+                getTarget(): mlmbox_types_asset_pb.Asset.Amount | undefined;
+                setTarget(value?: mlmbox_types_asset_pb.Asset.Amount): Personal;
+                hasTarget(): boolean;
+                clearTarget(): Personal;
+
+                serializeBinary(): Uint8Array;
+                toObject(includeInstance?: boolean): Personal.AsObject;
+                static toObject(includeInstance: boolean, msg: Personal): Personal.AsObject;
+                static serializeBinaryToWriter(message: Personal, writer: jspb.BinaryWriter): void;
+                static deserializeBinary(bytes: Uint8Array): Personal;
+                static deserializeBinaryFromReader(message: Personal, reader: jspb.BinaryReader): Personal;
+              }
+
+              export namespace Personal {
+                export type AsObject = {
+                  source?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
+                  target?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
+                }
+              }
+
+
+              export class Partners extends jspb.Message {
+                getAccountId(): number;
+                setAccountId(value: number): Partners;
+
+                getSource(): mlmbox_types_asset_pb.Asset.Amount | undefined;
+                setSource(value?: mlmbox_types_asset_pb.Asset.Amount): Partners;
+                hasSource(): boolean;
+                clearSource(): Partners;
+
+                getTarget(): mlmbox_types_asset_pb.Asset.Amount | undefined;
+                setTarget(value?: mlmbox_types_asset_pb.Asset.Amount): Partners;
+                hasTarget(): boolean;
+                clearTarget(): Partners;
+
+                serializeBinary(): Uint8Array;
+                toObject(includeInstance?: boolean): Partners.AsObject;
+                static toObject(includeInstance: boolean, msg: Partners): Partners.AsObject;
+                static serializeBinaryToWriter(message: Partners, writer: jspb.BinaryWriter): void;
+                static deserializeBinary(bytes: Uint8Array): Partners;
+                static deserializeBinaryFromReader(message: Partners, reader: jspb.BinaryReader): Partners;
+              }
+
+              export namespace Partners {
+                export type AsObject = {
+                  accountId: number,
+                  source?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
+                  target?: mlmbox_types_asset_pb.Asset.Amount.AsObject,
+                }
+              }
+
+            }
+
+          }
+
+
           export enum SourceCase { 
             SOURCE_NOT_SET = 0,
             MATRIX = 2,
@@ -527,6 +735,12 @@ export namespace Wallet {
             DESCRIPTION = 5,
             BINARY = 6,
             BINARY_MATCHING = 7,
+            GAME_TOKEN_WEB3_PURCHASE_PERSONAL = 8,
+            GAME_TOKEN_WEB3_PURCHASE_PARTNERS = 9,
+            GAME_TOKEN_EXCHANGE_PERSONAL = 10,
+            GAME_TOKEN_EXCHANGE_PARTNERS = 11,
+            GAME_TOKEN_PROMOTION_TOP_MATRIX = 12,
+            GAME_TOKEN_PROMOTION_BINARY = 13,
           }
         }
 

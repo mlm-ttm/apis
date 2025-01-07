@@ -206,6 +206,67 @@ proto.mlmbox.client.gift_shop.GiftShopPromiseClient.prototype.get =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.mlmbox.types.GiftShop.Card.Id,
+ *   !proto.google.protobuf.Empty>}
+ */
+const methodDescriptor_GiftShop_Remove = new grpc.web.MethodDescriptor(
+  '/mlmbox.client.gift_shop.GiftShop/Remove',
+  grpc.web.MethodType.UNARY,
+  mlmbox_types_gift_shop_pb.GiftShop.Card.Id,
+  google_protobuf_empty_pb.Empty,
+  /**
+   * @param {!proto.mlmbox.types.GiftShop.Card.Id} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  google_protobuf_empty_pb.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.mlmbox.types.GiftShop.Card.Id} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.google.protobuf.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.mlmbox.client.gift_shop.GiftShopClient.prototype.remove =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/mlmbox.client.gift_shop.GiftShop/Remove',
+      request,
+      metadata || {},
+      methodDescriptor_GiftShop_Remove,
+      callback);
+};
+
+
+/**
+ * @param {!proto.mlmbox.types.GiftShop.Card.Id} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.google.protobuf.Empty>}
+ *     Promise that resolves to the response
+ */
+proto.mlmbox.client.gift_shop.GiftShopPromiseClient.prototype.remove =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/mlmbox.client.gift_shop.GiftShop/Remove',
+      request,
+      metadata || {},
+      methodDescriptor_GiftShop_Remove);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.mlmbox.types.GiftShop.Card.Id,
  *   !proto.mlmbox.client.gift_shop.UrlResponse>}
  */
 const methodDescriptor_GiftShop_GetUploaderUrl = new grpc.web.MethodDescriptor(
