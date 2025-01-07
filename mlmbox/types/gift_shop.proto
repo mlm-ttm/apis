@@ -33,7 +33,7 @@ message GiftShop {
   message State {
     string points_balance_frozen = 1;
     string points_balance_available = 2;
-    uint32 need_review_card_id = 3;
+    repeated uint32 need_review_card_ids = 3;
     repeated Card cards = 4;
   }
 }

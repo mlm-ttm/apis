@@ -1265,7 +1265,7 @@ proto.mlmbox.types.GiftShop.Info.prototype.hasCard = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.mlmbox.types.GiftShop.State.repeatedFields_ = [4];
+proto.mlmbox.types.GiftShop.State.repeatedFields_ = [3,4];
 
 
 
@@ -1300,7 +1300,7 @@ proto.mlmbox.types.GiftShop.State.toObject = function(includeInstance, msg) {
   var f, obj = {
     pointsBalanceFrozen: jspb.Message.getFieldWithDefault(msg, 1, ""),
     pointsBalanceAvailable: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    needReviewCardId: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    needReviewCardIdsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
     cardsList: jspb.Message.toObjectList(msg.getCardsList(),
     proto.mlmbox.types.GiftShop.Card.toObject, includeInstance)
   };
@@ -1348,8 +1348,10 @@ proto.mlmbox.types.GiftShop.State.deserializeBinaryFromReader = function(msg, re
       msg.setPointsBalanceAvailable(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setNeedReviewCardId(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addNeedReviewCardIds(values[i]);
+      }
       break;
     case 4:
       var value = new proto.mlmbox.types.GiftShop.Card;
@@ -1399,9 +1401,9 @@ proto.mlmbox.types.GiftShop.State.serializeBinaryToWriter = function(message, wr
       f
     );
   }
-  f = message.getNeedReviewCardId();
-  if (f !== 0) {
-    writer.writeUint32(
+  f = message.getNeedReviewCardIdsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
       3,
       f
     );
@@ -1454,20 +1456,39 @@ proto.mlmbox.types.GiftShop.State.prototype.setPointsBalanceAvailable = function
 
 
 /**
- * optional uint32 need_review_card_id = 3;
- * @return {number}
+ * repeated uint32 need_review_card_ids = 3;
+ * @return {!Array<number>}
  */
-proto.mlmbox.types.GiftShop.State.prototype.getNeedReviewCardId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+proto.mlmbox.types.GiftShop.State.prototype.getNeedReviewCardIdsList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 3));
+};
+
+
+/**
+ * @param {!Array<number>} value
+ * @return {!proto.mlmbox.types.GiftShop.State} returns this
+ */
+proto.mlmbox.types.GiftShop.State.prototype.setNeedReviewCardIdsList = function(value) {
+  return jspb.Message.setField(this, 3, value || []);
 };
 
 
 /**
  * @param {number} value
+ * @param {number=} opt_index
  * @return {!proto.mlmbox.types.GiftShop.State} returns this
  */
-proto.mlmbox.types.GiftShop.State.prototype.setNeedReviewCardId = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
+proto.mlmbox.types.GiftShop.State.prototype.addNeedReviewCardIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.mlmbox.types.GiftShop.State} returns this
+ */
+proto.mlmbox.types.GiftShop.State.prototype.clearNeedReviewCardIdsList = function() {
+  return this.setNeedReviewCardIdsList([]);
 };
 
 

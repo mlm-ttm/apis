@@ -161,8 +161,10 @@ export namespace GiftShop {
     getPointsBalanceAvailable(): string;
     setPointsBalanceAvailable(value: string): State;
 
-    getNeedReviewCardId(): number;
-    setNeedReviewCardId(value: number): State;
+    getNeedReviewCardIdsList(): Array<number>;
+    setNeedReviewCardIdsList(value: Array<number>): State;
+    clearNeedReviewCardIdsList(): State;
+    addNeedReviewCardIds(value: number, index?: number): State;
 
     getCardsList(): Array<GiftShop.Card>;
     setCardsList(value: Array<GiftShop.Card>): State;
@@ -181,7 +183,7 @@ export namespace GiftShop {
     export type AsObject = {
       pointsBalanceFrozen: string,
       pointsBalanceAvailable: string,
-      needReviewCardId: number,
+      needReviewCardIdsList: Array<number>,
       cardsList: Array<GiftShop.Card.AsObject>,
     }
   }

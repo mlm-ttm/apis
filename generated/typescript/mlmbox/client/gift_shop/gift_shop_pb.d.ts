@@ -4,24 +4,6 @@ import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty
 import * as mlmbox_types_gift_shop_pb from '../../../mlmbox/types/gift_shop_pb'; // proto import: "mlmbox/types/gift_shop.proto"
 
 
-export class UrlResponse extends jspb.Message {
-  getUrl(): string;
-  setUrl(value: string): UrlResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UrlResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: UrlResponse): UrlResponse.AsObject;
-  static serializeBinaryToWriter(message: UrlResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UrlResponse;
-  static deserializeBinaryFromReader(message: UrlResponse, reader: jspb.BinaryReader): UrlResponse;
-}
-
-export namespace UrlResponse {
-  export type AsObject = {
-    url: string,
-  }
-}
-
 export class CreateRequest extends jspb.Message {
   getTitle(): string;
   setTitle(value: string): CreateRequest;
@@ -31,6 +13,11 @@ export class CreateRequest extends jspb.Message {
 
   getPriceValue(): string;
   setPriceValue(value: string): CreateRequest;
+
+  getImage(): Uint8Array | string;
+  getImage_asU8(): Uint8Array;
+  getImage_asB64(): string;
+  setImage(value: Uint8Array | string): CreateRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreateRequest.AsObject;
@@ -45,6 +32,7 @@ export namespace CreateRequest {
     title: string,
     description: string,
     priceValue: string,
+    image: Uint8Array | string,
   }
 }
 
@@ -61,6 +49,11 @@ export class CardUpdateInfoRequest extends jspb.Message {
   getPriceValue(): string;
   setPriceValue(value: string): CardUpdateInfoRequest;
 
+  getImage(): Uint8Array | string;
+  getImage_asU8(): Uint8Array;
+  getImage_asB64(): string;
+  setImage(value: Uint8Array | string): CardUpdateInfoRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CardUpdateInfoRequest.AsObject;
   static toObject(includeInstance: boolean, msg: CardUpdateInfoRequest): CardUpdateInfoRequest.AsObject;
@@ -75,6 +68,7 @@ export namespace CardUpdateInfoRequest {
     title: string,
     description: string,
     priceValue: string,
+    image: Uint8Array | string,
   }
 }
 
