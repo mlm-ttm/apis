@@ -424,6 +424,11 @@ export namespace Wallet {
           hasGameTokenPromotionBinary(): boolean;
           clearGameTokenPromotionBinary(): Bonus;
 
+          getGameTokenPromotionMatrix(): Wallet.Asset.Transaction.Metadata.PositionHeader | undefined;
+          setGameTokenPromotionMatrix(value?: Wallet.Asset.Transaction.Metadata.PositionHeader): Bonus;
+          hasGameTokenPromotionMatrix(): boolean;
+          clearGameTokenPromotionMatrix(): Bonus;
+
           getSourceCase(): Bonus.SourceCase;
 
           serializeBinary(): Uint8Array;
@@ -449,6 +454,7 @@ export namespace Wallet {
             gameTokenExchangePartners?: Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Exchange.Partners.AsObject,
             gameTokenPromotionTopMatrix?: Wallet.Asset.Transaction.Metadata.PositionHeader.AsObject,
             gameTokenPromotionBinary?: Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.Partner.AsObject,
+            gameTokenPromotionMatrix?: Wallet.Asset.Transaction.Metadata.PositionHeader.AsObject,
           }
 
           export class SourceMatrix extends jspb.Message {
@@ -741,6 +747,7 @@ export namespace Wallet {
             GAME_TOKEN_EXCHANGE_PARTNERS = 11,
             GAME_TOKEN_PROMOTION_TOP_MATRIX = 12,
             GAME_TOKEN_PROMOTION_BINARY = 13,
+            GAME_TOKEN_PROMOTION_MATRIX = 14,
           }
         }
 

@@ -43,6 +43,19 @@ export namespace Distribution {
     getPointsBalanceAvailable(): string;
     setPointsBalanceAvailable(value: string): State;
 
+    getCashbackBalanceFrozen(): string;
+    setCashbackBalanceFrozen(value: string): State;
+
+    getCashbackBonusesStatistics(): mlmbox_types_bonus_pb.Bonus.Summary | undefined;
+    setCashbackBonusesStatistics(value?: mlmbox_types_bonus_pb.Bonus.Summary): State;
+    hasCashbackBonusesStatistics(): boolean;
+    clearCashbackBonusesStatistics(): State;
+
+    getConfig(): Distribution.State.Config | undefined;
+    setConfig(value?: Distribution.State.Config): State;
+    hasConfig(): boolean;
+    clearConfig(): State;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): State.AsObject;
     static toObject(includeInstance: boolean, msg: State): State.AsObject;
@@ -60,7 +73,41 @@ export namespace Distribution {
       incomeBonusesStatistics?: mlmbox_types_bonus_pb.Bonus.Summary.AsObject,
       pointsBalanceFrozen: string,
       pointsBalanceAvailable: string,
+      cashbackBalanceFrozen: string,
+      cashbackBonusesStatistics?: mlmbox_types_bonus_pb.Bonus.Summary.AsObject,
+      config?: Distribution.State.Config.AsObject,
     }
+
+    export class Config extends jspb.Message {
+      getPersonalPurchaseGameTokenBonusPercent(): string;
+      setPersonalPurchaseGameTokenBonusPercent(value: string): Config;
+
+      getPartnersPurchaseGameTokenBonusPercent(): string;
+      setPartnersPurchaseGameTokenBonusPercent(value: string): Config;
+
+      getPartnersPurchasePointsBonusPercent(): string;
+      setPartnersPurchasePointsBonusPercent(value: string): Config;
+
+      getPartnersPurchasePointsBonusUsdtRate(): string;
+      setPartnersPurchasePointsBonusUsdtRate(value: string): Config;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Config.AsObject;
+      static toObject(includeInstance: boolean, msg: Config): Config.AsObject;
+      static serializeBinaryToWriter(message: Config, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Config;
+      static deserializeBinaryFromReader(message: Config, reader: jspb.BinaryReader): Config;
+    }
+
+    export namespace Config {
+      export type AsObject = {
+        personalPurchaseGameTokenBonusPercent: string,
+        partnersPurchaseGameTokenBonusPercent: string,
+        partnersPurchasePointsBonusPercent: string,
+        partnersPurchasePointsBonusUsdtRate: string,
+      }
+    }
+
   }
 
 

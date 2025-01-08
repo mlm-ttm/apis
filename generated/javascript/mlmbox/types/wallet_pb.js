@@ -2611,7 +2611,7 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader.prototype.se
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.oneofGroups_ = [[2,3,4,5,6,7,8,9,10,11,12,13]];
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.oneofGroups_ = [[2,3,4,5,6,7,8,9,10,11,12,13,14]];
 
 /**
  * @enum {number}
@@ -2629,7 +2629,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceCase = {
   GAME_TOKEN_EXCHANGE_PERSONAL: 10,
   GAME_TOKEN_EXCHANGE_PARTNERS: 11,
   GAME_TOKEN_PROMOTION_TOP_MATRIX: 12,
-  GAME_TOKEN_PROMOTION_BINARY: 13
+  GAME_TOKEN_PROMOTION_BINARY: 13,
+  GAME_TOKEN_PROMOTION_MATRIX: 14
 };
 
 /**
@@ -2682,7 +2683,8 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.toObject = function(i
     gameTokenExchangePersonal: (f = msg.getGameTokenExchangePersonal()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Exchange.Personal.toObject(includeInstance, f),
     gameTokenExchangePartners: (f = msg.getGameTokenExchangePartners()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.GameToken.Exchange.Partners.toObject(includeInstance, f),
     gameTokenPromotionTopMatrix: (f = msg.getGameTokenPromotionTopMatrix()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader.toObject(includeInstance, f),
-    gameTokenPromotionBinary: (f = msg.getGameTokenPromotionBinary()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.Partner.toObject(includeInstance, f)
+    gameTokenPromotionBinary: (f = msg.getGameTokenPromotionBinary()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.Partner.toObject(includeInstance, f),
+    gameTokenPromotionMatrix: (f = msg.getGameTokenPromotionMatrix()) && proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2781,6 +2783,11 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.deserializeBinaryFrom
       var value = new proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.Partner;
       reader.readMessage(value,proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.Partner.deserializeBinaryFromReader);
       msg.setGameTokenPromotionBinary(value);
+      break;
+    case 14:
+      var value = new proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader;
+      reader.readMessage(value,proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader.deserializeBinaryFromReader);
+      msg.setGameTokenPromotionMatrix(value);
       break;
     default:
       reader.skipField();
@@ -2911,6 +2918,14 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.serializeBinaryToWrit
       13,
       f,
       proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.SourceBinary.Partner.serializeBinaryToWriter
+    );
+  }
+  f = message.getGameTokenPromotionMatrix();
+  if (f != null) {
+    writer.writeMessage(
+      14,
+      f,
+      proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader.serializeBinaryToWriter
     );
   }
 };
@@ -5333,6 +5348,43 @@ proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.clearGameTo
  */
 proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.hasGameTokenPromotionBinary = function() {
   return jspb.Message.getField(this, 13) != null;
+};
+
+
+/**
+ * optional PositionHeader game_token_promotion_matrix = 14;
+ * @return {?proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.getGameTokenPromotionMatrix = function() {
+  return /** @type{?proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader} */ (
+    jspb.Message.getWrapperField(this, proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader, 14));
+};
+
+
+/**
+ * @param {?proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.PositionHeader|undefined} value
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus} returns this
+*/
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.setGameTokenPromotionMatrix = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 14, proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus} returns this
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.clearGameTokenPromotionMatrix = function() {
+  return this.setGameTokenPromotionMatrix(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.mlmbox.types.Wallet.Asset.Transaction.Metadata.Bonus.prototype.hasGameTokenPromotionMatrix = function() {
+  return jspb.Message.getField(this, 14) != null;
 };
 
 

@@ -6,6 +6,12 @@ import "mlmbox/types/bonus.proto";
 
 message Distribution {
   message State {
+    message Config {
+      string personal_purchase_game_token_bonus_percent = 1;
+      string partners_purchase_game_token_bonus_percent = 2;
+      string partners_purchase_points_bonus_percent = 3;
+      string partners_purchase_points_bonus_usdt_rate = 4;
+    }
     string web3_address = 1;
     uint32 web3_address_attached_at = 2;
     Holder.Balance holder_balance = 3;
@@ -13,6 +19,9 @@ message Distribution {
     mlmbox.types.Bonus.Summary income_bonuses_statistics = 5;
     string points_balance_frozen = 6;
     string points_balance_available = 7;
+    string cashback_balance_frozen = 8;
+    mlmbox.types.Bonus.Summary cashback_bonuses_statistics = 9;
+    Config config = 10;
   }
   message Holder {
     message Balance {
