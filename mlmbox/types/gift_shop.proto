@@ -8,32 +8,32 @@ message GiftShop {
     message Id {
       uint32 id = 1;
     }
-    message Review {
-      string video_url = 1;
-      uint32 created_at = 2;
-      bool approved = 3;
-    }
     uint32 id = 1;
-    string photo_url = 2;
-    string title = 3;
-    string description = 4;
-    string price_value = 5;
-    string points_needed = 6;
-    bool released = 7;
-    uint32 created_at = 8;
-    mlmbox.types.Wallet.Asset.Transaction transaction = 9;
-    Review review = 10;
+    string title = 2;
+    string description = 3;
+    string image_src = 4;
+    string usdt_price = 5;
+    string usdt_fee = 6;
+    string points_needed = 7;
+    bool released = 8;
+    uint32 created_at = 9;
+    uint32 released_at = 10;
+    mlmbox.types.Wallet.Asset.Transaction transaction = 11;
+    string review_video_url = 12;
+    uint32 review_created_at = 13;
+    bool review_approved = 14;
   }
   message Info {
     string points_balance_frozen = 1;
     string points_balance_available = 2;
-    uint32 need_review_id = 3;
+    repeated uint32 need_review_card_ids = 3;
     Card card = 4;
   }
   message State {
     string points_balance_frozen = 1;
     string points_balance_available = 2;
-    repeated uint32 need_review_card_ids = 3;
-    repeated Card cards = 4;
+    string settings_card_usdt_price_min = 3;
+    repeated uint32 need_review_card_ids = 4;
+    repeated Card cards = 5;
   }
 }

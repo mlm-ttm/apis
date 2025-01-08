@@ -20,17 +20,20 @@ export namespace GiftShop {
     getId(): number;
     setId(value: number): Card;
 
-    getPhotoUrl(): string;
-    setPhotoUrl(value: string): Card;
-
     getTitle(): string;
     setTitle(value: string): Card;
 
     getDescription(): string;
     setDescription(value: string): Card;
 
-    getPriceValue(): string;
-    setPriceValue(value: string): Card;
+    getImageSrc(): string;
+    setImageSrc(value: string): Card;
+
+    getUsdtPrice(): string;
+    setUsdtPrice(value: string): Card;
+
+    getUsdtFee(): string;
+    setUsdtFee(value: string): Card;
 
     getPointsNeeded(): string;
     setPointsNeeded(value: string): Card;
@@ -41,15 +44,22 @@ export namespace GiftShop {
     getCreatedAt(): number;
     setCreatedAt(value: number): Card;
 
+    getReleasedAt(): number;
+    setReleasedAt(value: number): Card;
+
     getTransaction(): mlmbox_types_wallet_pb.Wallet.Asset.Transaction | undefined;
     setTransaction(value?: mlmbox_types_wallet_pb.Wallet.Asset.Transaction): Card;
     hasTransaction(): boolean;
     clearTransaction(): Card;
 
-    getReview(): GiftShop.Card.Review | undefined;
-    setReview(value?: GiftShop.Card.Review): Card;
-    hasReview(): boolean;
-    clearReview(): Card;
+    getReviewVideoUrl(): string;
+    setReviewVideoUrl(value: string): Card;
+
+    getReviewCreatedAt(): number;
+    setReviewCreatedAt(value: number): Card;
+
+    getReviewApproved(): boolean;
+    setReviewApproved(value: boolean): Card;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Card.AsObject;
@@ -62,15 +72,19 @@ export namespace GiftShop {
   export namespace Card {
     export type AsObject = {
       id: number,
-      photoUrl: string,
       title: string,
       description: string,
-      priceValue: string,
+      imageSrc: string,
+      usdtPrice: string,
+      usdtFee: string,
       pointsNeeded: string,
       released: boolean,
       createdAt: number,
+      releasedAt: number,
       transaction?: mlmbox_types_wallet_pb.Wallet.Asset.Transaction.AsObject,
-      review?: GiftShop.Card.Review.AsObject,
+      reviewVideoUrl: string,
+      reviewCreatedAt: number,
+      reviewApproved: boolean,
     }
 
     export class Id extends jspb.Message {
@@ -91,33 +105,6 @@ export namespace GiftShop {
       }
     }
 
-
-    export class Review extends jspb.Message {
-      getVideoUrl(): string;
-      setVideoUrl(value: string): Review;
-
-      getCreatedAt(): number;
-      setCreatedAt(value: number): Review;
-
-      getApproved(): boolean;
-      setApproved(value: boolean): Review;
-
-      serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): Review.AsObject;
-      static toObject(includeInstance: boolean, msg: Review): Review.AsObject;
-      static serializeBinaryToWriter(message: Review, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): Review;
-      static deserializeBinaryFromReader(message: Review, reader: jspb.BinaryReader): Review;
-    }
-
-    export namespace Review {
-      export type AsObject = {
-        videoUrl: string,
-        createdAt: number,
-        approved: boolean,
-      }
-    }
-
   }
 
 
@@ -128,8 +115,10 @@ export namespace GiftShop {
     getPointsBalanceAvailable(): string;
     setPointsBalanceAvailable(value: string): Info;
 
-    getNeedReviewId(): number;
-    setNeedReviewId(value: number): Info;
+    getNeedReviewCardIdsList(): Array<number>;
+    setNeedReviewCardIdsList(value: Array<number>): Info;
+    clearNeedReviewCardIdsList(): Info;
+    addNeedReviewCardIds(value: number, index?: number): Info;
 
     getCard(): GiftShop.Card | undefined;
     setCard(value?: GiftShop.Card): Info;
@@ -148,7 +137,7 @@ export namespace GiftShop {
     export type AsObject = {
       pointsBalanceFrozen: string,
       pointsBalanceAvailable: string,
-      needReviewId: number,
+      needReviewCardIdsList: Array<number>,
       card?: GiftShop.Card.AsObject,
     }
   }
@@ -160,6 +149,9 @@ export namespace GiftShop {
 
     getPointsBalanceAvailable(): string;
     setPointsBalanceAvailable(value: string): State;
+
+    getSettingsCardUsdtPriceMin(): string;
+    setSettingsCardUsdtPriceMin(value: string): State;
 
     getNeedReviewCardIdsList(): Array<number>;
     setNeedReviewCardIdsList(value: Array<number>): State;
@@ -183,6 +175,7 @@ export namespace GiftShop {
     export type AsObject = {
       pointsBalanceFrozen: string,
       pointsBalanceAvailable: string,
+      settingsCardUsdtPriceMin: string,
       needReviewCardIdsList: Array<number>,
       cardsList: Array<GiftShop.Card.AsObject>,
     }
