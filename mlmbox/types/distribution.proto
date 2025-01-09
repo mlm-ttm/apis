@@ -37,10 +37,12 @@ message Distribution {
     message Partner {
       mlmbox.types.Account.Info account = 1;
       State state = 2;
+      string turnover_for_sponsor = 3; // товарооборот который начислен спонсору от пользователя
     }
     State state = 1;
     uint32 partners_quantity = 2;
     Balance partners_hold_balance = 3;
     repeated Partner top_partners = 4;
+    string partners_turnover = 5; // суммарный товарооборот который начислен от партнеров
   }
 }
