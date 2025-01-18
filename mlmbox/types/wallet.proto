@@ -113,7 +113,7 @@ message Wallet {
             GameToken.Exchange.Partners game_token_exchange_partners = 11;
             PositionHeader game_token_promotion_top_matrix = 12;
             SourceBinary.Partner game_token_promotion_binary = 13;
-            PositionHeader game_token_promotion_matrix = 14;
+            PositionHeader game_token_promotion_cashback = 14;
           }
         }
         oneof unique_field {
