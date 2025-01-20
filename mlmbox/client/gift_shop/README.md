@@ -85,6 +85,49 @@
 
 ---
 
+### Метод `CardUpdate`
+
+- **Status:** `RESOURCE_EXHAUSTED`
+    - **Текст ошибки:** `RESOURCE_EXHAUSTED` – Превышен лимит запросов.
+- **Status:** `PERMISSION_DENIED`
+    - **Текст ошибки:** `ACCESS_TOKEN_PERMISSION_DENIED` – Пользователь забанен.
+    - **Текст ошибки:** `GIFT_SHOP_CARD_NOT_ACCESS` – Нет доступа к карточке.
+    - **Текст ошибки:** `GIFT_SHOP_CARD_MODIFY_NOT_ACCESS` – Нет доступа для изменения карточки.
+- **Status:** `INVALID_ARGUMENT`
+    - **Текст ошибки:** `GIFT_SHOP_CARD_UNKNOWN` – Неизвестная карточка.
+    - **Текст ошибки:** `GIFT_SHOP_CARD_DETAILS_WRONG` – Неверные данные карточки.
+    - **Текст ошибки:** `GIFT_SHOP_CARD_AMOUNT_WRONG_VALUE` – Некорректное значение суммы.
+    - **Текст ошибки:** `GIFT_SHOP_CARD_PHOTO_WRONG_SIZE` – Некорректный размер фотографии.
+    - **Текст ошибки:** `GIFT_SHOP_CARD_PHOTO_WRONG_FORMAT` – Некорректный формат фотографии.
+- **Status:** `INTERNAL`
+    - **Текст ошибки:** `INTERNAL_DECODING` – Ошибка декодирования данных.
+    - **Текст ошибки:** `INTERNAL_DATABASE_ERROR` – Ошибка работы с базой данных.
+- **Status:** `UNAUTHENTICATED`
+    - **Текст ошибки:** `UNAUTHENTICATED` – Внутренняя ошибка, требующая повторной авторизации.
+- **Status:** `NOT_FOUND`
+    - **Текст ошибки:** `GIFT_SHOP_CARD_NOT_FOUND` – Карточка не найдена.
+
+---
+
+### Метод `CardRemove`
+
+- **Status:** `RESOURCE_EXHAUSTED`
+    - **Текст ошибки:** `RESOURCE_EXHAUSTED` – Превышен лимит запросов.
+- **Status:** `PERMISSION_DENIED`
+    - **Текст ошибки:** `ACCESS_TOKEN_PERMISSION_DENIED` – Пользователь забанен.
+    - **Текст ошибки:** `GIFT_SHOP_CARD_NOT_ACCESS` – Нет доступа к карточке.
+- **Status:** `INVALID_ARGUMENT`
+    - **Текст ошибки:** `GIFT_SHOP_CARD_UNKNOWN` – Неизвестная карточка.
+- **Status:** `INTERNAL`
+    - **Текст ошибки:** `INTERNAL_DECODING` – Ошибка декодирования данных.
+    - **Текст ошибки:** `INTERNAL_DATABASE_ERROR` – Ошибка работы с базой данных.
+- **Status:** `UNAUTHENTICATED`
+    - **Текст ошибки:** `UNAUTHENTICATED` – Внутренняя ошибка, требующая повторной авторизации.
+- **Status:** `NOT_FOUND`
+    - **Текст ошибки:** `GIFT_SHOP_CARD_NOT_FOUND` – Карточка не найдена.
+
+---
+
 ### Метод `CardBuy`
 
 - **Status:** `RESOURCE_EXHAUSTED`
@@ -149,4 +192,3 @@
     - **Текст ошибки:** `UNAUTHENTICATED` – Внутренняя ошибка, требующая повторной авторизации.
 - **Status:** `NOT_FOUND`
     - **Текст ошибки:** `GIFT_SHOP_CARD_NOT_FOUND` – Карточка не найдена.
-
