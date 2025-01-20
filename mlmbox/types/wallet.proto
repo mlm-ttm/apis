@@ -114,6 +114,7 @@ message Wallet {
             PositionHeader game_token_promotion_top_matrix = 12;
             SourceBinary.Partner game_token_promotion_binary = 13;
             PositionHeader game_token_promotion_cashback = 14;
+            uint32 withdrawal_gift_shop_card_id = 15;
           }
         }
         oneof unique_field {
@@ -129,6 +130,7 @@ message Wallet {
           Deposit deposit = 10;
           mlmbox.types.Account.Info account = 11;
           uint32 transaction_id = 12;
+          uint32 gift_shop_card_id = 13;
         }
       }
       uint32 transaction_id = 1;
