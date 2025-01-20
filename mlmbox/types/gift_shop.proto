@@ -6,34 +6,34 @@ import "mlmbox/types/wallet.proto";
 message GiftShop {
   message Card {
     message Id {
-      uint32 id = 1;
+      uint32 id = 1; // идентификатор карточки (используется для обращения к карточке)
     }
-    uint32 id = 1;
-    string title = 2;
-    string description = 3;
-    string image_src = 4;
-    string usdt_price = 5;
-    string usdt_fee = 6;
-    string points_needed = 7;
-    bool released = 8;
-    uint32 created_at = 9;
-    uint32 released_at = 10;
-    mlmbox.types.Wallet.Asset.Transaction transaction = 11;
-    string review_video_url = 12;
-    uint32 review_created_at = 13;
-    bool review_approved = 14;
+    uint32 id = 1; // идентификатор карточки
+    string title = 2; // название карточки (лимит 255 символов)
+    string description = 3; // описание карточки (лимит 950 символов)
+    string image_src = 4; // ссылка на изображение карточки (содержит только путь к файлу основного домена)
+    string usdt_price = 5; // цена карточки в USDT (при создании и редактировании карточки, необходимо обращать внимание на минимальную цену карточки в settings_card_usdt_price_min)
+    string usdt_fee = 6; // комиссия заложенная за вывод USDT
+    string points_needed = 7; // количество баллов необходимых для покупки карточки (если значение points_balance_available более или равно points_needed, то карточка доступна для покупки)
+    bool released = 8; // куплена ли карточка
+    uint32 created_at = 9; // метка времени создания карточки
+    uint32 released_at = 10; // метка времени покупки карточки
+    mlmbox.types.Wallet.Asset.Transaction transaction = 11; // транзакция вывода USDT (поле отображается когда запрошен вывод средств, в ином случае поле будет пустым)
+    string review_video_url = 12; // ссылка на видео отзыв о карточке (допускаются ссылки на видео с youtube и vimeo)
+    uint32 review_created_at = 13; // дата создания отзыва
+    bool review_approved = 14; // одобрен ли отзыв
   }
   message Info {
-    string points_balance_frozen = 1;
-    string points_balance_available = 2;
-    repeated uint32 need_review_card_ids = 3;
+    string points_balance_frozen = 1; // значение замороженных баллов
+    string points_balance_available = 2; // значение доступных баллов для покупки карточек
+    repeated uint32 need_review_card_ids = 3; // идентификаторы карточек, которые ожидают отзыва (появится исключение "GIFT_SHOP_CARD_REVIEW_NEED" если запросить вывод средств при необходимости заполнить отзыв)
     Card card = 4;
   }
   message State {
-    string points_balance_frozen = 1;
-    string points_balance_available = 2;
-    string settings_card_usdt_price_min = 3;
-    repeated uint32 need_review_card_ids = 4;
+    string points_balance_frozen = 1; // значение замороженных баллов
+    string points_balance_available = 2; // значение доступных баллов для покупки карточек
+    string settings_card_usdt_price_min = 3; // параметр-настройка минимальной цены карточки в USDT (используется на момент создания карточки)
+    repeated uint32 need_review_card_ids = 4; // идентификаторы карточек, которые ожидают отзыва (появится исключение "GIFT_SHOP_CARD_REVIEW_NEED" если запросить вывод средств при необходимости заполнить отзыв)
     repeated Card cards = 5;
   }
 }
