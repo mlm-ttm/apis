@@ -35,3 +35,6 @@ message Invoice {
     repeated Item items = 1;
   }
 }
+message AiLinkResponse {
+  string link = 1;
+}
