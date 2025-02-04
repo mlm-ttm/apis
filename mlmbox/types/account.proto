@@ -74,6 +74,7 @@ message Account {
   repeated mlmbox.types.TreeAccount tree_accounts = 3;
   string locale = 5; // language identifier (en-US, ...)
   bool is_admin = 6;
+  bool referral_change_access = 7;
 }
 
 message Tree {
