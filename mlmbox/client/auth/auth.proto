@@ -11,11 +11,41 @@ service Auth {
   rpc TokenValidate (google.protobuf.Empty) returns (TokenValidateResponse) {} // token validity check
   rpc TokenGenerate (mlmbox.types.Account.Id) returns (TokenGenerateResponse) {} // admin - method for generating a token
   rpc RemoteSignIn (google.protobuf.Empty) returns (stream RemoteSignInEvent) {}
+
+  rpc TelegramWidgetAuth (TelegramWidgetAuthRequest) returns (AuthSignResponse) {}
+
+  rpc Web3SignatureMessageGet (Web3SignatureMessageGetRequest) returns (Web3SignatureMessageGetResponse) {}
+  rpc Web3SignatureMessageAuth (Web3SignatureMessageAuthRequest) returns (AuthSignResponse) {}
 }
 
 message TelegramBotSignRequest {
   uint32 channel_id = 1;
   string init_data = 2;
+}
+message TelegramWidgetAuthRequest {
+  message TelegramAuthData {
+    int64 id = 1;
+    string first_name = 2;
+    string username = 3;
+    string photo_url = 4;
+    uint32 auth_date = 5;
+    string hash = 6;
+  }
+  uint32 channel_id = 1;
+  TelegramAuthData auth_data = 2;
+  string ref_link_id = 3;
+}
+message Web3SignatureMessageGetRequest {
+  uint32 channel_id = 1;
+  string ref_link_id = 2;
+}
+message Web3SignatureMessageGetResponse {
+  string message = 1;
+  uint32 expired_at = 2;
+}
+message Web3SignatureMessageAuthRequest {
+  string message = 1;
+  string signature = 2;
 }
 message AuthSignResponse {
   mlmbox.types.Status.Auth auth_status = 1; // Authentication status
